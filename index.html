@@ -2,7 +2,6 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <!-- Force layout to look like 480px wide on all mobile devices -->
   <meta name="viewport" content="width=400, user-scalable=no" />
   <title>Opportunity Not Available - Use VPN</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -43,7 +42,7 @@
       font-size: 1.8em;
       color: #DC143C;
       margin-bottom: 15px;
-      font-weight: 500; /* Less bold */
+      font-weight: 500;
     }
 
     .main-content p {
@@ -68,16 +67,23 @@
       border: none;
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .btn:hover {
       background-color: #0056b3;
     }
 
+    .timer {
+      font-size: 0.95em;
+      color: #ffcccb;
+      margin-top: 5px;
+      font-weight: 500;
+    }
+
     .trust-section {
       text-align: center;
-      margin-top: 60px; /* spacing from main box */
+      margin-top: 60px;
     }
 
     .trust-section .trustpilot {
@@ -112,11 +118,12 @@
   <div class="main-content">
     <span class="icon">&#9888;&#65039;</span>
     <h2>Opportunity Not Available</h2>
-    <p>Sorry, this earning opportunity is not available in your location. Use VPN to access it!</p>
+    <p>Sorry, this earning opportunity is not available in your location. Install and use our VPN to access it!</p>
     <a href="https://www.gravelroat.info/click?offer_id=29716&pub_id=267709&pub_click_id=ADD_CLICK_ID_HERE&site=PASS_SITE_HERE" class="btn">Click to Use</a>
+    <div class="timer" id="countdown">Cancel in 49 seconds</div>
   </div>
 
-  <!-- Trust Logos Section -->
+  <!-- Trust section starts here -->
   <div class="trust-section">
     <img src="https://i.postimg.cc/RZKcCCbj/588-5885660-adding-trustpilot-image-next-to-logo-on-supply.png" alt="Trustpilot Badge" class="trustpilot" />
     <div class="social-logos">
@@ -125,5 +132,20 @@
     </div>
   </div>
 
+  <!-- Timer Script -->
+  <script>
+    let timeLeft = 49;
+    const countdownEl = document.getElementById("countdown");
+
+    const timer = setInterval(() => {
+      timeLeft--;
+      if (timeLeft > 0) {
+        countdownEl.textContent = `Cancel in ${timeLeft} seconds`;
+      } else {
+        countdownEl.textContent = "Expired";
+        clearInterval(timer);
+      }
+    }, 1000);
+  </script>
 </body>
 </html>
