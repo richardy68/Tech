@@ -76,22 +76,32 @@
 
     .trust-section {
       text-align: center;
-      margin-top: 50px; /* Space from the main-content box */
+      margin-top: 60px; /* Increased gap from the box */
     }
 
     .trust-section .trustpilot {
-      max-width: 120px; /* Bigger than logos */
-      margin-bottom: 15px;
+      max-width: 130px; /* Slightly larger */
+      margin-bottom: 25px; /* More space before logos */
       display: block;
       margin-left: auto;
       margin-right: auto;
     }
 
-    .trust-section .social-logos img {
-      width: 30px;
+    .trust-section .social-logos {
+      display: flex;
+      justify-content: center;
+      gap: 30px; /* Space between the logos */
+    }
+
+    .social-logos img {
+      width: 28px;
       height: auto;
-      margin: 0 10px;
-      opacity: 0.9;
+      opacity: 0.95;
+      transition: transform 0.2s ease;
+    }
+
+    .social-logos img:hover {
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -107,7 +117,7 @@
   <div class="trust-section">
     <img src="https://i.postimg.cc/RZKcCCbj/588-5885660-adding-trustpilot-image-next-to-logo-on-supply.png" alt="Trustpilot Badge" class="trustpilot" />
     <div class="social-logos">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" alt="Google Logo" />
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" />
       <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook Logo" />
     </div>
   </div>
