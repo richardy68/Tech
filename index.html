@@ -32,15 +32,23 @@
             margin-top: 40px; /* Space from top */
         }
 
-        .main-content .icon {
-            font-size: 4em;
-            color: #ff6b6b; /* Softer red for warning on dark background */
+        .main-content .icon-svg {
+            width: 60px; /* Adjust size as needed */
+            height: 60px; /* Adjust size as needed */
             margin-bottom: 20px;
         }
 
+        .main-content .icon-svg path {
+            fill: #ffdf00; /* Yellow fill for the warning sign */
+        }
+
+        .main-content .icon-svg circle {
+            fill: #ffdf00; /* Yellow fill for the dot */
+        }
+
         .main-content h2 {
-            font-size: 1.8em;
-            color: #DC143C; /* Increased contrast for red, but not too much (Crimson) */
+            font-size: 1.6em; /* Adjusted size to match the first image */
+            color: #DC143C; /* Crimson red */
             margin-bottom: 15px;
         }
 
@@ -72,15 +80,58 @@
             background-color: #0056b3;
         }
 
-        /* Testimonials section and items are removed */
+        .trust-badges {
+            margin-top: 30px;
+            padding-top: 20px;
+            border-top: 1px solid #3a3a3a; /* Subtle separator */
+            text-align: center;
+        }
+
+        .trust-badges .badge-item {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 10px;
+            font-size: 0.95em;
+            color: #90ee90; /* Light green for positive trust elements */
+            font-weight: 600;
+        }
+
+        .trust-badges .badge-item span {
+            margin-right: 8px;
+            font-size: 1.2em; /* Icon size */
+        }
+
+        .trust-badges .badge-item:last-child {
+            margin-bottom: 0;
+        }
     </style>
 </head>
 <body>
     <div class="main-content">
-        <span class="icon">&#9888;&#65039;</span>
+        <svg class="icon-svg" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 17C12.5523 17 13 16.5523 13 16C13 15.4477 12.5523 15 12 15C11.4477 15 11 15.4477 11 16C11 16.5523 11.4477 17 12 17ZM11 7V13H13V7H11Z" fill="#FDD835"/>
+            <path d="M12 15C12.5523 15 13 15.4477 13 16C13 16.5523 12.5523 17 12 17C11.4477 17 11 16.5523 11 16C11 15.4477 11.4477 15 12 15Z" fill="#2C2C2C"/>
+        </svg>
+
         <h2>Opportunity Not Available</h2>
         <p>Sorry, this earning opportunity is not available in your location. Install and use our VPN to access it!</p>
         <a href="https://www.gravelroat.info/click?offer_id=29716&pub_id=267709&pub_click_id=ADD_CLICK_ID_HERE&site=PASS_SITE_HERE" class="btn">Click to Use</a>
+
+        <div class="trust-badges">
+            <div class="badge-item">
+                <span>⭐</span> Trusted by 100,000+ Users
+            </div>
+            <div class="badge-item">
+                <span>🏆</span> Top Rated 2025 Program
+            </div>
+            <div class="badge-item">
+                <span>💸</span> Real User Earnings: $32.10 Today
+            </div>
+            <div class="badge-item">
+                <span>⚡</span> Last payout sent: 2 minutes ago
+            </div>
+        </div>
     </div>
 
 </body>
