@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <!-- Force layout to look like 480px wide on all mobile devices -->
+  <meta name="viewport" content="width=480, user-scalable=no" />
   <title>Opportunity Not Available - Use VPN</title>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
     body {
       margin: 0;
@@ -42,7 +43,7 @@
       font-size: 1.8em;
       color: #DC143C;
       margin-bottom: 15px;
-      font-weight: 500;
+      font-weight: 500; /* Less bold */
     }
 
     .main-content p {
@@ -76,12 +77,12 @@
 
     .trust-section {
       text-align: center;
-      margin-top: 90px; /* Increased gap from the box */
+      margin-top: 60px; /* spacing from main box */
     }
 
     .trust-section .trustpilot {
-      max-width: 130px; /* Slightly larger */
-      margin-bottom: 25px; /* More space before logos */
+      max-width: 130px;
+      margin-bottom: 25px;
       display: block;
       margin-left: auto;
       margin-right: auto;
@@ -90,7 +91,7 @@
     .trust-section .social-logos {
       display: flex;
       justify-content: center;
-      gap: 30px; /* Space between the logos */
+      gap: 30px;
     }
 
     .social-logos img {
@@ -106,6 +107,8 @@
   </style>
 </head>
 <body>
+
+  <!-- Main Content -->
   <div class="main-content">
     <span class="icon">&#9888;&#65039;</span>
     <h2>Opportunity Not Available</h2>
@@ -113,7 +116,7 @@
     <a href="https://www.gravelroat.info/click?offer_id=29716&pub_id=267709&pub_click_id=ADD_CLICK_ID_HERE&site=PASS_SITE_HERE" class="btn">Click to Use</a>
   </div>
 
-  <!-- Trust section starts here -->
+  <!-- Trust Logos Section -->
   <div class="trust-section">
     <img src="https://i.postimg.cc/RZKcCCbj/588-5885660-adding-trustpilot-image-next-to-logo-on-supply.png" alt="Trustpilot Badge" class="trustpilot" />
     <div class="social-logos">
@@ -121,5 +124,6 @@
       <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook Logo" />
     </div>
   </div>
+
 </body>
 </html>
