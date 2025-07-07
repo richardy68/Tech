@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=480, user-scalable=no" />
   <title>Opportunity Not Available - Use VPN</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -54,6 +54,7 @@
 
     .btn {
       display: inline-block;
+      position: relative;
       background-color: #007bff;
       color: #fff;
       padding: 15px 30px;
@@ -68,10 +69,31 @@
       cursor: pointer;
       box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4);
       margin-bottom: 15px;
+      animation: breathing 2.5s infinite ease-in-out;
+      overflow: hidden;
     }
 
-    .btn:hover {
-      background-color: #0056b3;
+    .btn::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: -75%;
+      width: 50%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.3);
+      transform: skewX(-20deg);
+      animation: shine 3s infinite;
+    }
+
+    @keyframes breathing {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.04); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes shine {
+      0% { left: -75%; }
+      100% { left: 125%; }
     }
 
     .placeholder-timer-space {
@@ -92,13 +114,13 @@
   <div class="main-content">
     <span class="icon">&#9888;&#65039;</span>
     <h2>Opportunity Not Available</h2>
-    <p>Sorry, this earning opportunity is not available in your location. Install and use our VPN to access it!</p>
+    <p>Sorry, this earning opportunity is not available in your location. Use VPN to access it!</p>
     <a href="https://www.gravelroat.info/click?offer_id=29716&pub_id=267709&pub_click_id=ADD_CLICK_ID_HERE&site=PASS_SITE_HERE" class="btn">Click to Use</a>
-    <div class="placeholder-timer-space"></div> <!-- Space reserved where timer used to be -->
+    <div class="placeholder-timer-space"></div> <!-- Reserved space -->
   </div>
 
   <!-- Timer displayed separately below -->
-  <div class="external-timer" id="countdown">Cancels in 00.49</div>
+  <div class="external-timer" id="countdown">Cancels in 00:49</div>
 
   <!-- Timer Script -->
   <script>
@@ -109,7 +131,7 @@
       timeLeft--;
       if (timeLeft > 0) {
         const seconds = timeLeft < 10 ? "0" + timeLeft : timeLeft;
-        countdownEl.textContent = `Cancels in 00.${seconds}`;
+        countdownEl.textContent = `Cancels in 00:${seconds}`;
       } else {
         countdownEl.textContent = "Expired";
         clearInterval(timer);
