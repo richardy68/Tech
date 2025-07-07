@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=400, user-scalable=no" />
+  <meta name="viewport" content="width=480, user-scalable=no" />
   <title>Opportunity Not Available - Use VPN</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
   <style>
@@ -74,39 +74,15 @@
       background-color: #0056b3;
     }
 
-    .timer {
-      font-size: 0.95em;
-      color: #ffcccb;
-      margin-top: 5px;
+    .placeholder-timer-space {
+      height: 20px; /* space where timer used to be */
+    }
+
+    .external-timer {
+      font-size: 1em;
       font-weight: 500;
-    }
-
-    .trust-section {
-      text-align: center;
-      margin-top: 60px;
-    }
-
-    /* Empty block for where the Trustpilot badge used to be */
-    .trust-section .trustpilot-space {
-      height: 25px; /* Keeps space where the badge was */
-      margin-bottom: 25px;
-    }
-
-    .trust-section .social-logos {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    .social-logos img {
-      width: 28px;
-      height: auto;
-      opacity: 0.95;
-      transition: transform 0.2s ease;
-    }
-
-    .social-logos img:hover {
-      transform: scale(1.1);
+      color: #ffcccb;
+      margin-top: 40px;
     }
   </style>
 </head>
@@ -116,19 +92,13 @@
   <div class="main-content">
     <span class="icon">&#9888;&#65039;</span>
     <h2>Opportunity Not Available</h2>
-    <p>Sorry, this earning opportunity is not available in your location. Use VPN to access it!</p>
+    <p>Sorry, this earning opportunity is not available in your location. Install and use our VPN to access it!</p>
     <a href="https://www.gravelroat.info/click?offer_id=29716&pub_id=267709&pub_click_id=ADD_CLICK_ID_HERE&site=PASS_SITE_HERE" class="btn">Click to Use</a>
-    <div class="timer" id="countdown">Cancel in 49 seconds</div>
+    <div class="placeholder-timer-space"></div> <!-- Space reserved where timer used to be -->
   </div>
 
-  <!-- Trust section starts here -->
-  <div class="trust-section">
-    <div class="trustpilot-space"></div> <!-- Keeps space where Trustpilot badge was -->
-    <div class="social-logos">
-      <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Google_2015_logo.svg" alt="Google Logo" />
-      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="Facebook Logo" />
-    </div>
-  </div>
+  <!-- Timer displayed separately below -->
+  <div class="external-timer" id="countdown">Cancels in 00.49</div>
 
   <!-- Timer Script -->
   <script>
@@ -138,12 +108,14 @@
     const timer = setInterval(() => {
       timeLeft--;
       if (timeLeft > 0) {
-        countdownEl.textContent = `Cancel in ${timeLeft} seconds`;
+        const seconds = timeLeft < 10 ? "0" + timeLeft : timeLeft;
+        countdownEl.textContent = `Cancels in 00.${seconds}`;
       } else {
         countdownEl.textContent = "Expired";
         clearInterval(timer);
       }
     }, 1000);
   </script>
+
 </body>
 </html>
