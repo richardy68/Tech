@@ -1,66 +1,91 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Earn Online – App Reviews & Quick Tasks</title>
-  <style>
-    body { margin: 0; font-family: Arial, sans-serif; background: #f6f7fb; }
-    header { background: #4e62ff; color: white; padding: 25px; text-align: center; font-size: 28px; font-weight: 700; }
-    nav {
-      background: white;
-      padding: 12px;
-      display: flex;
-      justify-content: space-around;
-      border-bottom: 1px solid #ddd;
-    }
-    nav a {
-      color: #4e62ff;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    .container { width: 90%; max-width: 800px; margin: auto; padding: 20px 0; }
-    .card {
-      background: white;
-      padding: 20px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
-    }
-    .btn {
-      display: block;
-      text-align: center;
-      background: #4e62ff;
-      padding: 14px;
-      color: white;
-      font-size: 18px;
-      border-radius: 8px;
-      text-decoration: none;
-      margin-top: 15px;
-      font-weight: bold;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Rewards Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            font-family: 'Inter', sans-serif;
+        }
+        .card-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+        }
+    </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col items-center p-4">
 
-<header>Top Paying Apps – Start Earning Today</header>
+    <header class="w-full max-w-md bg-blue-600 text-white rounded-xl p-6 mb-6 shadow-lg relative overflow-hidden">
+        <div class="relative z-10">
+            <div class="flex justify-between items-start mb-4">
+                <h1 class="text-2xl font-bold tracking-tight">DATA REWARDS</h1>
+                <span class="bg-red-500 text-xs font-mono px-2 py-1 rounded animate-pulse">05:00</span>
+            </div>
+            <p class="text-blue-100 text-sm">Select your preferred package below to instantly check your eligibility for bonus data.</p>
+        </div>
+        <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500 rounded-full opacity-50"></div>
+    </header>
 
-<nav>
-  <a href="index.html">Home</a>
-  <a href="proof.html">Proof</a>
-  <a href="top5.html">Top 5</a>
-  <a href="dashboard.html">Dashboard</a>
-</nav>
+    <main class="w-full max-w-md space-y-4">
+        
+        <h2 class="text-center text-gray-600 font-semibold uppercase text-xs tracking-widest mb-4">Choose Your Bundle</h2>
 
-<div class="container">
+        <div class="card-gradient border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer group">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h3 class="text-3xl font-black text-gray-800">5 GB</h3>
+                    <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Student Choice</span>
+                </div>
+                <span class="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">BEST VALUE</span>
+            </div>
+            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
+                <span class="text-gray-500 text-sm">30 days validity</span>
+                <span class="text-2xl font-bold text-gray-900">₦100</span>
+            </div>
+        </div>
 
-  <div class="card">
-    <h2>Testerup – Earn by Testing Apps & Games</h2>
-    <p>Testerup pays users to try new apps and complete simple tasks.</p>
-    <a href="YOUR_AFFILIATE_LINK_HERE" class="btn">Start Earning</a>
-  </div>
+        <div class="card-gradient border-2 border-blue-500 rounded-2xl p-5 shadow-md hover:shadow-lg transition-all cursor-pointer relative">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h3 class="text-3xl font-black text-gray-800">10 GB</h3>
+                    <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Best Deal</span>
+                </div>
+                <span class="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded">MOST POPULAR</span>
+            </div>
+            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
+                <span class="text-gray-500 text-sm">30 days validity</span>
+                <span class="text-2xl font-bold text-gray-900">₦150</span>
+            </div>
+        </div>
 
-</div>
+        <div class="card-gradient border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h3 class="text-3xl font-black text-gray-800">20 GB</h3>
+                    <span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Family Choice</span>
+                </div>
+                <span class="bg-gray-800 text-white text-[10px] font-bold px-2 py-1 rounded">GREAT VALUE</span>
+            </div>
+            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
+                <span class="text-gray-500 text-sm">30 days validity</span>
+                <span class="text-2xl font-bold text-gray-900">₦200</span>
+            </div>
+        </div>
+
+    </main>
+
+    <footer class="w-full max-w-md mt-8">
+        <div class="bg-gray-800 text-white rounded-xl p-4 text-center">
+            <p class="text-[10px] leading-relaxed opacity-80">
+                Data reward bonanza. By proceeding, you agree to subscribe to REWARDS Program.
+            </p>
+            <div class="mt-2 text-[10px] font-bold text-blue-400">
+                Offer Ends: 31 Dec 2026 23:59 (WAT)
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
