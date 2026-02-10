@@ -1,185 +1,242 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Christmas Data Bundles</title>
-
-<style>
-*{
-    box-sizing:border-box;
-    font-family: 'Segoe UI', sans-serif;
-}
-body{
-    margin:0;
-    min-height:100vh;
-    background: linear-gradient(135deg,#b30000,#ff3b3b);
-    color:#fff;
-}
-
-/* Header */
-.header{
-    background:#c40000;
-    padding:14px 16px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
-.header span{
-    font-weight:700;
-    font-size:15px;
-}
-.timer{
-    background:#ff6b6b;
-    padding:6px 10px;
-    border-radius:20px;
-    font-size:13px;
-}
-
-/* Hero */
-.hero{
-    margin:15px;
-    padding:18px;
-    border-radius:14px;
-    background:rgba(255,255,255,0.12);
-    backdrop-filter: blur(10px);
-    text-align:center;
-}
-.hero h1{
-    margin:0 0 8px;
-    font-size:20px;
-}
-.hero p{
-    font-size:13px;
-    opacity:.9;
-}
-.hero .cta{
-    margin-top:12px;
-    background:#ff9900;
-    padding:10px;
-    border-radius:25px;
-    font-weight:600;
-    font-size:14px;
-}
-
-/* Bundles */
-.section-title{
-    text-align:center;
-    margin:18px 0 8px;
-    font-weight:600;
-}
-.bundle{
-    background:#fff;
-    color:#111;
-    margin:12px 15px;
-    border-radius:14px;
-    padding:14px;
-    position:relative;
-}
-.bundle h2{
-    margin:0;
-    color:#c40000;
-}
-.bundle small{
-    color:#666;
-}
-.price{
-    position:absolute;
-    right:14px;
-    bottom:14px;
-    font-weight:700;
-    font-size:18px;
-}
-.badge{
-    display:inline-block;
-    background:#1db954;
-    color:#fff;
-    font-size:11px;
-    padding:4px 8px;
-    border-radius:12px;
-    margin-top:6px;
-}
-.badge.red{
-    background:#ff3b3b;
-}
-.badge.orange{
-    background:#ff9900;
-}
-
-/* Footer */
-.footer{
-    margin:25px 15px 10px;
-    font-size:12px;
-    opacity:.85;
-    text-align:center;
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHRISTMAS DATA • AWOOF GIVEAWAY</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+    
+    body {
+      font-family: 'Poppins', sans-serif;
+    }
+    .hero-bg {
+      background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('https://images.unsplash.com/photo-1607344645866-009c320b63e0?q=80&w=2070&auto=format&fit=crop');
+      background-size: cover;
+      background-position: center;
+    }
+    .snowflake {
+      position: absolute;
+      color: white;
+      opacity: 0.8;
+      animation: fall linear infinite;
+      z-index: 10;
+    }
+    @keyframes fall {
+      to { transform: translateY(100vh); }
+    }
+    .bundle-card {
+      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+    .bundle-card:hover {
+      transform: scale(1.06) translateY(-8px);
+      box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.4);
+    }
+    .timer {
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
 </head>
+<body class="bg-zinc-950 text-white min-h-screen">
 
-<body>
+  <!-- HEADER -->
+  <header class="bg-red-600 py-4 sticky top-0 z-50 shadow-lg">
+    <div class="max-w-lg mx-auto px-6 flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <div class="w-11 h-11 bg-white rounded-full flex items-center justify-center text-2xl font-bold text-red-600">MTN</div>
+        <div>
+          <p class="text-xl font-bold tracking-wider">CHRISTMAS DATA</p>
+          <p class="text-xs -mt-1 text-red-200">AWOOF GIVEAWAY</p>
+        </div>
+      </div>
+      <div id="countdown" class="bg-white/20 backdrop-blur-md px-6 py-2 rounded-2xl font-mono text-2xl font-bold timer flex items-center gap-1">
+        <span id="hours">05</span>:<span id="minutes">00</span>
+      </div>
+    </div>
+  </header>
 
-<!-- Header -->
-<div class="header">
-    <span>🎄 CHRISTMAS DATA AWO OFER</span>
-    <div class="timer" id="timer">05:00</div>
-</div>
+  <!-- HERO -->
+  <div class="hero-bg h-[380px] relative flex items-end">
+    <div class="absolute inset-0 pointer-events-none" id="snow-container"></div>
+    <div class="max-w-lg mx-auto px-6 pb-10 relative z-10 w-full">
+      <h1 class="text-4xl font-bold text-center leading-tight">
+        CHRISTMAS DATA<br>BUNDLES
+      </h1>
+      <p class="text-center text-green-200 mt-3 text-lg">Select your package to instantly get bonus data</p>
+      
+      <div class="mt-8 bg-orange-500 hover:bg-orange-600 transition-all text-center py-4 rounded-3xl font-bold text-xl cursor-pointer shadow-xl" onclick="alert('Tap any bundle below to proceed!')">
+        Click any bundle below to check if you are eligible
+      </div>
+    </div>
+  </div>
 
-<!-- Hero -->
-<div class="hero">
-    <h1>🎄 Christmas Data Bundles 🎄</h1>
-    <p>Select your package to instantly get bonus data</p>
-    <div class="cta">Tap any bundle below to check eligibility</div>
-</div>
+  <!-- BUNDLES -->
+  <div class="max-w-lg mx-auto px-6 -mt-8 relative z-20 pb-20">
+    <div class="bg-white/10 backdrop-blur-lg rounded-3xl p-6 mb-8">
+      <h2 class="text-2xl font-bold text-center mb-2">Choose Your Bundle</h2>
+      <p class="text-center text-zinc-400 text-sm">Tap on any bundle to select it</p>
+    </div>
 
-<div class="section-title">Choose Your Bundle</div>
+    <div class="space-y-6">
 
-<!-- Bundle 1 -->
-<div class="bundle" onclick="selectBundle('2GB')">
-    <h2>2 GB</h2>
-    <span class="badge">STUDENT CHOICE</span>
-    <br><small>30 days validity</small>
-    <div class="price">₦100</div>
-</div>
+      <!-- 5GB -->
+      <div onclick="selectBundle(5, 100)" class="bundle-card bg-white text-zinc-900 rounded-3xl overflow-hidden cursor-pointer border-4 border-yellow-400">
+        <div class="p-6 flex justify-between">
+          <div>
+            <div class="text-6xl font-bold text-red-600">5 GB</div>
+            <div class="mt-4">
+              <span class="bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">STUDENT CHOICE</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="bg-red-500 text-white text-xs font-bold px-5 py-1 rounded-full">BEST VALUE</span>
+            <div class="mt-10">
+              <span class="text-5xl font-bold">₦100</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-zinc-100 px-6 py-4 flex items-center gap-3 text-sm">
+          <i class="fa-solid fa-calendar text-red-600"></i>
+          <span class="font-medium">30 days validity</span>
+        </div>
+      </div>
 
-<!-- Bundle 2 -->
-<div class="bundle" onclick="selectBundle('10GB')">
-    <h2>10 GB</h2>
-    <span class="badge orange">MOST POPULAR</span>
-    <br><small>30 days validity</small>
-    <div class="price">₦150</div>
-</div>
+      <!-- 10GB -->
+      <div onclick="selectBundle(10, 150)" class="bundle-card bg-white text-zinc-900 rounded-3xl overflow-hidden cursor-pointer border-4 border-red-500">
+        <div class="p-6 flex justify-between">
+          <div>
+            <div class="text-6xl font-bold text-red-600">10 GB</div>
+            <div class="mt-4">
+              <span class="bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">BEST DEAL</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="bg-red-500 text-white text-xs font-bold px-5 py-1 rounded-full">MOST POPULAR</span>
+            <div class="mt-10">
+              <span class="text-5xl font-bold">₦150</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-zinc-100 px-6 py-4 flex items-center gap-3 text-sm">
+          <i class="fa-solid fa-calendar text-red-600"></i>
+          <span class="font-medium">30 days validity</span>
+        </div>
+      </div>
 
-<!-- Bundle 3 -->
-<div class="bundle" onclick="selectBundle('20GB')">
-    <h2>20 GB</h2>
-    <span class="badge red">BEST VALUE</span>
-    <br><small>30 days validity</small>
-    <div class="price">₦200</div>
-</div>
+      <!-- 20GB -->
+      <div onclick="selectBundle(20, 200)" class="bundle-card bg-white text-zinc-900 rounded-3xl overflow-hidden cursor-pointer border-4 border-green-500">
+        <div class="p-6 flex justify-between">
+          <div>
+            <div class="text-6xl font-bold text-red-600">20 GB</div>
+            <div class="mt-4">
+              <span class="bg-green-500 text-white text-xs font-bold px-4 py-1.5 rounded-full">FAMILY CHOICE</span>
+            </div>
+          </div>
+          <div class="text-right">
+            <span class="bg-red-500 text-white text-xs font-bold px-5 py-1 rounded-full">GREAT VALUE</span>
+            <div class="mt-10">
+              <span class="text-5xl font-bold">₦200</span>
+            </div>
+          </div>
+        </div>
+        <div class="bg-zinc-100 px-6 py-4 flex items-center gap-3 text-sm">
+          <i class="fa-solid fa-calendar text-red-600"></i>
+          <span class="font-medium">30 days validity</span>
+        </div>
+      </div>
 
-<!-- Footer -->
-<div class="footer">
-    Christmas data bonanza. By proceeding, you agree to subscribe to Rewards.<br>
-    Giveaway ends: 31 Dec 2025 23:59 (WAT)
-</div>
+    </div>
+  </div>
 
-<script>
-// Countdown timer
-let time = 300;
-setInterval(()=>{
-    let min = Math.floor(time/60);
-    let sec = time%60;
-    document.getElementById("timer").innerHTML =
-        `${min}:${sec < 10 ? '0'+sec : sec}`;
-    if(time>0) time--;
-},1000);
+  <!-- FOOTER -->
+  <footer class="bg-zinc-900 py-10 text-center text-sm text-zinc-400">
+    <div class="max-w-lg mx-auto px-6">
+      <p>Christmas data bonanza. By proceeding, you agree to subscribe to LIFT Rewards.</p>
+      <p class="mt-4 flex items-center justify-center gap-2">
+        <i class="fa-solid fa-gift"></i>
+        Giveaway Ends: 31 Dec 2026 23:59 (WAT)
+      </p>
+      <p class="mt-8 text-xs">Made with ❤️ for demo purposes • Customize as you like</p>
+    </div>
+  </footer>
 
-// Click action
-function selectBundle(bundle){
-    alert(bundle + " selected!\nRedirect to eligibility check.");
-    // window.location.href = "offer-link-here";
-}
-</script>
+  <!-- SUCCESS MODAL -->
+  <div id="successModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-[100]">
+    <div class="bg-white text-zinc-900 rounded-3xl max-w-sm w-full mx-4 p-8 text-center">
+      <div class="text-6xl mb-6">🎉</div>
+      <h3 class="text-3xl font-bold mb-2" id="modalTitle">Congratulations!</h3>
+      <p class="text-xl" id="modalText">5GB + Bonus data has been added to your account</p>
+      <button onclick="closeModal()" 
+              class="mt-8 w-full bg-red-600 text-white py-4 rounded-2xl font-bold text-lg hover:bg-red-700 transition">
+        Done
+      </button>
+    </div>
+  </div>
 
+  <script>
+    // Tailwind script already loaded via CDN
+
+    // Countdown timer (5 hours from now)
+    function startTimer() {
+      let hours = 5;
+      let minutes = 0;
+      let seconds = 0;
+
+      setInterval(() => {
+        if (seconds === 0) {
+          if (minutes === 0) {
+            if (hours === 0) return;
+            hours--;
+            minutes = 59;
+          } else {
+            minutes--;
+          }
+          seconds = 59;
+        } else {
+          seconds--;
+        }
+        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+      }, 1000);
+    }
+
+    // Simple falling snow
+    function createSnow() {
+      const container = document.getElementById('snow-container');
+      for (let i = 0; i < 60; i++) {
+        const snow = document.createElement('div');
+        snow.className = 'snowflake text-2xl';
+        snow.textContent = ['❄️', '❅', '❆'][Math.floor(Math.random()*3)];
+        snow.style.left = Math.random() * 100 + 'vw';
+        snow.style.animationDuration = (Math.random() * 8 + 8) + 's';
+        snow.style.animationDelay = Math.random() * 10 + 's';
+        snow.style.fontSize = (Math.random() * 1.2 + 0.8) + 'rem';
+        container.appendChild(snow);
+      }
+    }
+
+    // Bundle selection
+    function selectBundle(gb, price) {
+      const modal = document.getElementById('successModal');
+      document.getElementById('modalTitle').textContent = "Data Purchased!";
+      document.getElementById('modalText').innerHTML = `\( {gb}GB + <span class="text-green-600 font-bold">Bonus data</span> added successfully!<br><br>Amount: ₦ \){price}`;
+      modal.classList.remove('hidden');
+      modal.classList.add('flex');
+    }
+
+    function closeModal() {
+      const modal = document.getElementById('successModal');
+      modal.classList.add('hidden');
+      modal.classList.remove('flex');
+    }
+
+    // Initialize
+    window.onload = () => {
+      startTimer();
+      createSnow();
+    };
+  </script>
 </body>
 </html>
