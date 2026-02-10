@@ -1,91 +1,185 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Rewards Landing Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-            font-family: 'Inter', sans-serif;
-        }
-        .card-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christmas Data Bundles</title>
+
+<style>
+*{
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+body{
+    margin:0;
+    min-height:100vh;
+    background: linear-gradient(135deg,#b30000,#ff3b3b);
+    color:#fff;
+}
+
+/* Header */
+.header{
+    background:#c40000;
+    padding:14px 16px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+.header span{
+    font-weight:700;
+    font-size:15px;
+}
+.timer{
+    background:#ff6b6b;
+    padding:6px 10px;
+    border-radius:20px;
+    font-size:13px;
+}
+
+/* Hero */
+.hero{
+    margin:15px;
+    padding:18px;
+    border-radius:14px;
+    background:rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    text-align:center;
+}
+.hero h1{
+    margin:0 0 8px;
+    font-size:20px;
+}
+.hero p{
+    font-size:13px;
+    opacity:.9;
+}
+.hero .cta{
+    margin-top:12px;
+    background:#ff9900;
+    padding:10px;
+    border-radius:25px;
+    font-weight:600;
+    font-size:14px;
+}
+
+/* Bundles */
+.section-title{
+    text-align:center;
+    margin:18px 0 8px;
+    font-weight:600;
+}
+.bundle{
+    background:#fff;
+    color:#111;
+    margin:12px 15px;
+    border-radius:14px;
+    padding:14px;
+    position:relative;
+}
+.bundle h2{
+    margin:0;
+    color:#c40000;
+}
+.bundle small{
+    color:#666;
+}
+.price{
+    position:absolute;
+    right:14px;
+    bottom:14px;
+    font-weight:700;
+    font-size:18px;
+}
+.badge{
+    display:inline-block;
+    background:#1db954;
+    color:#fff;
+    font-size:11px;
+    padding:4px 8px;
+    border-radius:12px;
+    margin-top:6px;
+}
+.badge.red{
+    background:#ff3b3b;
+}
+.badge.orange{
+    background:#ff9900;
+}
+
+/* Footer */
+.footer{
+    margin:25px 15px 10px;
+    font-size:12px;
+    opacity:.85;
+    text-align:center;
+}
+</style>
 </head>
-<body class="min-h-screen flex flex-col items-center p-4">
 
-    <header class="w-full max-w-md bg-blue-600 text-white rounded-xl p-6 mb-6 shadow-lg relative overflow-hidden">
-        <div class="relative z-10">
-            <div class="flex justify-between items-start mb-4">
-                <h1 class="text-2xl font-bold tracking-tight">DATA REWARDS</h1>
-                <span class="bg-red-500 text-xs font-mono px-2 py-1 rounded animate-pulse">05:00</span>
-            </div>
-            <p class="text-blue-100 text-sm">Select your preferred package below to instantly check your eligibility for bonus data.</p>
-        </div>
-        <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500 rounded-full opacity-50"></div>
-    </header>
+<body>
 
-    <main class="w-full max-w-md space-y-4">
-        
-        <h2 class="text-center text-gray-600 font-semibold uppercase text-xs tracking-widest mb-4">Choose Your Bundle</h2>
+<!-- Header -->
+<div class="header">
+    <span>🎄 CHRISTMAS DATA AWO OFER</span>
+    <div class="timer" id="timer">05:00</div>
+</div>
 
-        <div class="card-gradient border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer group">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h3 class="text-3xl font-black text-gray-800">5 GB</h3>
-                    <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Student Choice</span>
-                </div>
-                <span class="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">BEST VALUE</span>
-            </div>
-            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
-                <span class="text-gray-500 text-sm">30 days validity</span>
-                <span class="text-2xl font-bold text-gray-900">₦100</span>
-            </div>
-        </div>
+<!-- Hero -->
+<div class="hero">
+    <h1>🎄 Christmas Data Bundles 🎄</h1>
+    <p>Select your package to instantly get bonus data</p>
+    <div class="cta">Tap any bundle below to check eligibility</div>
+</div>
 
-        <div class="card-gradient border-2 border-blue-500 rounded-2xl p-5 shadow-md hover:shadow-lg transition-all cursor-pointer relative">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h3 class="text-3xl font-black text-gray-800">10 GB</h3>
-                    <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Best Deal</span>
-                </div>
-                <span class="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded">MOST POPULAR</span>
-            </div>
-            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
-                <span class="text-gray-500 text-sm">30 days validity</span>
-                <span class="text-2xl font-bold text-gray-900">₦150</span>
-            </div>
-        </div>
+<div class="section-title">Choose Your Bundle</div>
 
-        <div class="card-gradient border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h3 class="text-3xl font-black text-gray-800">20 GB</h3>
-                    <span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Family Choice</span>
-                </div>
-                <span class="bg-gray-800 text-white text-[10px] font-bold px-2 py-1 rounded">GREAT VALUE</span>
-            </div>
-            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
-                <span class="text-gray-500 text-sm">30 days validity</span>
-                <span class="text-2xl font-bold text-gray-900">₦200</span>
-            </div>
-        </div>
+<!-- Bundle 1 -->
+<div class="bundle" onclick="selectBundle('2GB')">
+    <h2>2 GB</h2>
+    <span class="badge">STUDENT CHOICE</span>
+    <br><small>30 days validity</small>
+    <div class="price">₦100</div>
+</div>
 
-    </main>
+<!-- Bundle 2 -->
+<div class="bundle" onclick="selectBundle('10GB')">
+    <h2>10 GB</h2>
+    <span class="badge orange">MOST POPULAR</span>
+    <br><small>30 days validity</small>
+    <div class="price">₦150</div>
+</div>
 
-    <footer class="w-full max-w-md mt-8">
-        <div class="bg-gray-800 text-white rounded-xl p-4 text-center">
-            <p class="text-[10px] leading-relaxed opacity-80">
-                Data reward bonanza. By proceeding, you agree to subscribe to REWARDS Program.
-            </p>
-            <div class="mt-2 text-[10px] font-bold text-blue-400">
-                Offer Ends: 31 Dec 2026 23:59 (WAT)
-            </div>
-        </div>
-    </footer>
+<!-- Bundle 3 -->
+<div class="bundle" onclick="selectBundle('20GB')">
+    <h2>20 GB</h2>
+    <span class="badge red">BEST VALUE</span>
+    <br><small>30 days validity</small>
+    <div class="price">₦200</div>
+</div>
+
+<!-- Footer -->
+<div class="footer">
+    Christmas data bonanza. By proceeding, you agree to subscribe to Rewards.<br>
+    Giveaway ends: 31 Dec 2025 23:59 (WAT)
+</div>
+
+<script>
+// Countdown timer
+let time = 300;
+setInterval(()=>{
+    let min = Math.floor(time/60);
+    let sec = time%60;
+    document.getElementById("timer").innerHTML =
+        `${min}:${sec < 10 ? '0'+sec : sec}`;
+    if(time>0) time--;
+},1000);
+
+// Click action
+function selectBundle(bundle){
+    alert(bundle + " selected!\nRedirect to eligibility check.");
+    // window.location.href = "offer-link-here";
+}
+</script>
 
 </body>
 </html>
