@@ -1,195 +1,176 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>MTN AWOOF DATA DEALS • Best Bundles</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-  <style>
-    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
-    
-    body {
-      font-family: 'Poppins', sans-serif;
-      background: linear-gradient(to bottom, #0f172a, #020617);
-    }
-    .hero-bg {
-      background-image: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.8)), url('https://images.unsplash.com/photo-1557683316-973673baf926?q=80&w=2070&auto=format&fit=crop');
-      background-size: cover;
-      background-position: center;
-    }
-    .bundle-card {
-      transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.4);
-    }
-    .bundle-card:hover {
-      transform: scale(1.05) translateY(-10px);
-      box-shadow: 0 25px 50px -12px rgba(239, 68, 68, 0.4);
-    }
-    .timer {
-      font-variant-numeric: tabular-nums;
-    }
-  </style>
-</head>
-<body class="text-white min-h-screen">
-
-  <!-- HEADER -->
-  <header class="bg-red-600 py-4 sticky top-0 z-50 shadow-xl">
-    <div class="max-w-4xl mx-auto px-6 flex items-center justify-between">
-      <div class="flex items-center gap-3">
-        <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center text-3xl font-bold text-red-600">MTN</div>
-        <div>
-          <p class="text-2xl font-bold tracking-wide">AWOOF DATA DEALS</p>
-          <p class="text-sm text-red-100 -mt-1">Best Value Bundles Right Now</p>
-        </div>
-      </div>
-      <div id="countdown" class="bg-white/25 backdrop-blur-md px-6 py-3 rounded-2xl font-mono text-2xl font-bold timer flex items-center gap-2 shadow-inner">
-        <span id="hours">04</span>:<span id="minutes">59</span>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <div class="hero-bg h-96 relative flex items-end">
-    <div class="max-w-4xl mx-auto px-6 pb-12 w-full">
-      <h1 class="text-5xl md:text-6xl font-extrabold text-center leading-tight drop-shadow-lg">
-        SUPER VALUE<br>DATA BUNDLES
-      </h1>
-      <p class="text-center text-xl md:text-2xl mt-4 text-yellow-300 font-medium drop-shadow">
-        Choose your plan & get instant extra data boost
-      </p>
-      
-      <div class="mt-10 bg-orange-600 hover:bg-orange-700 transition-all text-center py-5 rounded-3xl font-bold text-xl md:text-2xl cursor-pointer shadow-2xl transform hover:scale-105" onclick="alert('Select any bundle below to continue!')">
-        Tap any bundle below to check eligibility & activate
-      </div>
-    </div>
-  </div>
-
-  <!-- BUNDLES -->
-  <div class="max-w-4xl mx-auto px-6 -mt-16 relative z-20 pb-24">
-    <div class="bg-white/10 backdrop-blur-xl rounded-3xl p-8 mb-10 text-center">
-      <h2 class="text-3xl font-bold mb-3">Pick Your Perfect Bundle</h2>
-      <p class="text-zinc-300 text-lg">All plans include bonus data + 30 days validity</p>
-    </div>
-
-    <div class="grid md:grid-cols-3 gap-8">
-
-      <!-- 3GB Bundle (adjusted to more realistic everyday value) -->
-      <div onclick="selectBundle(3, 1200)" class="bundle-card bg-white text-zinc-900 rounded-3xl overflow-hidden cursor-pointer border-4 border-yellow-400">
-        <div class="p-8">
-          <div class="text-7xl font-extrabold text-red-600 text-center">3 GB</div>
-          <div class="mt-6 text-center">
-            <span class="bg-green-600 text-white text-sm font-bold px-6 py-2 rounded-full">BEST STARTER</span>
-          </div>
-        </div>
-        <div class="text-center mt-4">
-          <span class="text-6xl font-bold text-red-600">₦1,200</span>
-        </div>
-        <div class="bg-zinc-100 px-8 py-5 mt-6 flex justify-center items-center gap-3 text-base font-medium">
-          <i class="fa-solid fa-calendar-days text-red-600 text-xl"></i>
-          30 days validity • +Bonus Data
-        </div>
-      </div>
-
-      <!-- 7GB Bundle (popular mid-range) -->
-      <div onclick="selectBundle(7, 2500)" class="bundle-card bg-white text-zinc-900 rounded-3xl overflow-hidden cursor-pointer border-4 border-red-500 relative">
-        <div class="absolute top-4 right-4 bg-red-600 text-white text-xs font-bold px-4 py-1.5 rounded-full shadow">MOST POPULAR</div>
-        <div class="p-8">
-          <div class="text-7xl font-extrabold text-red-600 text-center">7 GB</div>
-          <div class="mt-6 text-center">
-            <span class="bg-green-600 text-white text-sm font-bold px-6 py-2 rounded-full">BEST DEAL</span>
-          </div>
-        </div>
-        <div class="text-center mt-4">
-          <span class="text-6xl font-bold text-red-600">₦2,500</span>
-        </div>
-        <div class="bg-zinc-100 px-8 py-5 mt-6 flex justify-center items-center gap-3 text-base font-medium">
-          <i class="fa-solid fa-calendar-days text-red-600 text-xl"></i>
-          30 days validity • +Extra Night Data
-        </div>
-      </div>
-
-      <!-- 15GB Bundle (higher tier value) -->
-      <div onclick="selectBundle(15, 4800)" class="bundle-card bg-white text-zinc-900 rounded-3xl overflow-hidden cursor-pointer border-4 border-green-500">
-        <div class="p-8">
-          <div class="text-7xl font-extrabold text-red-600 text-center">15 GB</div>
-          <div class="mt-6 text-center">
-            <span class="bg-green-600 text-white text-sm font-bold px-6 py-2 rounded-full">FAMILY / HEAVY USER</span>
-          </div>
-        </div>
-        <div class="text-center mt-4">
-          <span class="text-6xl font-bold text-red-600">₦4,800</span>
-        </div>
-        <div class="bg-zinc-100 px-8 py-5 mt-6 flex justify-center items-center gap-3 text-base font-medium">
-          <i class="fa-solid fa-calendar-days text-red-600 text-xl"></i>
-          30 days validity • +Bonus YouTube
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-  <!-- FOOTER -->
-  <footer class="bg-zinc-950 py-12 text-center text-zinc-400 text-sm">
-    <div class="max-w-4xl mx-auto px-6">
-      <p>By continuing, you agree to MTN terms & any applicable promo subscription.</p>
-      <p class="mt-4 flex items-center justify-center gap-2">
-        <i class="fa-solid fa-bolt text-yellow-400"></i>
-        Limited-time offer • Ends soon
-      </p>
-      <p class="mt-8 text-xs opacity-70">MTN Nigeria • Always on, always connected</p>
-    </div>
-  </footer>
-
-  <!-- SUCCESS MODAL -->
-  <div id="successModal" class="hidden fixed inset-0 bg-black/80 flex items-center justify-center z-50">
-    <div class="bg-white text-zinc-900 rounded-3xl max-w-md w-full mx-5 p-10 text-center shadow-2xl">
-      <div class="text-7xl mb-6">🚀</div>
-      <h3 class="text-4xl font-bold mb-4" id="modalTitle">Success!</h3>
-      <p class="text-2xl font-medium" id="modalText">15 GB + Bonus activated on your line</p>
-      <button onclick="closeModal()" 
-              class="mt-10 w-full bg-red-600 text-white py-5 rounded-2xl font-bold text-xl hover:bg-red-700 transition">
-        Awesome • Close
-      </button>
-    </div>
-  </div>
-
-  <script>
-    // Simple countdown (example: 5 hours remaining)
-    function startTimer() {
-      let timeLeft = 5 * 3600; // 5 hours in seconds
-      const timer = setInterval(() => {
-        timeLeft--;
-        if (timeLeft <= 0) {
-          clearInterval(timer);
-          document.getElementById('hours').textContent = '00';
-          document.getElementById('minutes').textContent = '00';
-          return;
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Value Portal</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f7f6;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
         }
-        const hours = Math.floor(timeLeft / 3600);
-        const minutes = Math.floor((timeLeft % 3600) / 60);
-        document.getElementById('hours').textContent = String(hours).padStart(2, '0');
-        document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
-      }, 1000);
-    }
+        .container {
+            width: 100%;
+            max-width: 500px;
+            background: #ffffff;
+            min-height: 100vh;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .header {
+            background: #d32f2f; /* Professional Red */
+            color: white;
+            padding: 20px;
+            text-align: center;
+            position: relative;
+        }
+        .timer {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: rgba(0,0,0,0.2);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        .header h1 { margin: 10px 0 5px; font-size: 22px; text-transform: uppercase; }
+        .header p { margin: 0; font-size: 14px; opacity: 0.9; }
 
-    // Bundle selection simulation
-    function selectBundle(gb, price) {
-      const modal = document.getElementById('successModal');
-      document.getElementById('modalTitle').textContent = "Bundle Activated!";
-      document.getElementById('modalText').innerHTML = `\( {gb}GB + <span class="text-green-600 font-bold">extra bonus</span> added!<br><br>₦ \){price.toLocaleString()} debited successfully.`;
-      modal.classList.remove('hidden');
-      modal.classList.add('flex');
-    }
+        .eligibility-bar {
+            background: #ff9800;
+            color: white;
+            margin: 15px;
+            padding: 12px;
+            text-align: center;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 13px;
+            cursor: pointer;
+            animation: pulse 2s infinite;
+        }
 
-    function closeModal() {
-      document.getElementById('successModal').classList.add('hidden');
-      document.getElementById('successModal').classList.remove('flex');
-    }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.02); }
+            100% { transform: scale(1); }
+        }
 
-    window.onload = () => {
-      startTimer();
-    };
-  </script>
+        .bundle-list { padding: 10px 15px; }
+
+        .bundle-card {
+            border: 2px solid #e0e0e0;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 15px;
+            position: relative;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .bundle-card:hover { border-color: #d32f2f; background: #fffcfc; }
+
+        .badge {
+            position: absolute;
+            top: -10px;
+            right: 15px;
+            background: #333;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 4px;
+            font-size: 11px;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        .bundle-info h2 { margin: 0; font-size: 28px; color: #333; }
+        .bundle-info span { color: #4caf50; font-weight: bold; font-size: 14px; }
+        .bundle-price {
+            float: right;
+            font-size: 24px;
+            font-weight: 900;
+            color: #000;
+            margin-top: -30px;
+        }
+        .validity { font-size: 12px; color: #888; margin-top: 10px; display: block; }
+
+        .footer-note {
+            background: #1a1a1a;
+            color: #ccc;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 11px;
+            text-align: center;
+            line-height: 1.6;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div class="timer">Session: 04:59</div>
+        <h1>DATA VALUE PORTAL</h1>
+        <p>Official Network Distribution System</p>
+    </div>
+
+    <div class="eligibility-bar">
+        TAP A BUNDLE BELOW TO CHECK ELIGIBILITY
+    </div>
+
+    <div class="bundle-list">
+        <div class="bundle-card" onclick="location.href='#next-page'">
+            <div class="badge" style="background: #4caf50;">Student Choice</div>
+            <div class="bundle-info">
+                <h2>5 GB</h2>
+                <span>⚡ ULTRA-SPEED</span>
+                <span class="validity">📅 30 Days Validity</span>
+            </div>
+            <div class="bundle-price">₦100</div>
+        </div>
+
+        <div class="bundle-card" onclick="location.href='#next-page'">
+            <div class="badge" style="background: #d32f2f;">Most Popular</div>
+            <div class="bundle-info">
+                <h2>10 GB</h2>
+                <span>⚡ BEST VALUE</span>
+                <span class="validity">📅 30 Days Validity</span>
+            </div>
+            <div class="bundle-price">₦150</div>
+        </div>
+
+        <div class="bundle-card" onclick="location.href='#next-page'">
+            <div class="badge" style="background: #2196f3;">Family Choice</div>
+            <div class="bundle-info">
+                <h2>20 GB</h2>
+                <span>⚡ PREMIUM DATA</span>
+                <span class="validity">📅 30 Days Validity</span>
+            </div>
+            <div class="bundle-price">₦200</div>
+        </div>
+    </div>
+
+    <div class="footer-note">
+        System Status: <span style="color: #4caf50;">Online</span><br>
+        By proceeding, you agree to the service terms and subscription to LIPLIFT Rewards.
+        Data activation usually occurs within 5 minutes of verification.
+    </div>
+</div>
+
+<script>
+    // Simple Countdown Timer
+    let time = 299;
+    const timerElement = document.querySelector('.timer');
+    setInterval(() => {
+        let minutes = Math.floor(time / 60);
+        let seconds = time % 60;
+        seconds = seconds < 10 ? '0' + seconds : seconds;
+        timerElement.innerHTML = `Session: 0${minutes}:${seconds}`;
+        time--;
+        if (time < 0) time = 299;
+    }, 1000);
+</script>
+
 </body>
 </html>
