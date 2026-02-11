@@ -1,91 +1,59 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Rewards Landing Page</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        body {
-            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
-            font-family: 'Inter', sans-serif;
-        }
-        .card-gradient {
-            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
-        }
-    </style>
-</head>
-<body class="min-h-screen flex flex-col items-center p-4">
+<div style="max-width: 500px; margin: 0 auto; font-family: Arial, sans-serif; background: linear-gradient(to bottom, #f8f9fa, #ffffff); padding: 20px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
 
-    <header class="w-full max-w-md bg-blue-600 text-white rounded-xl p-6 mb-6 shadow-lg relative overflow-hidden">
-        <div class="relative z-10">
-            <div class="flex justify-between items-start mb-4">
-                <h1 class="text-2xl font-bold tracking-tight">DATA REWARDS</h1>
-                <span class="bg-red-500 text-xs font-mono px-2 py-1 rounded animate-pulse">05:00</span>
-            </div>
-            <p class="text-blue-100 text-sm">Select your preferred package below to instantly check your eligibility for bonus data.</p>
-        </div>
-        <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500 rounded-full opacity-50"></div>
-    </header>
+  <div style="background: linear-gradient(135deg, #007bff, #0056b3); color: white; padding: 20px; border-radius: 12px 12px 0 0; text-align: center; position: relative;">
+    <h2 style="margin: 0; font-size: 24px;">DATA REWARDS</h2>
+    <div style="position: absolute; top: 15px; right: 20px; background: rgba(0,0,0,0.3); padding: 6px 12px; border-radius: 20px; font-size: 14px;">
+      05:00
+    </div>
+  </div>
 
-    <main class="w-full max-w-md space-y-4">
-        
-        <h2 class="text-center text-gray-600 font-semibold uppercase text-xs tracking-widest mb-4">Choose Your Bundle</h2>
+  <div style="padding: 20px; text-align: center;">
+    <p style="font-size: 16px; margin: 0 0 20px;">
+      Select your preferred package below to instantly check your eligibility for bonus data.
+    </p>
 
-        <div class="card-gradient border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer group">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h3 class="text-3xl font-black text-gray-800">5 GB</h3>
-                    <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Student Choice</span>
-                </div>
-                <span class="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">BEST VALUE</span>
-            </div>
-            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
-                <span class="text-gray-500 text-sm">30 days validity</span>
-                <span class="text-2xl font-bold text-gray-900">₦100</span>
-            </div>
-        </div>
+    <h3 style="margin: 30px 0 20px; color: #333; font-size: 18px;">CHOOSE YOUR BUNDLE</h3>
 
-        <div class="card-gradient border-2 border-blue-500 rounded-2xl p-5 shadow-md hover:shadow-lg transition-all cursor-pointer relative">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h3 class="text-3xl font-black text-gray-800">10 GB</h3>
-                    <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Best Deal</span>
-                </div>
-                <span class="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded">MOST POPULAR</span>
-            </div>
-            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
-                <span class="text-gray-500 text-sm">30 days validity</span>
-                <span class="text-2xl font-bold text-gray-900">₦150</span>
-            </div>
-        </div>
+    <!-- 5GB Option -->
+    <div style="background: white; border: 2px solid #ddd; border-radius: 12px; padding: 20px; margin-bottom: 20px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+      <div style="position: absolute; top: -12px; right: 20px; background: #ff9500; color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: bold;">
+        BEST VALUE
+      </div>
+      <h4 style="margin: 0 0 8px; font-size: 28px; color: #007bff;">5 GB</h4>
+      <p style="color: #28a745; font-weight: bold; margin: 0 0 10px; font-size: 15px;">STUDENT CHOICE</p>
+      <hr style="border: none; border-top: 1px dashed #ccc; margin: 15px 0;">
+      <p style="margin: 10px 0; font-size: 15px;">30 days validity</p>
+      <p style="font-size: 28px; font-weight: bold; color: #333; margin: 10px 0;">₦100</p>
+    </div>
 
-        <div class="card-gradient border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
-            <div class="flex justify-between items-start mb-6">
-                <div>
-                    <h3 class="text-3xl font-black text-gray-800">20 GB</h3>
-                    <span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Family Choice</span>
-                </div>
-                <span class="bg-gray-800 text-white text-[10px] font-bold px-2 py-1 rounded">GREAT VALUE</span>
-            </div>
-            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
-                <span class="text-gray-500 text-sm">30 days validity</span>
-                <span class="text-2xl font-bold text-gray-900">₦200</span>
-            </div>
-        </div>
+    <!-- 10GB Option -->
+    <div style="background: white; border: 2px solid #ddd; border-radius: 12px; padding: 20px; margin-bottom: 20px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+      <div style="position: absolute; top: -12px; right: 20px; background: #007bff; color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: bold;">
+        MOST POPULAR
+      </div>
+      <h4 style="margin: 0 0 8px; font-size: 28px; color: #007bff;">10 GB</h4>
+      <p style="color: #dc3545; font-weight: bold; margin: 0 0 10px; font-size: 15px;">BEST DEAL</p>
+      <hr style="border: none; border-top: 1px dashed #ccc; margin: 15px 0;">
+      <p style="margin: 10px 0; font-size: 15px;">30 days validity</p>
+      <p style="font-size: 28px; font-weight: bold; color: #333; margin: 10px 0;">₦150</p>
+    </div>
 
-    </main>
+    <!-- 20GB Option -->
+    <div style="background: white; border: 2px solid #ddd; border-radius: 12px; padding: 20px; margin-bottom: 30px; position: relative; box-shadow: 0 2px 8px rgba(0,0,0,0.08);">
+      <div style="position: absolute; top: -12px; right: 20px; background: #28a745; color: white; padding: 6px 14px; border-radius: 20px; font-size: 13px; font-weight: bold;">
+        GREAT VALUE
+      </div>
+      <h4 style="margin: 0 0 8px; font-size: 28px; color: #007bff;">20 GB</h4>
+      <p style="color: #6f42c1; font-weight: bold; margin: 0 0 10px; font-size: 15px;">FAMILY CHOICE</p>
+      <hr style="border: none; border-top: 1px dashed #ccc; margin: 15px 0;">
+      <p style="margin: 10px 0; font-size: 15px;">30 days validity</p>
+      <p style="font-size: 28px; font-weight: bold; color: #333; margin: 10px 0;">₦200</p>
+    </div>
 
-    <footer class="w-full max-w-md mt-8">
-        <div class="bg-gray-800 text-white rounded-xl p-4 text-center">
-            <p class="text-[10px] leading-relaxed opacity-80">
-                Data reward bonanza. By proceeding, you agree to subscribe to REWARDS Program.
-            </p>
-            <div class="mt-2 text-[10px] font-bold text-blue-400">
-                Offer Ends: 31 Dec 2026 23:59 (WAT)
-            </div>
-        </div>
-    </footer>
+    <div style="background: #343a40; color: white; padding: 16px; border-radius: 10px; font-size: 14px; text-align: center; margin-top: 30px;">
+      Data reward bonanza. By proceeding, you agree to subscribe to REWARDS PROGRAM.<br><br>
+      <strong>Offer Ends: 31 Dec 2026 23:59 (WAT)</strong>
+    </div>
 
-</body>
-</html>
+  </div>
+</div>
