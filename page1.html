@@ -26,9 +26,15 @@
         <h1 class="text-2xl font-extrabold tracking-tight">
           DATA REWARDS
         </h1>
-        <span class="bg-red-500/90 text-xs font-mono px-3 py-1 rounded-full animate-pulse">
-          05:00
-        </span>
+
+        <div class="text-right">
+          <div class="text-[10px] uppercase text-blue-100 font-semibold mb-1">
+            Ends in
+          </div>
+          <span id="countdown" class="bg-red-500/90 text-xs font-mono px-3 py-1 rounded-full">
+            07:00
+          </span>
+        </div>
       </div>
 
       <p class="text-blue-100 text-sm leading-relaxed">
@@ -36,7 +42,6 @@
       </p>
     </div>
 
-    <!-- Decorative glow -->
     <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full"></div>
   </header>
 
@@ -67,7 +72,7 @@
       </div>
     </div>
 
-    <!-- 10GB - MAIN OFFER -->
+    <!-- 10GB -->
     <div class="soft-card border-2 border-blue-600 rounded-2xl p-5 shadow-lg ring-2 ring-blue-500/20 cursor-pointer relative scale-[1.01]">
       <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
         MOST POPULAR
@@ -121,6 +126,27 @@
       </p>
     </div>
   </footer>
+
+  <!-- REAL COUNTDOWN SCRIPT -->
+  <script>
+    let timeLeft = 7 * 60; // 7 minutes in seconds
+    const countdownEl = document.getElementById("countdown");
+
+    const timer = setInterval(() => {
+      const minutes = Math.floor(timeLeft / 60);
+      const seconds = timeLeft % 60;
+
+      countdownEl.textContent =
+        String(minutes).padStart(2, "0") + ":" +
+        String(seconds).padStart(2, "0");
+
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+      }
+
+      timeLeft--;
+    }, 1000);
+  </script>
 
 </body>
 </html>
