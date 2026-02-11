@@ -3,174 +3,89 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Data Value Portal</title>
+    <title>Data Rewards Landing Page</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+            font-family: 'Inter', sans-serif;
         }
-        .container {
-            width: 100%;
-            max-width: 500px;
-            background: #ffffff;
-            min-height: 100vh;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-        }
-        .header {
-            background: #d32f2f; /* Professional Red */
-            color: white;
-            padding: 20px;
-            text-align: center;
-            position: relative;
-        }
-        .timer {
-            position: absolute;
-            top: 10px;
-            right: 15px;
-            background: rgba(0,0,0,0.2);
-            padding: 5px 10px;
-            border-radius: 20px;
-            font-size: 12px;
-        }
-        .header h1 { margin: 10px 0 5px; font-size: 22px; text-transform: uppercase; }
-        .header p { margin: 0; font-size: 14px; opacity: 0.9; }
-
-        .eligibility-bar {
-            background: #ff9800;
-            color: white;
-            margin: 15px;
-            padding: 12px;
-            text-align: center;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 13px;
-            cursor: pointer;
-            animation: pulse 2s infinite;
-        }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.02); }
-            100% { transform: scale(1); }
-        }
-
-        .bundle-list { padding: 10px 15px; }
-
-        .bundle-card {
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            position: relative;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .bundle-card:hover { border-color: #d32f2f; background: #fffcfc; }
-
-        .badge {
-            position: absolute;
-            top: -10px;
-            right: 15px;
-            background: #333;
-            color: white;
-            padding: 3px 10px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: bold;
-            text-transform: uppercase;
-        }
-
-        .bundle-info h2 { margin: 0; font-size: 28px; color: #333; }
-        .bundle-info span { color: #4caf50; font-weight: bold; font-size: 14px; }
-        .bundle-price {
-            float: right;
-            font-size: 24px;
-            font-weight: 900;
-            color: #000;
-            margin-top: -30px;
-        }
-        .validity { font-size: 12px; color: #888; margin-top: 10px; display: block; }
-
-        .footer-note {
-            background: #1a1a1a;
-            color: #ccc;
-            padding: 20px;
-            margin-top: 20px;
-            font-size: 11px;
-            text-align: center;
-            line-height: 1.6;
+        .card-gradient {
+            background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
         }
     </style>
 </head>
-<body>
+<body class="min-h-screen flex flex-col items-center p-4">
 
-<div class="container">
-    <div class="header">
-        <div class="timer">Session: 04:59</div>
-        <h1>DATA VALUE PORTAL</h1>
-        <p>Official Network Distribution System</p>
-    </div>
-
-    <div class="eligibility-bar">
-        TAP A BUNDLE BELOW TO CHECK ELIGIBILITY
-    </div>
-
-    <div class="bundle-list">
-        <div class="bundle-card" onclick="location.href='#next-page'">
-            <div class="badge" style="background: #4caf50;">Student Choice</div>
-            <div class="bundle-info">
-                <h2>5 GB</h2>
-                <span>⚡ ULTRA-SPEED</span>
-                <span class="validity">📅 30 Days Validity</span>
+    <header class="w-full max-w-md bg-blue-600 text-white rounded-xl p-6 mb-6 shadow-lg relative overflow-hidden">
+        <div class="relative z-10">
+            <div class="flex justify-between items-start mb-4">
+                <h1 class="text-2xl font-bold tracking-tight">DATA REWARDS</h1>
+                <span class="bg-red-500 text-xs font-mono px-2 py-1 rounded animate-pulse">05:00</span>
             </div>
-            <div class="bundle-price">₦100</div>
+            <p class="text-blue-100 text-sm">Select your preferred package below to instantly check your eligibility for bonus data.</p>
+        </div>
+        <div class="absolute -right-10 -top-10 w-32 h-32 bg-blue-500 rounded-full opacity-50"></div>
+    </header>
+
+    <main class="w-full max-w-md space-y-4">
+        
+        <h2 class="text-center text-gray-600 font-semibold uppercase text-xs tracking-widest mb-4">Choose Your Bundle</h2>
+
+        <div class="card-gradient border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer group">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h3 class="text-3xl font-black text-gray-800">5 GB</h3>
+                    <span class="bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Student Choice</span>
+                </div>
+                <span class="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">BEST VALUE</span>
+            </div>
+            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
+                <span class="text-gray-500 text-sm">30 days validity</span>
+                <span class="text-2xl font-bold text-gray-900">₦100</span>
+            </div>
         </div>
 
-        <div class="bundle-card" onclick="location.href='#next-page'">
-            <div class="badge" style="background: #d32f2f;">Most Popular</div>
-            <div class="bundle-info">
-                <h2>10 GB</h2>
-                <span>⚡ BEST VALUE</span>
-                <span class="validity">📅 30 Days Validity</span>
+        <div class="card-gradient border-2 border-blue-500 rounded-2xl p-5 shadow-md hover:shadow-lg transition-all cursor-pointer relative">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h3 class="text-3xl font-black text-gray-800">10 GB</h3>
+                    <span class="bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Best Deal</span>
+                </div>
+                <span class="bg-blue-600 text-white text-[10px] font-bold px-2 py-1 rounded">MOST POPULAR</span>
             </div>
-            <div class="bundle-price">₦150</div>
+            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
+                <span class="text-gray-500 text-sm">30 days validity</span>
+                <span class="text-2xl font-bold text-gray-900">₦150</span>
+            </div>
         </div>
 
-        <div class="bundle-card" onclick="location.href='#next-page'">
-            <div class="badge" style="background: #2196f3;">Family Choice</div>
-            <div class="bundle-info">
-                <h2>20 GB</h2>
-                <span>⚡ PREMIUM DATA</span>
-                <span class="validity">📅 30 Days Validity</span>
+        <div class="card-gradient border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+            <div class="flex justify-between items-start mb-6">
+                <div>
+                    <h3 class="text-3xl font-black text-gray-800">20 GB</h3>
+                    <span class="bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase tracking-tighter">Family Choice</span>
+                </div>
+                <span class="bg-gray-800 text-white text-[10px] font-bold px-2 py-1 rounded">GREAT VALUE</span>
             </div>
-            <div class="bundle-price">₦200</div>
+            <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
+                <span class="text-gray-500 text-sm">30 days validity</span>
+                <span class="text-2xl font-bold text-gray-900">₦200</span>
+            </div>
         </div>
-    </div>
 
-    <div class="footer-note">
-        System Status: <span style="color: #4caf50;">Online</span><br>
-        By proceeding, you agree to the service terms and subscription to LIPLIFT Rewards.
-        Data activation usually occurs within 5 minutes of verification.
-    </div>
-</div>
+    </main>
 
-<script>
-    // Simple Countdown Timer
-    let time = 299;
-    const timerElement = document.querySelector('.timer');
-    setInterval(() => {
-        let minutes = Math.floor(time / 60);
-        let seconds = time % 60;
-        seconds = seconds < 10 ? '0' + seconds : seconds;
-        timerElement.innerHTML = `Session: 0${minutes}:${seconds}`;
-        time--;
-        if (time < 0) time = 299;
-    }, 1000);
-</script>
+    <footer class="w-full max-w-md mt-8">
+        <div class="bg-gray-800 text-white rounded-xl p-4 text-center">
+            <p class="text-[10px] leading-relaxed opacity-80">
+                Data reward bonanza. By proceeding, you agree to subscribe to REWARDS Program.
+            </p>
+            <div class="mt-2 text-[10px] font-bold text-blue-400">
+                Offer Ends: 31 Dec 2026 23:59 (WAT)
+            </div>
+        </div>
+    </footer>
 
 </body>
 </html>
