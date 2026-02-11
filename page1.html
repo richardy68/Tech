@@ -19,43 +19,55 @@
 
 <body class="min-h-screen flex flex-col items-center px-4 py-6 relative">
 
-  <!-- BACKGROUND DIM -->
   <div class="fixed inset-0 bg-black/10 pointer-events-none z-0"></div>
 
   <!-- HEADER -->
   <header class="relative z-10 w-full max-w-md rounded-2xl bg-gradient-to-br from-blue-600 to-blue-500 text-white p-6 shadow-xl overflow-hidden mb-6">
-    <div class="flex justify-between items-start mb-4">
-      <h1 class="text-2xl font-extrabold tracking-tight">
-        DATA REWARDS
-      </h1>
+    <div class="relative z-10">
+      <div class="flex justify-between items-start mb-4">
+        <h1 class="text-2xl font-extrabold tracking-tight">
+          DATA REWARDS
+        </h1>
 
-      <div class="text-right">
-        <div class="text-[10px] uppercase text-blue-100 font-semibold mb-1">
-          Ends in
+        <div class="text-right">
+          <div class="text-[10px] uppercase text-blue-100 font-semibold mb-1">
+            Ends in
+          </div>
+          <span id="countdown" class="bg-red-500/90 text-xs font-mono px-3 py-1 rounded-full">
+            07:00
+          </span>
         </div>
-        <span id="countdown" class="bg-red-500/90 text-xs font-mono px-3 py-1 rounded-full">
-          07:00
-        </span>
       </div>
-    </div>
 
-    <p class="text-blue-100 text-sm leading-relaxed">
-      Choose a bundle below to instantly check your eligibility for bonus data.
-    </p>
+      <p class="text-blue-100 text-sm leading-relaxed">
+        Choose a bundle below to instantly check your eligibility for bonus data.
+      </p>
+    </div>
 
     <div class="absolute -top-10 -right-10 w-40 h-40 bg-white/10 rounded-full"></div>
   </header>
 
   <!-- CONTENT -->
-  <main id="mainContent" class="relative z-10 w-full max-w-md space-y-4">
+  <main class="relative z-10 w-full max-w-md space-y-4">
 
     <h2 class="text-center text-gray-500 font-semibold uppercase text-xs tracking-widest mb-2">
       Choose Your Bundle
     </h2>
 
     <!-- 5GB -->
-    <div onclick="startProcess('5GB','₦100')" class="soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
-      <h3 class="text-3xl font-black text-gray-900 mb-4">5 GB</h3>
+    <div onclick="window.location.href='3.html?bundle=5GB&price=100'" class="soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+      <div class="flex justify-between items-start mb-6">
+        <div>
+          <h3 class="text-3xl font-black text-gray-900">5 GB</h3>
+          <span class="inline-block mt-1 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
+            Student Choice
+          </span>
+        </div>
+        <span class="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
+          BEST VALUE
+        </span>
+      </div>
+
       <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
         <span class="text-gray-500 text-sm">30 days validity</span>
         <span class="text-2xl font-extrabold text-gray-900">₦100</span>
@@ -63,8 +75,20 @@
     </div>
 
     <!-- 10GB -->
-    <div onclick="startProcess('10GB','₦150')" class="soft-card border-2 border-blue-600 rounded-2xl p-5 shadow-lg cursor-pointer">
-      <h3 class="text-3xl font-black text-gray-900 mb-4">10 GB</h3>
+    <div onclick="window.location.href='3.html?bundle=10GB&price=150'" class="soft-card border-2 border-blue-600 rounded-2xl p-5 shadow-lg ring-2 ring-blue-500/20 cursor-pointer relative scale-[1.01]">
+      <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
+        MOST POPULAR
+      </div>
+
+      <div class="flex justify-between items-start mb-6 mt-2">
+        <div>
+          <h3 class="text-3xl font-black text-gray-900">10 GB</h3>
+          <span class="inline-block mt-1 bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
+            Best Deal
+          </span>
+        </div>
+      </div>
+
       <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
         <span class="text-gray-600 text-sm">30 days validity</span>
         <span class="text-3xl font-black text-blue-600">₦150</span>
@@ -72,8 +96,19 @@
     </div>
 
     <!-- 20GB -->
-    <div onclick="startProcess('20GB','₦200')" class="soft-card border border-gray-200 rounded-2xl p-5 shadow-sm cursor-pointer">
-      <h3 class="text-3xl font-black text-gray-900 mb-4">20 GB</h3>
+    <div onclick="window.location.href='3.html?bundle=20GB&price=200'" class="soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+      <div class="flex justify-between items-start mb-6">
+        <div>
+          <h3 class="text-3xl font-black text-gray-900">20 GB</h3>
+          <span class="inline-block mt-1 bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
+            Family Choice
+          </span>
+        </div>
+        <span class="bg-gray-800 text-white text-[10px] font-bold px-2 py-1 rounded">
+          GREAT VALUE
+        </span>
+      </div>
+
       <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
         <span class="text-gray-500 text-sm">30 days validity</span>
         <span class="text-2xl font-extrabold text-gray-900">₦200</span>
@@ -82,48 +117,37 @@
 
   </main>
 
-  <!-- PROCESSING SCREEN -->
-  <div id="processingScreen" class="hidden fixed inset-0 bg-white flex flex-col justify-center items-center z-50">
-    <div class="animate-spin rounded-full h-16 w-16 border-b-4 border-blue-600 mb-6"></div>
-    <h2 class="text-lg font-bold mb-2">Processing... Please wait</h2>
-    <p class="text-gray-600 text-sm">Checking if you qualified</p>
-  </div>
+  <!-- FOOTER -->
+  <footer class="relative z-10 w-full max-w-md mt-8">
+    <div class="bg-gray-900 text-white rounded-2xl p-4 text-center shadow-lg">
+      <p class="text-[10px] leading-relaxed opacity-80">
+        Data reward bonanza. By proceeding, you agree to subscribe to the REWARDS Program.
+      </p>
+      <p class="mt-2 text-[10px] font-bold text-blue-400">
+        Offer Ends: 31 Dec 2026 · 23:59 (WAT)
+      </p>
+    </div>
+  </footer>
 
-  <!-- CONGRATULATIONS SCREEN -->
-  <div id="congratsScreen" class="hidden fixed inset-0 bg-white flex flex-col justify-center items-center text-center px-6 z-50">
-    <h1 class="text-2xl font-extrabold text-green-600 mb-4">
-      🎉 Congratulations!
-    </h1>
-    <p id="offerText" class="text-lg font-semibold text-gray-800 mb-6"></p>
-    <button class="bg-blue-600 text-white px-6 py-3 rounded-xl font-bold shadow-lg">
-      Continue
-    </button>
-  </div>
-
-  <!-- COUNTDOWN -->
+  <!-- REAL COUNTDOWN -->
   <script>
     let timeLeft = 7 * 60;
     const countdownEl = document.getElementById("countdown");
 
-    setInterval(() => {
+    const timer = setInterval(() => {
       const minutes = Math.floor(timeLeft / 60);
       const seconds = timeLeft % 60;
+
       countdownEl.textContent =
         String(minutes).padStart(2, "0") + ":" +
         String(seconds).padStart(2, "0");
+
+      if (timeLeft <= 0) {
+        clearInterval(timer);
+      }
+
       timeLeft--;
     }, 1000);
-
-    function startProcess(bundle, price) {
-      document.getElementById("processingScreen").classList.remove("hidden");
-
-      setTimeout(() => {
-        document.getElementById("processingScreen").classList.add("hidden");
-        document.getElementById("congratsScreen").classList.remove("hidden");
-        document.getElementById("offerText").innerText =
-          "You are eligible for " + bundle + " data for " + price + " only.";
-      }, 2500);
-    }
   </script>
 
 </body>
