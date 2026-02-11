@@ -17,10 +17,13 @@
   </style>
 </head>
 
-<body class="min-h-screen flex flex-col items-center px-4 py-6">
+<body class="min-h-screen flex flex-col items-center px-4 py-6 relative">
+
+  <!-- BACKGROUND DIM OVERLAY (ONLY ADDITION) -->
+  <div class="fixed inset-0 bg-black/10 pointer-events-none z-0"></div>
 
   <!-- HEADER -->
-  <header class="w-full max-w-md rounded-2xl bg-gradient-to-br from-blue-600 to-blue-500 text-white p-6 shadow-xl relative overflow-hidden mb-6">
+  <header class="relative z-10 w-full max-w-md rounded-2xl bg-gradient-to-br from-blue-600 to-blue-500 text-white p-6 shadow-xl overflow-hidden mb-6">
     <div class="relative z-10">
       <div class="flex justify-between items-start mb-4">
         <h1 class="text-2xl font-extrabold tracking-tight">
@@ -46,7 +49,7 @@
   </header>
 
   <!-- CONTENT -->
-  <main class="w-full max-w-md space-y-4">
+  <main class="relative z-10 w-full max-w-md space-y-4">
 
     <h2 class="text-center text-gray-500 font-semibold uppercase text-xs tracking-widest mb-2">
       Choose Your Bundle
@@ -116,7 +119,7 @@
   </main>
 
   <!-- FOOTER -->
-  <footer class="w-full max-w-md mt-8">
+  <footer class="relative z-10 w-full max-w-md mt-8">
     <div class="bg-gray-900 text-white rounded-2xl p-4 text-center shadow-lg">
       <p class="text-[10px] leading-relaxed opacity-80">
         Data reward bonanza. By proceeding, you agree to subscribe to the REWARDS Program.
@@ -127,9 +130,9 @@
     </div>
   </footer>
 
-  <!-- REAL COUNTDOWN SCRIPT -->
+  <!-- REAL COUNTDOWN -->
   <script>
-    let timeLeft = 7 * 60; // 7 minutes in seconds
+    let timeLeft = 7 * 60;
     const countdownEl = document.getElementById("countdown");
 
     const timer = setInterval(() => {
