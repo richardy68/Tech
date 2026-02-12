@@ -14,11 +14,29 @@
     .soft-card {
       background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
     }
+
+    /* ACTIVE SELECTION (blue edge) */
+    .active-bundle {
+      border-color: #2563eb !important;
+      box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.25);
+    }
+
+    /* TAP ANIMATION */
+    .tap-animate {
+      animation: tap 0.2s ease;
+    }
+
+    @keyframes tap {
+      0% { transform: scale(1); }
+      50% { transform: scale(0.97); }
+      100% { transform: scale(1); }
+    }
   </style>
 </head>
 
 <body class="min-h-screen flex flex-col items-center px-4 py-6 relative">
 
+  <!-- BACKGROUND DIM -->
   <div class="fixed inset-0 bg-black/10 pointer-events-none z-0"></div>
 
   <!-- HEADER -->
@@ -55,7 +73,8 @@
     </h2>
 
     <!-- 5GB -->
-    <div onclick="window.location.href='3.html?bundle=5GB&price=100'" class="soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+    <div onclick="selectBundle(this); window.location.href='processing.html?bundle=5GB&price=100'"
+         class="bundle-card soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
       <div class="flex justify-between items-start mb-6">
         <div>
           <h3 class="text-3xl font-black text-gray-900">5 GB</h3>
@@ -74,8 +93,9 @@
       </div>
     </div>
 
-    <!-- 10GB -->
-    <div onclick="window.location.href='3.html?bundle=10GB&price=150'" class="soft-card border-2 border-blue-600 rounded-2xl p-5 shadow-lg ring-2 ring-blue-500/20 cursor-pointer relative scale-[1.01]">
+    <!-- 10GB (DEFAULT ACTIVE) -->
+    <div onclick="selectBundle(this); window.location.href='processing.html?bundle=10GB&price=150'"
+         class="bundle-card active-bundle soft-card border-2 rounded-2xl p-5 shadow-lg ring-2 ring-blue-500/20 cursor-pointer relative scale-[1.01]">
       <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
         MOST POPULAR
       </div>
@@ -96,7 +116,8 @@
     </div>
 
     <!-- 20GB -->
-    <div onclick="window.location.href='3.html?bundle=20GB&price=200'" class="soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+    <div onclick="selectBundle(this); window.location.href='processing.html?bundle=20GB&price=200'"
+         class="bundle-card soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
       <div class="flex justify-between items-start mb-6">
         <div>
           <h3 class="text-3xl font-black text-gray-900">20 GB</h3>
@@ -129,25 +150,30 @@
     </div>
   </footer>
 
-  <!-- REAL COUNTDOWN -->
+  <!-- COUNTDOWN -->
   <script>
     let timeLeft = 7 * 60;
     const countdownEl = document.getElementById("countdown");
 
-    const timer = setInterval(() => {
+    setInterval(() => {
       const minutes = Math.floor(timeLeft / 60);
       const seconds = timeLeft % 60;
-
       countdownEl.textContent =
         String(minutes).padStart(2, "0") + ":" +
         String(seconds).padStart(2, "0");
-
-      if (timeLeft <= 0) {
-        clearInterval(timer);
-      }
-
       timeLeft--;
     }, 1000);
+
+    function selectBundle(el) {
+      document.querySelectorAll(".bundle-card").forEach(card => {
+        card.classList.remove("active-bundle");
+      });
+
+      el.classList.add("active-bundle");
+
+      el.classList.add("tap-animate");
+      setTimeout(() => el.classList.remove("tap-animate"), 200);
+    }
   </script>
 
 </body>
