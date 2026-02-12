@@ -31,6 +31,24 @@
       50% { transform: scale(0.97); }
       100% { transform: scale(1); }
     }
+
+    /* NOTIFICATION ANIMATION */
+    .notify {
+      animation: slideIn 0.4s ease forwards;
+    }
+    .hide {
+      animation: slideOut 0.4s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes slideOut {
+      from { opacity: 1; transform: translateY(0); }
+      to { opacity: 0; transform: translateY(20px); }
+    }
   </style>
 </head>
 
@@ -67,48 +85,24 @@
 
   <!-- CONTENT -->
   <main class="relative z-10 w-full max-w-md space-y-4">
-
     <h2 class="text-center text-gray-500 font-semibold uppercase text-xs tracking-widest mb-2">
       Choose Your Bundle
     </h2>
 
     <!-- 5GB -->
     <div onclick="handleBundle(this, '5GB', '100')"
-         class="bundle-card soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
-      <div class="flex justify-between items-start mb-6">
-        <div>
-          <h3 class="text-3xl font-black text-gray-900">5 GB</h3>
-          <span class="inline-block mt-1 bg-green-100 text-green-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
-            Student Choice
-          </span>
-        </div>
-        <span class="bg-orange-500 text-white text-[10px] font-bold px-2 py-1 rounded">
-          BEST VALUE
-        </span>
-      </div>
-
+      class="bundle-card soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+      <h3 class="text-3xl font-black text-gray-900 mb-4">5 GB</h3>
       <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
         <span class="text-gray-500 text-sm">30 days validity</span>
         <span class="text-2xl font-extrabold text-gray-900">₦100</span>
       </div>
     </div>
 
-    <!-- 10GB (DEFAULT ACTIVE) -->
+    <!-- 10GB -->
     <div onclick="handleBundle(this, '10GB', '150')"
-         class="bundle-card active-bundle soft-card border-2 rounded-2xl p-5 shadow-lg ring-2 ring-blue-500/20 cursor-pointer relative scale-[1.01]">
-      <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
-        MOST POPULAR
-      </div>
-
-      <div class="flex justify-between items-start mb-6 mt-2">
-        <div>
-          <h3 class="text-3xl font-black text-gray-900">10 GB</h3>
-          <span class="inline-block mt-1 bg-blue-100 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
-            Best Deal
-          </span>
-        </div>
-      </div>
-
+      class="bundle-card active-bundle soft-card border-2 rounded-2xl p-5 shadow-lg ring-2 ring-blue-500/20 cursor-pointer">
+      <h3 class="text-3xl font-black text-gray-900 mb-4">10 GB</h3>
       <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
         <span class="text-gray-600 text-sm">30 days validity</span>
         <span class="text-3xl font-black text-blue-600">₦150</span>
@@ -117,72 +111,78 @@
 
     <!-- 20GB -->
     <div onclick="handleBundle(this, '20GB', '200')"
-         class="bundle-card soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
-      <div class="flex justify-between items-start mb-6">
-        <div>
-          <h3 class="text-3xl font-black text-gray-900">20 GB</h3>
-          <span class="inline-block mt-1 bg-purple-100 text-purple-700 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">
-            Family Choice
-          </span>
-        </div>
-        <span class="bg-gray-800 text-white text-[10px] font-bold px-2 py-1 rounded">
-          GREAT VALUE
-        </span>
-      </div>
-
+      class="bundle-card soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
+      <h3 class="text-3xl font-black text-gray-900 mb-4">20 GB</h3>
       <div class="flex justify-between items-center border-t border-dashed border-gray-300 pt-4">
         <span class="text-gray-500 text-sm">30 days validity</span>
         <span class="text-2xl font-extrabold text-gray-900">₦200</span>
       </div>
     </div>
-
   </main>
 
-  <!-- FOOTER -->
-  <footer class="relative z-10 w-full max-w-md mt-8">
-    <div class="bg-gray-900 text-white rounded-2xl p-4 text-center shadow-lg">
-      <p class="text-[10px] leading-relaxed opacity-80">
-        Data reward bonanza. By proceeding, you agree to subscribe to the REWARDS Program.
-      </p>
-      <p class="mt-2 text-[10px] font-bold text-blue-400">
-        Offer Ends: 31 Dec 2026 · 23:59 (WAT)
-      </p>
-    </div>
-  </footer>
+  <!-- NOTIFICATION BOX -->
+  <div id="notification"
+    class="hidden fixed bottom-5 left-5 bg-white shadow-lg rounded-xl px-4 py-3 text-sm z-50 max-w-xs">
+    <span id="notifyText"></span>
+  </div>
 
-  <!-- COUNTDOWN + SELECTION JS -->
+  <!-- JS -->
   <script>
     // Countdown
     let timeLeft = 7 * 60;
     const countdownEl = document.getElementById("countdown");
-
     setInterval(() => {
-      const minutes = Math.floor(timeLeft / 60);
-      const seconds = timeLeft % 60;
-      countdownEl.textContent =
-        String(minutes).padStart(2, "0") + ":" +
-        String(seconds).padStart(2, "0");
+      const m = Math.floor(timeLeft / 60);
+      const s = timeLeft % 60;
+      countdownEl.textContent = String(m).padStart(2, "0") + ":" + String(s).padStart(2, "0");
       timeLeft--;
     }, 1000);
 
-    // Handle bundle selection + animation + delayed redirect
+    // Bundle handler
     function handleBundle(el, bundle, price) {
-      // Move active border
-      document.querySelectorAll(".bundle-card").forEach(card => {
-        card.classList.remove("active-bundle");
-      });
+      document.querySelectorAll(".bundle-card").forEach(c => c.classList.remove("active-bundle"));
       el.classList.add("active-bundle");
-
-      // Tap animation
       el.classList.add("tap-animate");
       setTimeout(() => el.classList.remove("tap-animate"), 200);
-
-      // Delay redirect 700ms
       setTimeout(() => {
-        window.location.href = 
-          "3.html?bundle=" + bundle + "&price=" + price;
+        window.location.href = "3.html?bundle=" + bundle + "&price=" + price;
       }, 700);
     }
+
+    // NOTIFICATIONS
+    const notifications = [
+      "Emeka from Lagos just activated 10GB",
+      "Blessing (Abuja) confirmed eligible",
+      "Ibrahim from Ibadan received 5GB",
+      "Chinedu just subscribed successfully",
+      "Aisha from Ilorin activated 20GB"
+    ];
+
+    let index = 0;
+    const box = document.getElementById("notification");
+    const text = document.getElementById("notifyText");
+
+    function showNotification() {
+      if (index >= notifications.length) return;
+
+      text.innerText = notifications[index];
+      box.classList.remove("hidden", "hide");
+      box.classList.add("notify");
+
+      setTimeout(() => {
+        box.classList.remove("notify");
+        box.classList.add("hide");
+        index++;
+
+        setTimeout(() => {
+          box.classList.add("hidden");
+          const nextDelay = 4000 + Math.random() * 1000; // 4–5 seconds
+          setTimeout(showNotification, nextDelay);
+        }, 400);
+      }, 3000);
+    }
+
+    setTimeout(showNotification, 5000);
   </script>
 
 </body>
