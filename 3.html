@@ -3,21 +3,24 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Processing</title>
+<title>Data Rewards</title>
 
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
   body {
-    background: #0f1f4b;
-    font-family: Arial, sans-serif;
+    font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont;
+    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+  }
+  .soft-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
   }
   .loader {
-    border: 8px solid rgba(255,255,255,0.2);
-    border-top: 8px solid white;
+    border: 6px solid rgba(59,130,246,0.2);
+    border-top: 6px solid #2563eb;
     border-radius: 50%;
-    width: 80px;
-    height: 80px;
+    width: 64px;
+    height: 64px;
     animation: spin 1s linear infinite;
   }
   @keyframes spin {
@@ -26,41 +29,45 @@
 </style>
 </head>
 
-<body class="flex items-center justify-center min-h-screen px-4">
+<body class="min-h-screen flex items-center justify-center px-4">
 
 <!-- PROCESSING / CHECKING -->
-<div id="processBox" class="text-center">
-  <h1 id="processText" class="text-yellow-400 text-3xl font-bold mb-6">
-    Processing... Please wait
+<div id="processBox" class="soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+  <h1 id="processText" class="text-xl font-extrabold text-blue-600 mb-6">
+    Processing… Please wait
   </h1>
   <div class="loader mx-auto mb-6"></div>
+  <p class="text-gray-600 text-sm">
+    Please do not refresh this page
+  </p>
 </div>
 
 <!-- CONGRATULATIONS -->
-<div id="congratsBox" class="hidden bg-white rounded-2xl shadow-xl p-6 max-w-md w-full text-center">
-  <h1 class="text-2xl font-extrabold text-red-600 mb-2">
-    CONGRATULATIONS!
+<div id="congratsBox" class="hidden soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+  <h1 class="text-2xl font-extrabold text-green-600 mb-2">
+    🎉 Congratulations!
   </h1>
-  <p class="text-gray-700 mb-4">
-    You are eligible for:
+
+  <p class="text-gray-600 mb-4">
+    You are eligible for the offer below:
   </p>
 
-  <div class="text-2xl font-black text-yellow-500 mb-2" id="bundleText">
-    5GB DATA BUNDLE
+  <div id="bundleText" class="text-3xl font-black text-blue-600 mb-2">
+    5GB DATA
   </div>
 
-  <div class="inline-block bg-green-100 text-green-700 font-bold px-4 py-2 rounded-lg mb-4" id="priceText">
+  <div id="priceText" class="inline-block bg-green-100 text-green-700 font-bold px-4 py-2 rounded-full mb-6">
     ₦100 ONLY
   </div>
 
-  <div class="bg-yellow-50 border border-yellow-300 rounded-lg p-4 text-left text-sm mb-6">
-    <p>1. Click the button below to see offer page</p>
-    <p>2. Add your number and select subscribe</p>
-    <p>3. Verify your number and receive your data immediately</p>
+  <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-left mb-6">
+    <p>• Click the button below to continue</p>
+    <p>• Enter your phone number</p>
+    <p>• Confirm subscription & receive data</p>
   </div>
 
-  <button class="w-full bg-red-500 hover:bg-red-600 text-white font-bold py-3 rounded-xl shadow-lg">
-    Subscribe Now
+  <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg transition">
+    Continue
   </button>
 </div>
 
@@ -69,22 +76,22 @@
   const bundle = params.get("bundle") || "5GB";
   const price = params.get("price") || "100";
 
-  // After 3 seconds → change text
+  // After 4 seconds → Checking
   setTimeout(() => {
     document.getElementById("processText").innerText =
-      "Checking if you qualified...";
-  }, 3000);
+      "Checking if you qualified…";
+  }, 4000);
 
-  // After 6 seconds → show congratulations
+  // After 10 seconds → Show congratulations
   setTimeout(() => {
     document.getElementById("processBox").classList.add("hidden");
     document.getElementById("congratsBox").classList.remove("hidden");
 
     document.getElementById("bundleText").innerText =
-      bundle + " DATA BUNDLE";
+      bundle + " DATA";
     document.getElementById("priceText").innerText =
       "₦" + price + " ONLY";
-  }, 6000);
+  }, 10000);
 </script>
 
 </body>
