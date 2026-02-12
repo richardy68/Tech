@@ -31,8 +31,11 @@
 
 <body class="min-h-screen flex items-center justify-center px-4">
 
+<!-- SUBTLE DIM BACKGROUND (ONLY ADDITION) -->
+<div class="fixed inset-0 bg-black/10 pointer-events-none"></div>
+
 <!-- PROCESSING / CHECKING -->
-<div id="processBox" class="soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+<div id="processBox" class="relative z-10 soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
   <h1 id="processText" class="text-xl font-extrabold text-blue-600 mb-6">
     Processing… Please wait
   </h1>
@@ -43,7 +46,7 @@
 </div>
 
 <!-- CONGRATULATIONS -->
-<div id="congratsBox" class="hidden soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+<div id="congratsBox" class="relative z-10 hidden soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
   <h1 class="text-2xl font-extrabold text-green-600 mb-2">
     🎉 Congratulations!
   </h1>
