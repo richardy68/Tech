@@ -73,7 +73,7 @@
     </h2>
 
     <!-- 5GB -->
-    <div onclick="selectBundle(this); window.location.href='3.html?bundle=5GB&price=100'"
+    <div onclick="handleBundle(this, '5GB', '100')"
          class="bundle-card soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
       <div class="flex justify-between items-start mb-6">
         <div>
@@ -94,7 +94,7 @@
     </div>
 
     <!-- 10GB (DEFAULT ACTIVE) -->
-    <div onclick="selectBundle(this); window.location.href='processing.html?bundle=10GB&price=150'"
+    <div onclick="handleBundle(this, '10GB', '150')"
          class="bundle-card active-bundle soft-card border-2 rounded-2xl p-5 shadow-lg ring-2 ring-blue-500/20 cursor-pointer relative scale-[1.01]">
       <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
         MOST POPULAR
@@ -116,7 +116,7 @@
     </div>
 
     <!-- 20GB -->
-    <div onclick="selectBundle(this); window.location.href='processing.html?bundle=20GB&price=200'"
+    <div onclick="handleBundle(this, '20GB', '200')"
          class="bundle-card soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
       <div class="flex justify-between items-start mb-6">
         <div>
@@ -150,8 +150,9 @@
     </div>
   </footer>
 
-  <!-- COUNTDOWN -->
+  <!-- COUNTDOWN + SELECTION JS -->
   <script>
+    // Countdown
     let timeLeft = 7 * 60;
     const countdownEl = document.getElementById("countdown");
 
@@ -164,15 +165,23 @@
       timeLeft--;
     }, 1000);
 
-    function selectBundle(el) {
+    // Handle bundle selection + animation + delayed redirect
+    function handleBundle(el, bundle, price) {
+      // Move active border
       document.querySelectorAll(".bundle-card").forEach(card => {
         card.classList.remove("active-bundle");
       });
-
       el.classList.add("active-bundle");
 
+      // Tap animation
       el.classList.add("tap-animate");
       setTimeout(() => el.classList.remove("tap-animate"), 200);
+
+      // Delay redirect 300ms
+      setTimeout(() => {
+        window.location.href = 
+          "processing.html?bundle=" + bundle + "&price=" + price;
+      }, 300);
     }
   </script>
 
