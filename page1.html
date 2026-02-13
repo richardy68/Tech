@@ -234,45 +234,35 @@
       }, 700);
     }
 
-    // Updated Script with Initials and Colors
-  const names = ["Emeka", "Amina", "Oluwaseun", "Blessing", "Chidi", "Fatima", "Zainab", "Yusuf", "Ibrahim", "Ngozi"];
-  const colors = ["#dbeafe", "#fef3c7", "#dcfce7", "#f3e8ff", "#fee2e2"];
-  const textColors = ["#2563eb", "#b45309", "#15803d", "#7e22ce", "#b91c1c"];
-  
-  const deals = [
-    { size: "5GB", price: "₦100" },
-    { size: "10GB", price: "₦150" },
-    { size: "20GB", price: "₦200" }
-  ];
+    (function() {
+    const names = ["Emeka", "Amina", "Oluwaseun", "Blessing", "Chidi", "Fatima", "Zainab", "Yusuf", "Ibrahim", "Ngozi"];
+    const deals = [
+      { s: "5GB", p: "₦100" },
+      { s: "10GB", p: "₦150" },
+      { s: "20GB", p: "₦200" }
+    ];
 
-  function showNotification() {
-    const toast = document.getElementById('data-toast');
-    const avatar = document.getElementById('avatar');
-    
-    const randomIdx = Math.floor(Math.random() * names.length);
-    const randomName = names[randomIdx];
-    const randomDeal = deals[Math.floor(Math.random() * deals.length)];
-    const randomMin = Math.floor(Math.random() * 8) + 1;
-    const colorIdx = Math.floor(Math.random() * colors.length);
+    function runNtf() {
+      const card = document.getElementById('data-ntf');
+      const name = names[Math.floor(Math.random() * names.length)];
+      const deal = deals[Math.floor(Math.random() * deals.length)];
+      const mins = Math.floor(Math.random() * 8) + 1;
 
-    // Update Avatar
-    avatar.innerText = randomName.charAt(0);
-    avatar.style.backgroundColor = colors[colorIdx];
-    avatar.style.color = textColors[colorIdx];
+      document.getElementById('ntf-avatar').innerText = name.charAt(0);
+      document.getElementById('ntf-text').innerHTML = `<b>${name}</b> received ${deal.s} data bundle for ${deal.p}`;
+      document.getElementById('ntf-time').innerText = `Verified • ${mins} mins ago`;
 
-    // Update Text
-    document.getElementById('toast-text').innerHTML = `<b>${randomName}</b> received ${randomDeal.size} data bundle for ${randomDeal.price}`;
-    document.getElementById('toast-time').innerText = `Verified • ${randomMin} mins ago`;
-    
-    toast.classList.add('show');
-    
-    setTimeout(() => {
-      toast.classList.remove('show');
-    }, 5000);
-  }
+      card.classList.add('ntf-active');
+      
+      setTimeout(() => {
+        card.classList.remove('ntf-active');
+      }, 5000);
+    }
 
-  setInterval(showNotification, 10000); // Shorter interval (10s) to keep page busy
-  setTimeout(showNotification, 2000);
+    // Start after 3s, repeat every 12s
+    setTimeout(runNtf, 3000);
+    setInterval(runNtf, 12000);
+  })();
 </script>
 
 </body>
