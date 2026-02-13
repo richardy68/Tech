@@ -32,74 +32,42 @@
       100% { transform: scale(1); }
     }
 
-    /* Use a unique prefix 'ntf-' to avoid clashing with your page CSS */
-  .ntf-container {
-    position: fixed;
-    top: -100px; /* Start completely off-screen */
-    left: 50%;
-    transform: translateX(-50%);
-    width: 90%;
-    max-width: 350px;
-    background: white;
-    border-radius: 16px;
-    padding: 12px;
-    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    z-index: 99999; /* Higher than everything else */
-    transition: all 0.6s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-    border: 1px solid #e2e8f0;
-    pointer-events: none; /* User can click through it to buttons behind it */
-  }
+    /* TESTIMONIAL NOTIFICATION STYLES */
+    .toast-card {
+      position: fixed;
+      top: 15px;
+      left: 50%;
+      transform: translate(-50%, -200%);
+      background: #ffffff;
+      border-bottom: 4px solid #2563eb; /* Matched to your blue header */
+      box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+      padding: 10px 18px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      z-index: 9999;
+      transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      width: 90%;
+      max-width: 320px;
+    }
+    .toast-card.show { transform: translate(-50%, 0); }
+    .toast-icon { font-size: 18px; }
+    .toast-content p { margin: 0; font-size: 13px; color: #1e293b; font-weight: 500; }
+    .toast-time { font-size: 10px; color: #64748b; display: block; margin-top: 2px; }
+  </style>
+</head>
 
-  /* The Class that triggers the slide-down */
-  .ntf-active {
-    top: 20px;
-  }
+<body class="min-h-screen flex flex-col items-center px-4 py-6 relative">
 
-  .ntf-avatar {
-    width: 42px;
-    height: 42px;
-    background: #2563eb;
-    color: white;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-weight: bold;
-    flex-shrink: 0;
-  }
-
-  .ntf-live-dot {
-    height: 8px;
-    width: 8px;
-    background: #ef4444;
-    border-radius: 50%;
-    display: inline-block;
-    animation: ntf-pulse 1.5s infinite;
-  }
-
-  @keyframes ntf-pulse {
-    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(239, 68, 68, 0); }
-    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); }
-  }
-</style>
-
-<div id="data-ntf" class="ntf-container">
-  <div id="ntf-avatar" class="ntf-avatar">P</div>
-  <div>
-    <p id="ntf-text" style="margin:0; font-size:13px; color:#1e293b; line-height:1.4;">
-      <b>Paul</b> received 10GB bundle for ₦150
-    </p>
-    <div style="display:flex; align-items:center; gap:5px; margin-top:3px;">
-      <span class="ntf-live-dot"></span>
-      <span id="ntf-time" style="font-size:10px; color:#64748b; font-weight:600;">Verified • 2 mins ago</span>
+  <div id="data-toast" class="toast-card">
+    <div class="toast-icon">🕰️</div>
+    <div class="toast-content">
+      <p id="toast-text"><b>Paul</b> received 10GB bundle for ₦150</p>
+      <span id="toast-time" class="toast-time">2 minutes ago</span>
     </div>
   </div>
-</div>
-  
+
   <div class="fixed inset-0 bg-black/10 pointer-events-none z-0"></div>
 
   <header class="relative z-10 w-full max-w-md rounded-2xl bg-gradient-to-br from-blue-600 to-blue-500 text-white p-6 shadow-xl overflow-hidden mb-6">
@@ -234,36 +202,35 @@
       }, 700);
     }
 
-    (function() {
+    // 3. Testimonial Logic
     const names = ["Emeka", "Amina", "Oluwaseun", "Blessing", "Chidi", "Fatima", "Zainab", "Yusuf", "Ibrahim", "Ngozi"];
     const deals = [
-      { s: "5GB", p: "₦100" },
-      { s: "10GB", p: "₦150" },
-      { s: "20GB", p: "₦200" }
+      { size: "5GB", price: "₦100" },
+      { size: "10GB", price: "₦150" },
+      { size: "20GB", price: "₦200" }
     ];
 
-    function runNtf() {
-      const card = document.getElementById('data-ntf');
-      const name = names[Math.floor(Math.random() * names.length)];
-      const deal = deals[Math.floor(Math.random() * deals.length)];
-      const mins = Math.floor(Math.random() * 8) + 1;
+    function showNotification() {
+      const toast = document.getElementById('data-toast');
+      const randomName = names[Math.floor(Math.random() * names.length)];
+      const randomDeal = deals[Math.floor(Math.random() * deals.length)];
+      const randomMin = Math.floor(Math.random() * 9) + 1;
 
-      document.getElementById('ntf-avatar').innerText = name.charAt(0);
-      document.getElementById('ntf-text').innerHTML = `<b>${name}</b> received ${deal.s} data bundle for ${deal.p}`;
-      document.getElementById('ntf-time').innerText = `Verified • ${mins} mins ago`;
-
-      card.classList.add('ntf-active');
+      document.getElementById('toast-text').innerHTML = `<b>${randomName}</b> received ${randomDeal.size} data bundle for ${randomDeal.price}`;
+      document.getElementById('toast-time').innerText = `${randomMin} minutes ago`;
+      
+      toast.classList.add('show');
       
       setTimeout(() => {
-        card.classList.remove('ntf-active');
+        toast.classList.remove('show');
       }, 5000);
     }
 
-    // Start after 3s, repeat every 12s
-    setTimeout(runNtf, 3000);
-    setInterval(runNtf, 12000);
-  })();
-</script>
+    // Loop notifications every 12 seconds
+    setInterval(showNotification, 12000);
+    // Initial popup after 3 seconds
+    setTimeout(showNotification, 3000);
+  </script>
 
 </body>
 </html>
