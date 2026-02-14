@@ -69,7 +69,7 @@
     <p>• Subscribe & receive data</p>
   </div>
 
-  <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg transition">
+  <button onclick="detectNetwork()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg transition">
     Subscribe to Get Data
   </button>
 </div>
@@ -88,13 +88,43 @@
   // After 10 seconds → Show congratulations
   setTimeout(() => {
     document.getElementById("processBox").classList.add("hidden");
-    document.getElementById("congratsBox").classList.remove("hidden");
+    document.getElementById("congratsBox").classList.removeClass("hidden");
 
     document.getElementById("bundleText").innerText =
       bundle + " DATA";
     document.getElementById("priceText").innerText =
       "₦" + price + " ONLY";
   }, 20000);
+</script>
+
+<!-- NETWORK DETECTION SCRIPT -->
+<script>
+function detectNetwork() {
+
+  fetch("https://ipinfo.io/json?token=55355b912bdc12")
+    .then(res => res.json())
+    .then(data => {
+
+      const network = data.org ? data.org.toLowerCase() : "";
+
+      // MTN
+      if (network.includes("mtn")) {
+        window.location.href = "https://qkzpkdm.com/cl/f1085b0b45ff0390";
+      }
+      // Airtel
+      else if (network.includes("airtel")) {
+        window.location.href = "https://kdmjzwq.com/cl/c6f40f9d240f3e73";
+      }
+      // Other networks / WiFi
+      else {
+        window.location.href = "https://qkzpkdm.com/cl/67a9642f26918e02";
+      }
+
+    })
+    .catch(() => {
+      window.location.href = "https://qkzpkdm.com/cl/67a9642f26918e02";
+    });
+}
 </script>
 
 </body>
