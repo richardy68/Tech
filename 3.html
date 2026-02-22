@@ -115,26 +115,51 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
   }, 20000);
 </script>
 
-<!-- NETWORK DETECTION SCRIPT (Fully Integrated, No Edits to Existing HTML) -->
+<!-- NETWORK DETECTION SCRIPT -->
 <script>
 function detectNetwork() {
+
   fetch("https://ipinfo.io/json?token=55355b912bdc12")
     .then(res => res.json())
     .then(data => {
+
       const network = data.org ? data.org.toLowerCase() : "";
-      console.log("Detected network:", network);
 
       if (network.includes("mtn")) {
+
         window.location.href = "https://qkzpkdm.com/cl/f1085b0b45ff0390";
-      } else if (network.includes("airtel")) {
+
+      } 
+      else if (network.includes("airtel")) {
+
         window.location.href = "https://qkzpkdm.com/cl/d8727766360d767a";
-      } else {
+
+      } 
+      else if (network.includes("glo")) {
+
         window.location.href = "https://qkzpkdm.com/cl/67a9642f26918e02";
+
+      } 
+      else if (network.includes("9mobile") || network.includes("etisalat")) {
+
+        window.location.href = "https://qkzpkdm.com/cl/67a9642f26918e02";
+
+      } 
+      else {
+
+        // WiFi / Unknown / Other
+        window.location.href = "https://qkzpkdm.com/cl/67a9642f26918e02";
+
       }
+
     })
     .catch(() => {
+
+      // If API fails
       window.location.href = "https://qkzpkdm.com/cl/67a9642f26918e02";
+
     });
+
 }
 
 // Add spinning icon to button on click
