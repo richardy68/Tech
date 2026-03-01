@@ -74,7 +74,7 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
     5GB DATA
   </div>
 
-  <div id="priceText" class="inline-block font-bold px-4 py-2 rounded-full mb-6">
+  <div id="priceText" class="mb-6">
     ₦100 ONLY
   </div>
 
@@ -92,7 +92,6 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
 <script>
   const params = new URLSearchParams(window.location.search);
   const bundle = params.get("bundle") || "5GB";
-  const price = params.get("price") || "100";
 
   setTimeout(() => {
     document.getElementById("processText").innerText =
@@ -110,17 +109,25 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
 
     if (bundle === "20GB") {
       priceBox.innerHTML = `
-        <span class="line-through text-gray-400 mr-2">₦200</span>
-        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">₦100 ONLY</span>
+        <div class="text-gray-400 line-through text-lg">₦200</div>
+        <div class="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold mt-1 inline-block">
+          ₦100 ONLY
+        </div>
       `;
-    } else if (bundle === "10GB") {
+    } 
+    else if (bundle === "10GB") {
       priceBox.innerHTML = `
-        <span class="line-through text-gray-400 mr-2">₦150</span>
-        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">₦100 ONLY</span>
+        <div class="text-gray-400 line-through text-lg">₦150</div>
+        <div class="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold mt-1 inline-block">
+          ₦100 ONLY
+        </div>
       `;
-    } else {
+    } 
+    else {
       priceBox.innerHTML = `
-        <span class="bg-green-100 text-green-700 px-3 py-1 rounded-full">₦100 ONLY</span>
+        <div class="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold inline-block">
+          ₦100 ONLY
+        </div>
       `;
     }
 
