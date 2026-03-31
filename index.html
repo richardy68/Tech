@@ -1,157 +1,107 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>For All Network</title>
-
-  <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1622898892221727');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-  
-  <meta name="robots" content="noindex,nofollow" />
-  <style>
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      /* Background gradient for the overall page */
-      background: linear-gradient(135deg, #007bff, #00c6ff); 
-    }
-
-    /* Page Container Styles (acts as the main hero section) */
-    .page-container {
-      min-height:100vh;
-      display:flex; /* Display by default since it's the only page */
-      align-items:center; /* center vertically */
-      justify-content:center; /* center horizontally */
-      padding:20px;
-    }
-
-    /* --- Network Selection Box Styles --- */
-    .selection-box {
-      background: #1a2a4e; /* Dark blue background for the card */
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      padding: 30px;
-      max-width: 450px;
-      width: 100%;
-      text-align: center;
-      color: #fff;
-    }
-    .selection-box h2 {
-      font-size: 26px;
-      font-weight: bold;
-      color: #fedb70; /* Yellowish color for the heading */
-      margin-bottom: 30px;
-    }
-    .network-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr; /* Two columns */
-      gap: 20px; /* Space between buttons */
-    }
-    .network-button {
-      background: #fff;
-      border-radius: 15px;
-      padding: 20px 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      font-size: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-    }
-    .network-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-    }
-    .network-button:active {
-        transform: translateY(0);
-        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-    .network-button .logo-container { /* Renamed .dot to .logo-container */
-      width: 50px; /* Increased size to better fit logos */
-      height: 50px;
-      border-radius: 50%; /* Still round container */
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden; /* Ensures image stays within the circle */
-      background-color: #eee; /* Light background for logos that might not fill */
-    }
-    .network-button .logo-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; /* Ensures logo fits without cropping, maintains aspect ratio */
-        border-radius: 50%; /* Keep image round within the container */
-    }
-
-    /* Add subtle border for all network buttons (now around the whole button) */
-    .network-button.mtn { border: 2px solid #ffcc00; }
-    .network-button.airtel { border: 2px solid #ff0000; }
-    .network-button.glo { border: 2px solid #008000; }
-    .network-button.ninemobile { border: 2px solid #000000; }
-  </style>
-  <script>
-    // Function to handle the redirection
-    function redirectToPage3(networkName) {
-        // You could use the networkName here if you needed to pass it to the next page
-        console.log("Redirecting after selecting: " + networkName);
-        window.location.href = 'page1.html';
-    }
-  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Rewards - Limited Offer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .loader-ring {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+        .hidden { display: none; }
+    </style>
 </head>
-<body>
-  
-  <div class="page-container">
-    <div class="selection-box">
-      <h2>Select Your Network</h2>
-      <div class="network-grid">
-        <a href="javascript:void(0);" class="network-button mtn" onclick="redirectToPage3('MTN');">
-          <div class="logo-container">
-            <img src="https://i.postimg.cc/KjC3gQP2/download-1.png" alt="MTN Logo" />
-          </div>
-          <span>MTN</span>
-        </a>
-        <a href="javascript:void(0);" class="network-button airtel" onclick="redirectToPage3('AIRTEL');">
-          <div class="logo-container">
-            <img src="https://i.postimg.cc/76xWpnJd/images-2.png" alt="Airtel Logo" />
-          </div>
-          <span>AIRTEL</span>
-        </a>
-        <a href="javascript:void(0);" class="network-button glo" onclick="redirectToPage3('GLO');">
-          <div class="logo-container">
-            <img src="https://i.postimg.cc/ZqDwMzZh/images-2-17.jpg" alt="GLO Logo" />
-          </div>
-          <span>GLO</span>
-        </a>
-        <a href="javascript:void(0);" class="network-button ninemobile" onclick="redirectToPage3('9MOBILE');">
-          <div class="logo-container">
-            <img src="https://i.postimg.cc/FHTpYXfX/images-2-20.jpg" alt="9Mobile Logo" />
-          </div>
-          <span>9MOBILE</span>
-        </a>
-      </div>
+<body class="bg-blue-500 font-sans min-h-screen flex items-center justify-center p-4">
+
+    <!-- STEP 1: NETWORK SELECTION -->
+    <div id="step1" class="bg-slate-900 rounded-2xl p-8 w-full max-w-sm text-center shadow-2xl">
+        <h2 class="text-yellow-400 text-2xl font-bold mb-6">Select Your Network</h2>
+        <div class="grid grid-cols-2 gap-4">
+            <div onclick="startLoading('MTN')" class="bg-white p-4 rounded-xl cursor-pointer hover:scale-105 transition shadow-lg">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/a/af/MTN_Logo.svg" class="h-12 mx-auto mb-2" alt="MTN">
+                <p class="font-bold text-gray-800">MTN</p>
+            </div>
+            <div onclick="startLoading('AIRTEL')" class="bg-white p-4 rounded-xl cursor-pointer hover:scale-105 transition shadow-lg border-2 border-red-500">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Airtel_logo.svg" class="h-12 mx-auto mb-2" alt="Airtel">
+                <p class="font-bold text-gray-800">AIRTEL</p>
+            </div>
+            <div onclick="startLoading('GLO')" class="bg-white p-4 rounded-xl cursor-pointer hover:scale-105 transition shadow-lg border-2 border-green-600">
+                <img src="https://upload.wikimedia.org/wikipedia/en/thumb/0/0f/Globacom_Limited_Logo.svg/1200px-Globacom_Limited_Logo.svg.png" class="h-12 mx-auto mb-2" alt="Glo">
+                <p class="font-bold text-gray-800">GLO</p>
+            </div>
+            <div onclick="startLoading('9MOBILE')" class="bg-white p-4 rounded-xl cursor-pointer hover:scale-105 transition shadow-lg border-2 border-lime-500">
+                <img src="https://upload.wikimedia.org/wikipedia/en/b/b3/9mobile_logo.png" class="h-12 mx-auto mb-2" alt="9Mobile">
+                <p class="font-bold text-gray-800 text-xs">9MOBILE</p>
+            </div>
+        </div>
     </div>
-  </div>
-  
+
+    <!-- STEP 2: LOADING BRIDGE -->
+    <div id="step2" class="hidden bg-white rounded-2xl p-8 w-full max-w-sm text-center shadow-2xl">
+        <div class="flex justify-center mb-4">
+            <div class="loader-ring"></div>
+        </div>
+        <p id="loading-text" class="text-gray-700 font-medium">Connecting to Network...</p>
+    </div>
+
+    <!-- STEP 3: BUNDLE SELECTION -->
+    <div id="step3" class="hidden w-full max-w-sm">
+        <div class="bg-blue-600 text-white rounded-t-2xl p-4 flex justify-between items-center">
+            <h2 class="font-bold text-xl uppercase italic">Data Rewards</h2>
+            <div class="bg-red-500 px-2 py-1 rounded text-xs">ENDS IN 06:58</div>
+        </div>
+        
+        <div class="bg-gray-100 p-4 space-y-4 rounded-b-2xl shadow-xl">
+            <p class="text-center text-gray-600 text-sm font-bold uppercase">Choose Your Bundle</p>
+            
+            <!-- 20GB Offer (THE BAIT) -->
+            <div onclick="claimOffer()" class="bg-white border-2 border-blue-600 rounded-xl p-4 relative cursor-pointer hover:bg-blue-50 transition">
+                <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] px-3 py-1 rounded-full font-bold uppercase">Most Popular</span>
+                <div class="flex justify-between items-start mt-2">
+                    <div>
+                        <h3 class="text-3xl font-black text-gray-900">20 GB</h3>
+                        <span class="bg-blue-100 text-blue-700 text-[10px] px-2 py-0.5 rounded font-bold uppercase">Great Value</span>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-xs text-gray-400 line-through">₦200</p>
+                        <p class="text-2xl font-black text-blue-600 font-serif">₦100</p>
+                    </div>
+                </div>
+                <div class="mt-4 text-center">
+                    <button class="w-full bg-blue-600 text-white font-bold py-3 rounded-lg uppercase shadow-md">Claim This Bundle</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function startLoading(carrier) {
+            document.getElementById('step1').classList.add('hidden');
+            document.getElementById('step2').classList.remove('hidden');
+            
+            const loadingText = document.getElementById('loading-text');
+            
+            setTimeout(() => { loadingText.innerText = `Connecting to ${carrier} Gateway...`; }, 800);
+            setTimeout(() => { loadingText.innerText = `Searching for eligibility...`; }, 1600);
+            setTimeout(() => { loadingText.innerText = `20GB Bundle Detected! Success.`; }, 2500);
+            
+            setTimeout(() => {
+                document.getElementById('step2').classList.add('hidden');
+                document.getElementById('step3').classList.remove('hidden');
+            }, 3200);
+        }
+
+        function claimOffer() {
+            // REPLACE THE URL BELOW WITH YOUR ACTUAL MVAS OFFER LINK
+            window.location.href = "YOUR_OFFER_LINK_HERE";
+        }
+    </script>
 </body>
 </html>
