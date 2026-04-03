@@ -113,8 +113,9 @@ fbq('track', 'PageView');
       Choose Your Bundle
     </h2>
 
-    <!-- ✅ 5GB (WORKING) -->
-    <div onclick="handleBundle(this, '5GB', '100')"
+    <!-- ✅ 5GB (MAIN TARGET) -->
+    <div id="bundle-5"
+         onclick="handleBundle(this, '5GB', '100')"
          class="bundle-card soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
       <div class="flex justify-between items-start mb-6">
         <div>
@@ -196,13 +197,11 @@ fbq('track', 'PageView');
       el.classList.add("tap-animate");
       setTimeout(() => el.classList.remove("tap-animate"), 200);
 
-      // ❌ Block 10GB & 20GB
       if (bundle === "10GB" || bundle === "20GB") {
         showUnavailable();
         return;
       }
 
-      // ✅ Only 5GB works
       document.querySelectorAll(".bundle-card").forEach(card => {
         card.classList.remove("active-bundle");
       });
@@ -219,16 +218,34 @@ fbq('track', 'PageView');
       popup.innerHTML = `
         <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:9999;">
           <div style="background:#fff;padding:20px;border-radius:12px;text-align:center;width:80%;max-width:280px;">
-            <p style="font-weight:600;margin-bottom:15px;">
-              No more available
+            <p style="font-weight:600;margin-bottom:10px;">
+              No more available ⚠️
             </p>
-            <button onclick="this.closest('div').parentElement.remove()" style="background:#2563eb;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:600;">
+            <p style="font-size:13px;color:#555;margin-bottom:15px;">
+              Only 5GB bundle is currently left
+            </p>
+            <button onclick="closePopup(this)" style="background:#2563eb;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:600;">
               OK
             </button>
           </div>
         </div>
       `;
       document.body.appendChild(popup);
+    }
+
+    function closePopup(btn) {
+      btn.closest("div").parentElement.remove();
+
+      const bundle5 = document.getElementById("bundle-5");
+
+      bundle5.classList.add("active-bundle");
+      bundle5.classList.add("tap-animate");
+
+      bundle5.scrollIntoView({ behavior: "smooth", block: "center" });
+
+      setTimeout(() => {
+        bundle5.classList.remove("tap-animate");
+      }, 400);
     }
   </script>
 
