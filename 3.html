@@ -89,7 +89,7 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
 
 <script>
   const params = new URLSearchParams(window.location.search);
-  const bundle = params.get("bundle") || "5GB";
+  const bundle = params.get("bundle") || "10GB";
 
   setTimeout(() => {
     document.getElementById("processText").innerText =
@@ -113,7 +113,7 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
         </div>
       `;
     } 
-    else if (bundle === "10GB") {
+    else if (bundle === "15GB") {
       priceBox.innerHTML = `
         <div class="text-gray-400 line-through text-lg">₦150</div>
         <div class="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold mt-1 inline-block">
