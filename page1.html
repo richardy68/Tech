@@ -18,6 +18,10 @@ s.parentNode.insertBefore(t,s)}(window, document,'script',
 fbq('init', '1622898892221727');
 fbq('track', 'PageView');
 </script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
   
   <script src="https://cdn.tailwindcss.com"></script>
 
@@ -113,9 +117,7 @@ fbq('track', 'PageView');
       Choose Your Bundle
     </h2>
 
-    <!-- ✅ 5GB (MAIN TARGET) -->
-    <div id="bundle-5"
-         onclick="handleBundle(this, '5GB', '100')"
+    <div onclick="handleBundle(this, '5GB', '100')"
          class="bundle-card soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
       <div class="flex justify-between items-start mb-6">
         <div>
@@ -135,7 +137,6 @@ fbq('track', 'PageView');
       </div>
     </div>
 
-    <!-- ❌ 10GB -->
     <div onclick="handleBundle(this, '10GB', '150')"
          class="bundle-card active-bundle soft-card border-2 rounded-2xl p-5 shadow-lg ring-2 ring-blue-500/20 cursor-pointer relative scale-[1.01]">
       <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full shadow">
@@ -157,7 +158,6 @@ fbq('track', 'PageView');
       </div>
     </div>
 
-    <!-- ❌ 20GB -->
     <div onclick="handleBundle(this, '20GB', '200')"
          class="bundle-card soft-card border border-gray-200 rounded-2xl p-5 shadow-sm hover:shadow-md transition-all cursor-pointer">
       <div class="flex justify-between items-start mb-6">
@@ -180,7 +180,19 @@ fbq('track', 'PageView');
 
   </main>
 
+  <footer class="relative z-10 w-full max-w-md mt-8">
+    <div class="bg-gray-900 text-white rounded-2xl p-4 text-center shadow-lg">
+      <p class="text-[10px] leading-relaxed opacity-80">
+        Data reward bonanza. By proceeding, you agree to subscribe to the REWARDS Program.
+      </p>
+      <p class="mt-2 text-[10px] font-bold text-blue-400">
+        Offer Ends: 31 Dec 2026 · 23:59 (WAT)
+      </p>
+    </div>
+  </footer>
+
   <script>
+    // Countdown
     let timeLeft = 7 * 60;
     const countdownEl = document.getElementById("countdown");
 
@@ -193,6 +205,7 @@ fbq('track', 'PageView');
       timeLeft--;
     }, 1000);
 
+    // ✅ ONLY MODIFIED PART
     function handleBundle(el, bundle, price) {
       el.classList.add("tap-animate");
       setTimeout(() => el.classList.remove("tap-animate"), 200);
@@ -218,35 +231,40 @@ fbq('track', 'PageView');
       popup.innerHTML = `
         <div style="position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.6);display:flex;align-items:center;justify-content:center;z-index:9999;">
           <div style="background:#fff;padding:20px;border-radius:12px;text-align:center;width:80%;max-width:280px;">
-            <p style="font-weight:600;margin-bottom:10px;">
-              No more available ⚠️
-            </p>
-            <p style="font-size:13px;color:#555;margin-bottom:15px;">
-              Only 5GB bundle is currently left
-            </p>
-            <button onclick="closePopup(this)" style="background:#2563eb;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:600;">
-              OK
-            </button>
+            <p style="font-weight:600;margin-bottom:15px;">No more available</p>
+            <button onclick="this.closest('div').parentElement.remove()" style="background:#2563eb;color:#fff;border:none;padding:8px 16px;border-radius:8px;font-weight:600;">OK</button>
           </div>
         </div>
       `;
       document.body.appendChild(popup);
     }
 
-    function closePopup(btn) {
-      btn.closest("div").parentElement.remove();
+    // Testimonial (UNCHANGED)
+    const names = ["Emeka", "Amina", "Oluwaseun", "Blessing", "Chidi", "Fatima", "Zainab", "Yusuf", "Ibrahim", "Ngozi"];
+    const deals = [
+      { size: "5GB", price: "₦100" },
+      { size: "10GB", price: "₦150" },
+      { size: "20GB", price: "₦200" }
+    ];
 
-      const bundle5 = document.getElementById("bundle-5");
+    function showNotification() {
+      const toast = document.getElementById('data-toast');
+      const randomName = names[Math.floor(Math.random() * names.length)];
+      const randomDeal = deals[Math.floor(Math.random() * deals.length)];
+      const randomMin = Math.floor(Math.random() * 9) + 1;
 
-      bundle5.classList.add("active-bundle");
-      bundle5.classList.add("tap-animate");
-
-      bundle5.scrollIntoView({ behavior: "smooth", block: "center" });
-
+      document.getElementById('toast-text').innerHTML = `<b>${randomName}</b> received ${randomDeal.size} data bundle for ${randomDeal.price}`;
+      document.getElementById('toast-time').innerText = `${randomMin} minutes ago`;
+      
+      toast.classList.add('show');
+      
       setTimeout(() => {
-        bundle5.classList.remove("tap-animate");
-      }, 400);
+        toast.classList.remove('show');
+      }, 5000);
     }
+
+    setInterval(showNotification, 12000);
+    setTimeout(showNotification, 3000);
   </script>
 
 </body>
