@@ -78,7 +78,7 @@ body {
   </div>
 
   <div id="priceText" class="inline-block bg-blue-100 text-blue-700 font-bold px-4 py-2 rounded-full mb-6">
-    ₦valid for 30 days ONLY
+    ₦100 ONLY
   </div>
 
   <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-left mb-6">
@@ -94,7 +94,7 @@ body {
 <script>
 const params = new URLSearchParams(window.location.search);
 const bundle = params.get("bundle") || "5GB";
-const price = params.get("price") || "valid for 30 days";
+const price = params.get("price") || "100";
 
 setTimeout(() => {
   document.getElementById("processText").innerText =
