@@ -222,7 +222,7 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
     }
 
     // 3. Testimonial Logic
-    const names = ["Emeka", "Amina", "Oluwaseun", "Blessing", "Chidi", "Fatima", "Zainab", "Yusuf", "Ibrahim", "Ngozi"];
+    const names = ["Blessing", "Kwame Asare", "Michael", "Blessing", "Abena Mensah", "Fatima", "Zainab", "Yusuf", "Ibrahim", "Kojo"];
     const deals = [
       { size: "5GB", price: "" },
       { size: "10GB", price: "" },
@@ -235,7 +235,7 @@ src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
       const randomDeal = deals[Math.floor(Math.random() * deals.length)];
       const randomMin = Math.floor(Math.random() * 9) + 1;
 
-      document.getElementById('toast-text').innerHTML = `<b>${randomName}</b> received ${randomDeal.size} data bundle for ${randomDeal.price}`;
+      document.getElementById('toast-text').innerHTML = `<b>${randomName}</b> received ${randomDeal.size} data bundle  ${randomDeal.price}`;
       document.getElementById('toast-time').innerText = `${randomMin} minutes ago`;
       
       toast.classList.add('show');
