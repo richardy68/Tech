@@ -14,7 +14,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }.container { width: 100%; max-width: 400px; text-align: center; }
+  }.container { width: 100%; max-width: 400px; text-align: center; position: relative; z-index: 1; }
 
 img { width: 100%; border-radius: 10px; margin-bottom: 20px; }
 
@@ -24,15 +24,22 @@ img { width: 100%; border-radius: 10px; margin-bottom: 20px; }
 
 .btn { background-color: #007BFF; color: #fff; border: none; padding: 15px; width: 100%; font-size: 18px; border-radius: 8px; cursor: pointer; }
 
-.btn:hover { opacity: 0.9; } </style>
+.btn:disabled { opacity: 0.6; }
+
+/* Overlay */ .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); display: none; justify-content: center; align-items: center; flex-direction: column; z-index: 9999; color: #fff; }
+
+.spinner { border: 6px solid #222; border-top: 6px solid #007BFF; border-radius: 50%; width: 60px; height: 60px; animation: spin 1s linear infinite; }
+
+@keyframes spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } } </style>
 
 </head>
 <body><div class="container">
   <img src="https://i.postimg.cc/1Rbr68Y1/screenshot-1-(12)-1.jpg">  <div class="number" id="phoneNumber"></div>
-  <div class="text">Confirm subscription now</div><button class="btn" onclick="confirmAction()">Confirm</button>
+  <div class="text">Confirm subscription now</div><button class="btn" id="confirmBtn" onclick="confirmAction()">Confirm</button>
 
+</div><div class="overlay" id="overlay">
+  <div class="spinner"></div>
 </div><script>
-// Generate random Nigerian phone number
 function generateNumber() {
   let prefixes = ["+2335"];
   let prefix = prefixes[Math.floor(Math.random() * prefixes.length)];
@@ -43,13 +50,15 @@ function generateNumber() {
   return number;
 }
 
-// Set number on page
-const phoneElement = document.getElementById("phoneNumber");
-phoneElement.innerText = generateNumber();
+document.getElementById("phoneNumber").innerText = generateNumber();
 
-// Confirm button action
 function confirmAction() {
-  window.location.href = "https://getfreedatatoday.netlify.app/thankyou";
+  document.getElementById("overlay").style.display = "flex";
+  document.getElementById("confirmBtn").disabled = true;
+
+  setTimeout(function () {
+    window.location.href = "https://getfreedatatoday.netlify.app/thankyou";
+  }, 3000);
 }
 </script></body>
 </html>
