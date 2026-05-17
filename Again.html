@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opening in Chrome...</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f7;
+            color: #333;
+            text-align: center;
+        }
+        .container {
+            max-width: 400px;
+            padding: 20px;
+        }
+        .spinner {
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            border-left-color: #4285F4;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .btn {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 12px 24px;
+            background-color: #4285F4;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="spinner"></div>
+    <h2>Redirecting to Chrome</h2>
+    <p>We are opening this page in your system browser for a better experience.</p>
+    <p style="font-size: 0.9em; color: #666;">If it doesn't open automatically, click the button below:</p>
+    <a href="#" id="chrome-link" class="btn">Open in Chrome</a>
+</div>
+<script>
+    (function () {
+        const targetUrl = "https://your-actual-website.com"; 
+
+        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
+        const isTikTok = /TikTok/i.test(userAgent);
+        const isAndroid = /Android/i.test(userAgent);
+        const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
+
+        // Update the fallback button link immediately
+        const fallbackBtn = document.getElementById("chrome-link");
+
+        if (isTikTok) {
+            if (isAndroid) {
+                // Trick: Force an Intent via a direct window location change, 
+                // but if it fails, trigger an automatic file download simulation.
+                // In-app browsers often crash/hand-off to Chrome when forced to download a file.
+                const intentUrl = "intent://" + targetUrl.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
+                fallbackBtn.href = intentUrl;
+                
+                window.location.href = intentUrl;
+            } 
+            else if (isIOS) {
+                // iOS TikTok completely blocks 'googlechrome://'. 
+                // Change UI to tell the user what to do manually, as auto-redirect is blocked by Apple/TikTok.
+                fallbackBtn.innerText = "Tap to Copy Link & Open Safari";
+                fallbackBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    navigator.clipboard.writeText(targetUrl).then(() => {
+                        alert("Link copied! Paste it into Safari or Chrome to browse safely.");
+                    });
+                });
+            }
+        } else {
+            // Standard fallback for FB/Instagram or desktop browsers
+            const intentUrl = "intent://" + targetUrl.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
+            fallbackBtn.href = intentUrl;
+
+            if (isAndroid) {
+                window.location.href = intentUrl;
+            } else if (isIOS) {
+                window.location.href = targetUrl.replace(/^https?:\/\//, "googlechrome://");
+                setTimeout(() => { window.location.href = targetUrl; }, 1500);
+            } else {
+                window.location.href = targetUrl;
+            }
+        }
+    })();
+</script>
+</head>
+</html>
