@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Data Rewards</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap');
+    body { font-family: 'Inter', sans-serif; background-color: #f1f5f9; }
+    
+    .bundle-card {
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      background: white;
+    }
+    
+    .active-bundle {
+      border: 2px solid #3b82f6 !important;
+      background: #eff6ff;
+    }
+
+    .tap-animate { animation: tap 0.2s ease; }
+    @keyframes tap { 0% { transform: scale(1); } 50% { transform: scale(0.97); } 100% { transform: scale(1); } }
+
+    .toast-card {
+      position: fixed; top: 20px; left: 5%; width: 90%; z-index: 9999;
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.1);
+      transform: translateY(-150%);
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+      border-left: 4px solid #3b82f6;
+    }
+    .toast-card.show { transform: translateY(0); }
+  </style>
+</head>
+
+<body class="pb-10">
+
+  <div id="data-toast" class="toast-card p-4 rounded-xl flex items-center gap-3">
+    <div class="text-xl">✅</div>
+    <div>
+      <p id="toast-text" class="text-sm font-semibold text-gray-800"></p>
+      <span id="toast-time" class="text-xs text-gray-500"></span>
+    </div>
+  </div>
+
+  <header class="bg-blue-600 text-white p-6 rounded-b-[2rem] shadow-lg mb-8">
+    <div class="max-w-md mx-auto">
+      <div class="flex justify-between items-center mb-4">
+        <h1 class="text-xl font-extrabold tracking-tight">DATA REWARDS</h1>
+        <div class="bg-white/20 backdrop-blur px-3 py-1 rounded-full text-xs font-mono font-bold" id="countdown">07:00</div>
+      </div>
+      <p class="text-blue-50 text-sm">Select a bundle to verify your eligibility for instant bonus data.</p>
+    </div>
+  </header>
+
+  <main class="max-w-md mx-auto px-4 space-y-4">
+    
+    <div onclick="handleBundle(this, '5GB', '50')" class="bundle-card p-5 rounded-3xl border border-gray-200 shadow-sm cursor-pointer hover:border-blue-300">
+      <div class="flex justify-between items-start">
+        <div>
+          <span class="text-green-600 text-[10px] font-bold uppercase tracking-wider bg-green-50 px-2 py-0.5 rounded-md">Student Choice</span>
+          <h3 class="text-3xl font-extrabold text-gray-900 mt-1">5 GB</h3>
+        </div>
+        <span class="text-[10px] font-bold text-orange-600 bg-orange-50 px-2 py-1 rounded-lg">BEST VALUE</span>
+      </div>
+      <div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
+        <span class="text-gray-400 text-sm">30 days validity</span>
+        <span class="text-xl font-bold">₦50</span>
+      </div>
+    </div>
+
+    <div onclick="handleBundle(this, '10GB', '70')" class="bundle-card active-bundle p-5 rounded-3xl shadow-md cursor-pointer relative">
+      <div class="absolute -top-3 left-6 bg-blue-600 text-white text-[10px] font-bold px-3 py-1 rounded-full">MOST POPULAR</div>
+      <div class="flex justify-between items-start pt-2">
+        <div>
+          <span class="text-blue-600 text-[10px] font-bold uppercase tracking-wider bg-blue-50 px-2 py-0.5 rounded-md">Best Deal</span>
+          <h3 class="text-3xl font-extrabold text-gray-900 mt-1">10 GB</h3>
+        </div>
+      </div>
+      <div class="mt-4 pt-4 border-t border-blue-100 flex justify-between items-center">
+        <span class="text-gray-500 text-sm">30 days validity</span>
+        <span class="text-2xl font-extrabold text-blue-600">₦70</span>
+      </div>
+    </div>
+
+    <div onclick="handleBundle(this, '20GB', '100')" class="bundle-card p-5 rounded-3xl border border-gray-200 shadow-sm cursor-pointer hover:border-purple-300">
+      <div class="flex justify-between items-start">
+        <div>
+          <span class="text-purple-600 text-[10px] font-bold uppercase tracking-wider bg-purple-50 px-2 py-0.5 rounded-md">Family Choice</span>
+          <h3 class="text-3xl font-extrabold text-gray-900 mt-1">20 GB</h3>
+        </div>
+        <span class="text-[10px] font-bold text-gray-600 bg-gray-100 px-2 py-1 rounded-lg">GREAT VALUE</span>
+      </div>
+      <div class="mt-4 pt-4 border-t border-gray-100 flex justify-between items-center">
+        <span class="text-gray-400 text-sm">30 days validity</span>
+        <span class="text-xl font-bold">₦100</span>
+      </div>
+    </div>
+  </main>
+
+  <script>
+    // Countdown logic
+    let timeLeft = 420;
+    const cd = document.getElementById("countdown");
+    setInterval(() => {
+      let m = Math.floor(timeLeft / 60);
+      let s = timeLeft % 60;
+      cd.textContent = `${String(m).padStart(2,'0')}:${String(s).padStart(2,'0')}`;
+      if(timeLeft > 0) timeLeft--;
+    }, 1000);
+
+    // Interaction
+    function handleBundle(el, bundle, price) {
+      document.querySelectorAll(".bundle-card").forEach(c => c.classList.remove("active-bundle"));
+      el.classList.add("active-bundle", "tap-animate");
+      setTimeout(() => window.location.href = `3.html?bundle=${bundle}&price=${price}`, 500);
+    }
+  </script>
+</body>
+</html>
