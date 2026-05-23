@@ -214,9 +214,14 @@ setInterval(updateTimer, 1000);
 
 // button action
 function nextStep(plan) {
-  alert("You selected " + plan + ". Proceeding to verification...");
-  // here you can redirect:
-  // window.location.href = "3.html";
+  let price = 50;
+
+  if (plan === "10GB") price = 75;
+  if (plan === "20GB") price = 100;
+
+  window.location.href =
+    "page2.html?bundle=" + encodeURIComponent(plan) +
+    "&price=" + encodeURIComponent(price);
 }
 </script>
 
