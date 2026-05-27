@@ -43,6 +43,13 @@
             border-radius: 5px;
             font-weight: bold;
         }
+        /* Style for the chrome logo */
+        .chrome-logo {
+            width: 80px;         /* Change this number to resize the image */
+            height: auto;        /* Maintains aspect ratio */
+            display: block;
+            margin: 20px auto 0; /* Centers the image and adds top margin */
+        }
     </style>
 </head>
 <body>
@@ -52,7 +59,10 @@
     <h2>Redirecting to Chrome</h2>
     <p>We are opening this page in your system browser for a better experience.</p>
     <p style="font-size: 0.9em; color: #666;">If it doesn't open automatically, click the button below:</p>
+    
     <a href="#" id="chrome-link" class="btn">Open in Chrome</a>
+    
+    <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/Google_Chrome_icon_%282011%29.svg" alt="Chrome Logo" class="chrome-logo">
 </div>
     
 <script>
@@ -64,22 +74,15 @@
         const isAndroid = /Android/i.test(userAgent);
         const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
 
-        // Update the fallback button link immediately
         const fallbackBtn = document.getElementById("chrome-link");
 
         if (isTikTok) {
             if (isAndroid) {
-                // Trick: Force an Intent via a direct window location change, 
-                // but if it fails, trigger an automatic file download simulation.
-                // In-app browsers often crash/hand-off to Chrome when forced to download a file.
                 const intentUrl = "intent://" + targetUrl.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
                 fallbackBtn.href = intentUrl;
-                
                 window.location.href = intentUrl;
             } 
             else if (isIOS) {
-                // iOS TikTok completely blocks 'googlechrome://'. 
-                // Change UI to tell the user what to do manually, as auto-redirect is blocked by Apple/TikTok.
                 fallbackBtn.innerText = "Tap to Copy Link & Open Safari";
                 fallbackBtn.addEventListener('click', function(e) {
                     e.preventDefault();
@@ -89,7 +92,6 @@
                 });
             }
         } else {
-            // Standard fallback for FB/Instagram or desktop browsers
             const intentUrl = "intent://" + targetUrl.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
             fallbackBtn.href = intentUrl;
 
@@ -105,5 +107,5 @@
     })();
 </script>
     
-</head>
+</body>
 </html>
