@@ -1,11 +1,11 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>For All Network</title>
-  
-<!-- Meta Pixel Code -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For All Network</title>
+
+  <!-- Meta Pixel Code -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -23,7 +23,7 @@ src="https://www.facebook.com/tr?id=1551583192973282&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
 
-    <!-- TikTok Pixel Code Start -->
+  <!-- TikTok Pixel Code Start -->
 <script>
 !function (w, d, t) {
   w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
@@ -36,109 +36,179 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
 }(window, document, 'ttq');
 </script>
 <!-- TikTok Pixel Code End -->
-    
-    <style>
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background-color: #f5f5f7;
-            color: #333;
-            text-align: center;
-        }
-        .container {
-            max-width: 400px;
-            padding: 20px;
-        }
-        .spinner {
-            border: 4px solid rgba(0, 0, 0, 0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            border-left-color: #4285F4;
-            animation: spin 1s linear infinite;
-            margin: 0 auto 20px;
-        }
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 12px 24px;
-            background-color: #4285F4;
-            color: white;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-        }
-        /* Style for the chrome logo */
-        .chrome-logo {
-            width: 80px;         /* Change this number to resize the image */
-            height: auto;        /* Maintains aspect ratio */
-            display: block;
-            margin: 20px auto 0; /* Centers the image and adds top margin */
-        }
-    </style>
+  
+  <meta name="robots" content="noindex,nofollow" />
+  <style>
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background: linear-gradient(135deg, #0a58ca, #1e90ff); 
+    }
+
+    .page-container {
+      min-height:100vh;
+      display:flex; 
+      align-items:center; 
+      justify-content:center; 
+      padding:20px;
+    }
+
+    .selection-box {
+      background: #1a2a4e; 
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+      padding: 30px;
+      max-width: 450px;
+      width: 100%;
+      text-align: center;
+      color: #fff;
+    }
+    .selection-box h2 {
+      font-size: 26px;
+      font-weight: bold;
+      color: #fedb70; 
+      margin-bottom: 30px;
+    }
+    .network-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr; 
+      gap: 20px; 
+    }
+    .network-button {
+      background: #fff;
+      border-radius: 15px;
+      padding: 20px 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+      font-size: 16px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      cursor: pointer;
+    }
+    .network-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    }
+    .network-button .logo-container { 
+      width: 50px; 
+      height: 50px;
+      border-radius: 50%; 
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden; 
+      background-color: #eee; 
+    }
+    .network-button .logo-container img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain; 
+        border-radius: 50%; 
+    }
+
+    .network-button.mtn { border: 2px solid #ffcc00; }
+    .network-button.airtel { border: 2px solid #ff0000; }
+    .network-button.glo { border: 2px solid #008000; }
+    .network-button.ninemobile { border: 2px solid #000000; }
+
+    /* --- LOADING OVERLAY STYLES --- */
+    #loading-bridge {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.5);
+      backdrop-filter: blur(12px); /* The Blur Effect */
+      -webkit-backdrop-filter: blur(12px);
+      display: none; 
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      flex-direction: column;
+      color: white;
+    }
+
+    .spinner {
+      width: 55px;
+      height: 55px;
+      border: 5px solid rgba(255, 255, 255, 0.2);
+      border-top: 5px solid #ffffff; 
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+      margin-bottom: 15px;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .loading-text {
+      font-size: 16px;
+      font-weight: 500;
+      opacity: 0.9;
+    }
+  </style>
+
+  <script>
+    function redirectToPage3(networkName) {
+        const bridge = document.getElementById('loading-bridge');
+
+        // Show the blurred overlay
+        bridge.style.display = 'flex';
+
+        // 1.5 second delay before moving to page1.html
+        setTimeout(() => {
+            window.location.href = 'page1.html';
+        }, 3000);
+    }
+  </script>
 </head>
 <body>
 
-<div class="container">
+  <!-- The Bridge Overlay -->
+  <div id="loading-bridge">
     <div class="spinner"></div>
-    <h2>Redirecting to Chrome</h2>
-    <p>We are opening this page in your chrome browser for a better experience.</p>
-    <p style="font-size: 0.9em; color: #666;">If it doesn't open automatically, click the button below:</p>
-    
-    <a href="#" id="chrome-link" class="btn">Open in Chrome</a>
-    
-    <img src="https://i.postimg.cc/mZcZcSLW/images-(2).jpg" alt="Chrome Logo" class="chrome-logo">
-</div>
-    
-<script>
-    (function () {
-        const targetUrl = "https://getfreedatatoday.netlify.app"; 
-
-        const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-        const isTikTok = /TikTok/i.test(userAgent);
-        const isAndroid = /Android/i.test(userAgent);
-        const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
-
-        const fallbackBtn = document.getElementById("chrome-link");
-
-        if (isTikTok) {
-            if (isAndroid) {
-                const intentUrl = "intent://" + targetUrl.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
-                fallbackBtn.href = intentUrl;
-                window.location.href = intentUrl;
-            } 
-            else if (isIOS) {
-                fallbackBtn.innerText = "Tap to Copy Link & Open Safari";
-                fallbackBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    navigator.clipboard.writeText(targetUrl).then(() => {
-                        alert("Link copied! Paste it into Safari or Chrome to browse safely.");
-                    });
-                });
-            }
-        } else {
-            const intentUrl = "intent://" + targetUrl.replace(/^https?:\/\//, "") + "#Intent;scheme=https;package=com.android.chrome;end";
-            fallbackBtn.href = intentUrl;
-
-            if (isAndroid) {
-                window.location.href = intentUrl;
-            } else if (isIOS) {
-                window.location.href = targetUrl.replace(/^https?:\/\//, "googlechrome://");
-                setTimeout(() => { window.location.href = targetUrl; }, 1500);
-            } else {
-                window.location.href = targetUrl;
-            }
-        }
-    })();
-</script>
-    
+    <div class="loading-text">Processing...</div>
+  </div>
+  
+  <div class="page-container">
+    <div class="selection-box">
+      <h2>Select Your Network</h2>
+      <div class="network-grid">
+        <a href="javascript:void(0);" class="network-button mtn" onclick="redirectToPage3('MTN');">
+          <div class="logo-container">
+            <img src="https://i.postimg.cc/KjC3gQP2/download-1.png" alt="MTN Logo" />
+          </div>
+          <span>MTN</span>
+        </a>
+        <a href="javascript:void(0);" class="network-button airtel" onclick="redirectToPage3('AIRTEL');">
+          <div class="logo-container">
+            <img src="https://i.postimg.cc/76xWpnJd/images-2.png" alt="Airtel Logo" />
+          </div>
+          <span>AIRTEL</span>
+        </a>
+        <a href="javascript:void(0);" class="network-button glo" onclick="redirectToPage3('GLO');">
+          <div class="logo-container">
+            <img src="https://i.postimg.cc/ZqDwMzZh/images-2-17.jpg" alt="GLO Logo" />
+          </div>
+          <span>GLO</span>
+        </a>
+        <a href="javascript:void(0);" class="network-button ninemobile" onclick="redirectToPage3('9MOBILE');">
+          <div class="logo-container">
+            <img src="https://i.postimg.cc/FHTpYXfX/images-2-20.jpg" alt="9Mobile Logo" />
+          </div>
+          <span>9MOBILE</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  
 </body>
 </html>
