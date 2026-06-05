@@ -95,7 +95,7 @@
       const randomName = getRandomItem(names);
       const randomClaim = getRandomItem(claims);
       const randomTime = Math.floor(Math.random()*10)+5;
-      claimText.textContent = `${randomName} just claimed ${randomClaim.amount}  ${randomClaim.item} ${randomTime} seconds ago!`;
+      claimText.textContent = `${randomName} just Got ${randomClaim.amount}  ${randomClaim.item} ${randomTime} seconds ago!`;
       notificationPopup.classList.add('show');
     }
 
