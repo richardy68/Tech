@@ -1,258 +1,108 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>For All Network</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select Your Network</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
-  <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1551583192973282');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1551583192973282&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
+        body {
+            background: #f4f7f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
 
-  <!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
+        .container {
+            text-align: center;
+            padding: 20px;
+            max-width: 1000px;
+            width: 100%;
+        }
 
+        h1 {
+            margin-bottom: 10px;
+            font-size: 2.5rem;
+            color: #222;
+        }
 
-  ttq.load('D8DM4B3C77U5P5NBLSL0');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
-  
-  <meta name="robots" content="noindex,nofollow" />
-  <style>
-    *{box-sizing:border-box}
-    
-    /* Pure Black Background */
-    html,body{
-      height:100%;
-      margin:0;
-      font-family: system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background-color: #000000; 
-    }
+        p {
+            margin-bottom: 40px;
+            color: #666;
+            font-size: 1.1rem;
+        }
 
-    .page-container {
-      min-height:100vh;
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      padding:20px;
-    }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            padding: 10px;
+        }
 
-    /* Sleek Charcoal Box */
-    .selection-box {
-      background: #111111; 
-      border-radius: 20px;
-      box-shadow: 0 10px 40px rgba(255,255,255,0.03);
-      border: 1px solid #222222;
-      padding: 35px 30px;
-      max-width: 450px;
-      width: 100%;
-      text-align: center;
-      color: #fff;
-    }
+        .logo-card {
+            background: #ffffff;
+            border-radius: 15px;
+            padding: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-decoration: none;
+            height: 180px;
+        }
 
-    .selection-box h2 {
-      font-size: 24px;
-      font-weight: 600;
-      color: #ffffff; 
-      margin-top: 0;
-      margin-bottom: 30px;
-      letter-spacing: 0.5px;
-    }
+        /* Hover effects to make it feel premium */
+        .logo-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
 
-    .network-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr; 
-      gap: 16px; 
-    }
+        .logo-card img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
 
-    /* Premium Dark Buttons */
-    .network-button {
-      background: #161616;
-      border-radius: 16px;
-      padding: 22px 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: #ffffff;
-      font-weight: 600;
-      font-size: 15px;
-      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
-      cursor: pointer;
-    }
-
-    /* Hover States with Custom Glows */
-    .network-button:hover {
-      transform: translateY(-4px);
-    }
-    
-    .network-button.mtn:hover { 
-      background: rgba(255, 204, 0, 0.04);
-      box-shadow: 0 6px 20px rgba(255, 204, 0, 0.15);
-    }
-    .network-button.airtel:hover { 
-      background: rgba(227, 25, 55, 0.04);
-      box-shadow: 0 6px 20px rgba(227, 25, 55, 0.15);
-    }
-    .network-button.glo:hover { 
-      background: rgba(0, 255, 0, 0.02);
-      box-shadow: 0 6px 20px rgba(0, 255, 0, 0.1);
-    }
-    .network-button.ninemobile:hover { 
-      background: rgba(0, 102, 67, 0.05);
-      box-shadow: 0 6px 20px rgba(0, 102, 67, 0.15);
-    }
-
-    /* Darker Logo Containers */
-    .network-button .logo-container { 
-      width: 55px; 
-      height: 55px;
-      border-radius: 50%; 
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden; 
-      background-color: #222222; 
-    }
-
-    .network-button .logo-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; 
-        border-radius: 50%; 
-    }
-
-    /* Explicit Brand Color Borders */
-    .network-button.mtn { border: 1.5px solid #ffcc00; }
-    .network-button.airtel { border: 1.5px solid #e31937; }
-    .network-button.glo { border: 1.5px solid #00ff00; }
-    .network-button.ninemobile { border: 1.5px solid #006643; }
-
-    /* --- LOADING OVERLAY STYLES --- */
-    #loading-bridge {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
-      display: none; 
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      flex-direction: column;
-      color: white;
-    }
-
-    .spinner {
-      width: 50px;
-      height: 50px;
-      border: 4px solid rgba(255, 255, 255, 0.1);
-      border-top: 4px solid #ffffff; 
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-bottom: 20px;
-    }
-
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    .loading-text {
-      font-size: 15px;
-      font-weight: 500;
-      letter-spacing: 0.5px;
-      opacity: 0.9;
-    }
-  </style>
-
-  <script>
-    function redirectToPage3(networkName) {
-        const bridge = document.getElementById('loading-bridge');
-
-        // Show the blurred overlay
-        bridge.style.display = 'flex';
-
-        // 3 second delay before moving to page1.html (Per original script logic)
-        setTimeout(() => {
-            window.location.href = 'page1.html';
-        }, 3000);
-    }
-  </script>
+        /* Custom subtle borders for brands if you want to spice it up */
+        .mtn:hover { border-bottom: 4px solid #FFCC00; }
+        .airtel:hover { border-bottom: 4px solid #E11900; }
+        .glo:hover { border-bottom: 4px solid #008751; }
+        .mobile9:hover { border-bottom: 4px solid #005A36; }
+    </style>
 </head>
 <body>
 
-  <!-- The Bridge Overlay -->
-  <div id="loading-bridge">
-    <div class="spinner"></div>
-    <div class="loading-text">Processing...</div>
-  </div>
-  
-  <div class="page-container">
-    <div class="selection-box">
-      <h2>Your Network</h2>
-      <div class="network-grid">
+    <div class="container">
+        <h1>Welcome</h1>
+        <p>Please select your network provider to continue</p>
         
-        <!-- MTN -->
-        <a href="javascript:void(0);" class="network-button mtn" onclick="redirectToPage3('MTN');">
-          <div class="logo-container">
-            <img src="https://i.postimg.cc/KjC3gQP2/download-1.png" alt="MTN Logo" />
-          </div>
-          <span>MTN</span>
-        </a>
+        <div class="grid">
+            <a href="home.html" class="logo-card mtn">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/New-mtn-logo.jpg" alt="MTN Logo">
+            </a>
 
-        <!-- Airtel -->
-        <a href="javascript:void(0);" class="network-button airtel" onclick="redirectToPage3('AIRTEL');">
-          <div class="logo-container">
-            <img src="https://i.postimg.cc/76xWpnJd/images-2.png" alt="Airtel Logo" />
-          </div>
-          <span>Airtel</span>
-        </a>
+            <a href="home.html" class="logo-card airtel">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Airtel_logo.svg" alt="Airtel Logo">
+            </a>
 
-        <!-- Glo -->
-        <a href="javascript:void(0);" class="network-button glo" onclick="redirectToPage3('GLO');">
-          <div class="logo-container">
-            <img src="https://i.postimg.cc/ZqDwMzZh/images-2-17.jpg" alt="GLO Logo" />
-          </div>
-          <span>Glo</span>
-        </a>
+            <a href="home.html" class="logo-card glo">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Glo_button.png" alt="Glo Logo">
+            </a>
 
-        <!-- 9mobile -->
-        <a href="javascript:void(0);" class="network-button ninemobile" onclick="redirectToPage3('9MOBILE');">
-          <div class="logo-container">
-            <img src="https://i.postimg.cc/FHTpYXfX/images-2-20.jpg" alt="9Mobile Logo" />
-          </div>
-          <span>9mobile</span>
-        </a>
-
-      </div>
+            <a href="home.html" class="logo-card mobile9">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/9mobile-logo.jpg" alt="9mobile Logo">
+            </a>
+        </div>
     </div>
-  </div>
-  
+
 </body>
 </html>
