@@ -1,108 +1,286 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Select Your Network</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>For All Network</title>
 
-        body {
-            background: #f4f7f6;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-            color: #333;
-        }
+  <!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1551583192973282');
+fbq('track', 'PageView');
+</script>
+<noscript>
+<img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1551583192973282&ev=PageView&noscript=1"/>
+</noscript>
+<!-- End Meta Pixel Code -->
 
-        .container {
-            text-align: center;
-            padding: 20px;
-            max-width: 1000px;
-            width: 100%;
-        }
+<!-- TikTok Pixel Code Start -->
+<script>
+!function (w, d, t) {
+  w.TiktokAnalyticsObject=t;
+  var ttq=w[t]=w[t]||[];
+  ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"];
+  ttq.setAndDefer=function(t,e){
+    t[e]=function(){
+      t.push([e].concat(Array.prototype.slice.call(arguments,0)))
+    }
+  };
+  for(var i=0;i<ttq.methods.length;i++) ttq.setAndDefer(ttq,ttq.methods[i]);
 
-        h1 {
-            margin-bottom: 10px;
-            font-size: 2.5rem;
-            color: #222;
-        }
+  ttq.instance=function(t){
+    for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)
+      ttq.setAndDefer(e,ttq.methods[n]);
+    return e
+  };
 
-        p {
-            margin-bottom: 40px;
-            color: #666;
-            font-size: 1.1rem;
-        }
+  ttq.load=function(e,n){
+    var r="https://analytics.tiktok.com/i18n/pixel/events.js";
+    ttq._i=ttq._i||{};
+    ttq._i[e]=[];
+    ttq._i[e]._u=r;
+    ttq._t=ttq._t||{};
+    ttq._t[e]=+new Date;
+    ttq._o=ttq._o||{};
+    ttq._o[e]=n||{};
 
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 25px;
-            padding: 10px;
-        }
+    n=document.createElement("script");
+    n.type="text/javascript";
+    n.async=!0;
+    n.src=r+"?sdkid="+e+"&lib="+t;
 
-        .logo-card {
-            background: #ffffff;
-            border-radius: 15px;
-            padding: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            height: 180px;
-        }
+    e=document.getElementsByTagName("script")[0];
+    e.parentNode.insertBefore(n,e);
+  };
 
-        /* Hover effects to make it feel premium */
-        .logo-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
+  ttq.load('D8DM4B3C77U5P5NBLSL0');
+  ttq.page();
+}(window, document, 'ttq');
+</script>
+<!-- TikTok Pixel Code End -->
 
-        .logo-card img {
-            max-width: 100%;
-            max-height: 100%;
-            object-fit: contain;
-        }
+<meta name="robots" content="noindex,nofollow" />
 
-        /* Custom subtle borders for brands if you want to spice it up */
-        .mtn:hover { border-bottom: 4px solid #FFCC00; }
-        .airtel:hover { border-bottom: 4px solid #E11900; }
-        .glo:hover { border-bottom: 4px solid #008751; }
-        .mobile9:hover { border-bottom: 4px solid #005A36; }
-    </style>
+<style>
+*{
+  box-sizing:border-box;
+}
+
+html,body{
+  height:100%;
+  margin:0;
+  font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,sans-serif;
+  background:linear-gradient(135deg,#ffffff,#f5f7fa);
+}
+
+.page-container{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.selection-box{
+  background:#ffffff;
+  border-radius:24px;
+  box-shadow:0 12px 35px rgba(0,0,0,0.08);
+  padding:30px;
+  max-width:450px;
+  width:100%;
+  text-align:center;
+  color:#222;
+  border:1px solid #ececec;
+}
+
+.selection-box h2{
+  font-size:28px;
+  font-weight:700;
+  color:#0a58ca;
+  margin-bottom:25px;
+}
+
+.network-grid{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.network-button{
+  background:#fff;
+  border-radius:16px;
+  padding:16px 20px;
+  display:flex;
+  align-items:center;
+  gap:15px;
+  text-decoration:none;
+  color:#333;
+  font-weight:700;
+  font-size:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.08);
+  transition:all 0.2s ease;
+  cursor:pointer;
+}
+
+.network-button:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 18px rgba(0,0,0,0.12);
+}
+
+.logo-container{
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  overflow:hidden;
+  background:#f3f3f3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+
+.logo-container img{
+  width:100%;
+  height:100%;
+  object-fit:contain;
+  border-radius:50%;
+}
+
+.network-button.mtn{
+  border:2px solid #ffcc00;
+}
+
+.network-button.airtel{
+  border:2px solid #ff0000;
+}
+
+.network-button.glo{
+  border:2px solid #008000;
+}
+
+.network-button.ninemobile{
+  border:2px solid #000000;
+}
+
+/* Loading Overlay */
+#loading-bridge{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  background:rgba(255,255,255,0.5);
+  backdrop-filter:blur(12px);
+  -webkit-backdrop-filter:blur(12px);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+.spinner{
+  width:55px;
+  height:55px;
+  border:5px solid rgba(0,0,0,0.1);
+  border-top:5px solid #0a58ca;
+  border-radius:50%;
+  animation:spin .8s linear infinite;
+  margin-bottom:15px;
+}
+
+@keyframes spin{
+  from{
+    transform:rotate(0deg);
+  }
+  to{
+    transform:rotate(360deg);
+  }
+}
+
+.loading-text{
+  color:#0a58ca;
+  font-size:16px;
+  font-weight:600;
+}
+</style>
+
+<script>
+function redirectToPage3(networkName){
+  const bridge = document.getElementById('loading-bridge');
+
+  bridge.style.display = 'flex';
+
+  setTimeout(() => {
+    window.location.href = 'page1.html';
+  }, 3000);
+}
+</script>
+
 </head>
 <body>
 
-    <div class="container">
-        <h1>Welcome</h1>
-        <p>Please select your network provider to continue</p>
-        
-        <div class="grid">
-            <a href="page1.html" class="logo-card mtn">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/9/93/New-mtn-logo.jpg" alt="MTN Logo">
-            </a>
+<div id="loading-bridge">
+  <div class="spinner"></div>
+  <div class="loading-text">Processing...</div>
+</div>
 
-            <a href="page1.html" class="logo-card airtel">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/3/3a/Airtel_logo.svg" alt="Airtel Logo">
-            </a>
+<div class="page-container">
+  <div class="selection-box">
 
-            <a href="page1.html" class="logo-card glo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b5/Glo_button.png" alt="Glo Logo">
-            </a>
+    <h2>Your Network</h2>
 
-            <a href="page1.html" class="logo-card mobile9">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/e/ec/9mobile-logo.jpg" alt="9mobile Logo">
-            </a>
+    <div class="network-grid">
+
+      <!-- MTN -->
+      <a href="javascript:void(0);" class="network-button mtn"
+         onclick="redirectToPage3('MTN');">
+        <div class="logo-container">
+          <img src="https://i.postimg.cc/KjC3gQP2/download-1.png" alt="MTN Logo">
         </div>
+        <span>MTN</span>
+      </a>
+
+      <!-- Airtel -->
+      <a href="javascript:void(0);" class="network-button airtel"
+         onclick="redirectToPage3('AIRTEL');">
+        <div class="logo-container">
+          <img src="https://i.postimg.cc/76xWpnJd/images-2.png" alt="Airtel Logo">
+        </div>
+        <span>AIRTEL</span>
+      </a>
+
+      <!-- GLO -->
+      <a href="javascript:void(0);" class="network-button glo"
+         onclick="redirectToPage3('GLO');">
+        <div class="logo-container">
+          <img src="https://i.postimg.cc/ZqDwMzZh/images-2-17.jpg" alt="GLO Logo">
+        </div>
+        <span>GLO</span>
+      </a>
+
+      <!-- 9Mobile -->
+      <a href="javascript:void(0);" class="network-button ninemobile"
+         onclick="redirectToPage3('9MOBILE');">
+        <div class="logo-container">
+          <img src="https://i.postimg.cc/FHTpYXfX/images-2-20.jpg" alt="9Mobile Logo">
+        </div>
+        <span>9MOBILE</span>
+      </a>
+
     </div>
+
+  </div>
+</div>
 
 </body>
 </html>
