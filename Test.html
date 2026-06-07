@@ -1,236 +1,499 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>For All Network</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Plan Selection</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+        }
 
-  <!-- Meta Pixel Code -->
-  <script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '1622898892221727');
-  fbq('track', 'PageView');
-  </script>
-  <noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
-  /></noscript>
-  <!-- End Meta Pixel Code -->
-  
-  <meta name="robots" content="noindex,nofollow" />
+        body {
+            background-color: #f5f5f7;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
 
-  <style>
-    *{box-sizing:border-box}
-    html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background: linear-gradient(135deg, #0a58ca, #1e90ff); 
-    }
+        /* Mobile Device Wrapper */
+        .phone-container {
+            width: 375px;
+            height: 700px;
+            background-color: #ffffff;
+            border-radius: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
 
-    .page-container {
-      min-height:100vh;
-      display:flex; 
-      align-items:center; 
-      justify-content:center; 
-      padding:20px;
-    }
+        /* Top Navigation Header */
+        .nav-header {
+            background-color: #0d233a;
+            color: #ffffff;
+            padding: 15px 20px;
+            display: flex;
+            align-items: center;
+            font-size: 13px;
+        }
 
-    .selection-box {
-      background: #1a2a4e; 
-      border-radius: 20px;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-      padding: 30px;
-      max-width: 450px;
-      width: 100%;
-      text-align: center;
-      color: #fff;
-    }
+        .brand-logo {
+            color: #f7ce46;
+            font-weight: bold;
+            margin-right: auto;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
 
-    .selection-box h2 {
-      font-size: 26px;
-      font-weight: bold;
-      color: #fedb70; 
-      margin-bottom: 30px;
-    }
+        .nav-links {
+            display: flex;
+            gap: 15px;
+            opacity: 0.9;
+        }
 
-    .network-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr; 
-      gap: 20px; 
-    }
+        /* Banner Section */
+        .promo-banner {
+            background: linear-gradient(180deg, #0f2b48 0%, #163656 100%);
+            color: white;
+            padding: 25px 20px;
+            border-bottom-left-radius: 24px;
+            border-bottom-right-radius: 24px;
+            position: relative;
+        }
 
-    .network-button {
-      background: #fff;
-      border-radius: 15px;
-      padding: 20px 10px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      color: #333;
-      font-weight: bold;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
+        .promo-banner h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
 
-    .network-button:hover {
-      transform: translateY(-3px);
-    }
+        .promo-banner p {
+            font-size: 14px;
+            color: #cbd5e1;
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
 
-    .logo-container { 
-      width: 50px; 
-      height: 50px;
-      border-radius: 50%; 
-      margin-bottom: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      overflow: hidden; 
-    }
+        .badge {
+            background-color: rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 11px;
+            font-weight: 600;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
 
-    .logo-container img {
-        width: 100%;
-        height: 100%;
-        object-fit: contain; 
-        border-radius: 50%; 
-    }
+        /* Dynamic Content Area */
+        .content-body {
+            flex: 1;
+            padding: 24px 20px;
+            display: flex;
+            flex-direction: column;
+        }
 
-    /* loading */
-    #loading-bridge {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      backdrop-filter: blur(12px);
-      display: none;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      flex-direction: column;
-      color: white;
-    }
+        .section-title {
+            color: #64748b;
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
+        }
 
-    .spinner {
-      width: 55px;
-      height: 55px;
-      border: 5px solid rgba(255,255,255,0.2);
-      border-top: 5px solid #fff;
-      border-radius: 50%;
-      animation: spin 0.8s linear infinite;
-      margin-bottom: 15px;
-    }
+        /* View 1: Data Plans List */
+        .plan-option {
+            background: #ffffff;
+            border: 2px solid #e2e8f0;
+            border-radius: 16px;
+            padding: 16px;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
 
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
-  </style>
+        .plan-option:hover {
+            border-color: #cbd5e1;
+        }
+
+        .plan-option.selected {
+            border-color: #f7ce46;
+            background-color: #fffdf5;
+        }
+
+        .plan-price {
+            font-weight: bold;
+            font-size: 16px;
+            width: 70px;
+            color: #0f2b48;
+        }
+
+        .plan-details {
+            flex: 1;
+            font-size: 14px;
+            color: #334155;
+            font-weight: 500;
+        }
+
+        .radio-circle {
+            width: 20px;
+            height: 20px;
+            border: 2px solid #cbd5e1;
+            border-radius: 50%;
+            position: relative;
+        }
+
+        .plan-option.selected .radio-circle {
+            border-color: #f7ce46;
+            background-color: #f7ce46;
+        }
+
+        .plan-option.selected .radio-circle::after {
+            content: '✓';
+            color: white;
+            font-size: 12px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        /* View 2: Carrier Grid */
+        .carrier-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: auto;
+        }
+
+        .carrier-card {
+            background: #f8fafc;
+            border: 2px solid transparent;
+            border-radius: 16px;
+            padding: 20px 10px;
+            text-align: center;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #334155;
+            transition: all 0.2s;
+        }
+
+        .carrier-card.selected {
+            border-color: #f7ce46;
+            background-color: #fffdf5;
+        }
+
+        .carrier-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #e2e8f0;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+        }
+
+        /* Action Buttons */
+        .btn-primary {
+            background-color: #fcd34d;
+            color: #0f2b48;
+            border: none;
+            padding: 16px;
+            border-radius: 30px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            margin-top: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            transition: background-color 0.2s;
+        }
+
+        .btn-primary:hover {
+            background-color: #f59e0b;
+        }
+
+        /* View 3: Checking Eligibility Loader */
+        .loader-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            text-align: center;
+        }
+
+        .loader-title {
+            font-size: 20px;
+            color: #0f2b48;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .spinner {
+            width: 60px;
+            height: 60px;
+            border: 5px solid #f1f5f9;
+            border-top: 5px solid #f59e0b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 24px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .loader-subtitle {
+            font-size: 14px;
+            color: #64748b;
+            margin-bottom: 8px;
+        }
+
+        .secure-tag {
+            font-size: 12px;
+            color: #94a3b8;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* View 4: Dialog Overlay Popup */
+        .modal-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(15, 23, 42, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            z-index: 10;
+        }
+
+        .modal-content {
+            background: white;
+            border-radius: 24px;
+            padding: 30px 24px;
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .success-badge {
+            width: 60px;
+            height: 60px;
+            background-color: #22c55e;
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            margin: 0 auto 16px;
+        }
+
+        .modal-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #0f2b48;
+            margin-bottom: 12px;
+        }
+
+        .modal-text {
+            font-size: 14px;
+            color: #64748b;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+
+        .btn-subscribe {
+            background-color: #fcd34d;
+            border: none;
+            border-radius: 30px;
+            padding: 14px 24px;
+            width: 100%;
+            font-size: 15px;
+            font-weight: 700;
+            color: #0f2b48;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .btn-subscribe .arrow-circle {
+            background: #22c55e;
+            color: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 16px;
+        }
+
+        /* Utility Hide/Show classes */
+        .hidden {
+            display: none !important;
+        }
+    </style>
 </head>
-
 <body>
 
-<!-- Loading Overlay -->
-<div id="loading-bridge">
-  <div class="spinner"></div>
-  <div>Processing...</div>
-</div>
-
-<div class="page-container">
-  <div class="selection-box">
-    <h2>Select Your Network</h2>
-
-    <div class="network-grid">
-
-      <div class="network-button" onclick="redirectUser('MTN')">
-        <div class="logo-container">
-          <img src="https://i.postimg.cc/KjC3gQP2/download-1.png" />
+    <div class="phone-container">
+        <div class="nav-header">
+            <div class="brand-logo">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2c5.52 0 10 4.48 10 10s-4.48 10-10 10S2 17.52 2 12 6.48 2 12 2zm1 10h3l-4-5-4 5h3v4h2v-4z"/></svg>
+                Y'lloo!
+            </div>
+            <div class="nav-links">
+                <span>Share Data</span>
+                <span>5G Network</span>
+            </div>
         </div>
-        MTN
-      </div>
 
-      <div class="network-button" onclick="redirectUser('AIRTEL')">
-        <div class="logo-container">
-          <img src="https://i.postimg.cc/76xWpnJd/images-2.png" />
+        <div class="promo-banner">
+            <h2>Amazing Data Plans 🔥</h2>
+            <p>Get up to 6.5GB + Bonus on selected plans</p>
+            <div class="badge">⚡ Limited Time Offer</div>
         </div>
-        AIRTEL
-      </div>
 
-      <div class="network-button" onclick="redirectUser('GLO')">
-        <div class="logo-container">
-          <img src="https://i.postimg.cc/ZqDwMzZh/images-2-17.jpg" />
+        <div id="view-plans" class="content-body">
+            <div class="section-title">Select Data Plan</div>
+            
+            <div class="plan-option" onclick="selectPlan(this)">
+                <div class="plan-price">&#8358;100</div>
+                <div class="plan-details">3GB (30 Days)</div>
+                <div class="radio-circle"></div>
+            </div>
+
+            <div class="plan-option selected" onclick="selectPlan(this)">
+                <div class="plan-price">&#8358;200</div>
+                <div class="plan-details">6.5GB (30 Days)</div>
+                <div class="radio-circle"></div>
+            </div>
+
+            <button class="btn-primary" onclick="goToCarriers()">
+                Continue &rarr;
+            </button>
         </div>
-        GLO
-      </div>
 
-      <div class="network-button" onclick="redirectUser('9MOBILE')">
-        <div class="logo-container">
-          <img src="https://i.postimg.cc/FHTpYXfX/images-2-20.jpg" />
+        <div id="view-carriers" class="content-body hidden">
+            <div class="section-title">Select Your Mobile Carrier</div>
+            
+            <div class="carrier-grid">
+                <div class="carrier-card selected" onclick="selectCarrier(this)">
+                    <div class="carrier-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 15c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"/></svg>
+                    </div>
+                    MTN Nigeria
+                </div>
+                <div class="carrier-card" onclick="selectCarrier(this)">
+                    <div class="carrier-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-3z"/></svg>
+                    </div>
+                    Airtel
+                </div>
+                <div class="carrier-card" onclick="selectCarrier(this)">
+                    <div class="carrier-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-3z"/></svg>
+                    </div>
+                    Glo
+                </div>
+                <div class="carrier-card" onclick="selectCarrier(this)">
+                    <div class="carrier-icon">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-3z"/></svg>
+                    </div>
+                    9Mobile
+                </div>
+            </div>
+
+            <button class="btn-primary" onclick="goToLoader()">
+                Proceed 🛡️
+            </button>
         </div>
-        9MOBILE
-      </div>
 
+        <div id="view-loader" class="content-body hidden">
+            <div class="loader-container">
+                <div class="loader-title">⏳ Please wait.. Confirming your network</div>
+                <div class="spinner"></div>
+                <div class="loader-subtitle">Checking eligibility for the selected offer...</div>
+                <div class="secure-tag">🔒 Secure verification</div>
+            </div>
+        </div>
+
+        <div id="view-modal" class="modal-overlay hidden">
+            <div class="modal-content">
+                <div class="success-badge">✓</div>
+                <div class="modal-title">Congrats! 🎉</div>
+                <div class="modal-text">
+                    You are qualified for this data offer. You will also receive additional bonus when you subscribe
+                </div>
+                <button class="btn-subscribe" onclick="resetFlow()">
+                    SUBSCRIBE NOW
+                    <span class="arrow-circle">&rarr;</span>
+                </button>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
 
-<script>
-function redirectUser(network) {
-
-    const targetUrl = "https://getfreedatatoday.netlify.app/";
-
-    const userAgent = navigator.userAgent;
-    const isTikTok = /TikTok/i.test(userAgent);
-    const isAndroid = /Android/i.test(userAgent);
-    const isIOS = /iPhone|iPad|iPod/i.test(userAgent);
-
-    document.getElementById('loading-bridge').style.display = 'flex';
-
-    setTimeout(() => {
-
-        if (isTikTok && isAndroid) {
-            const intentUrl =
-              "intent://" +
-              targetUrl.replace(/^https?:\/\//, "") +
-              "#Intent;scheme=https;package=com.android.chrome;end";
-
-            window.location.href = intentUrl;
+    <script>
+        function selectPlan(element) {
+            document.querySelectorAll('.plan-option').forEach(opt => opt.classList.remove('selected'));
+            element.classList.add('selected');
         }
 
-        else if (isTikTok && isIOS) {
-            navigator.clipboard.writeText(targetUrl);
-            alert("Link copied! Paste in Safari or Chrome.");
+        function selectCarrier(element) {
+            document.querySelectorAll('.carrier-card').forEach(card => card.classList.remove('selected'));
+            element.classList.add('selected');
         }
 
-        else if (isAndroid) {
-            const intentUrl =
-              "intent://" +
-              targetUrl.replace(/^https?:\/\//, "") +
-              "#Intent;scheme=https;package=com.android.chrome;end";
-
-            window.location.href = intentUrl;
+        function goToCarriers() {
+            document.getElementById('view-plans').classList.add('hidden');
+            document.getElementById('view-carriers').classList.remove('hidden');
         }
 
-        else if (isIOS) {
-            window.location.href = targetUrl.replace("https://", "googlechrome://");
+        function goToLoader() {
+            document.getElementById('view-carriers').classList.add('hidden');
+            document.getElementById('view-loader').classList.remove('hidden');
+            
+            // Simulates the 2-second checking network phase before showing the popup modal
             setTimeout(() => {
-                window.location.href = targetUrl;
-            }, 1500);
+                document.getElementById('view-modal').classList.remove('hidden');
+            }, 2000);
         }
 
-        else {
-            window.location.href = targetUrl;
+        function resetFlow() {
+            document.getElementById('view-modal').classList.add('hidden');
+            document.getElementById('view-loader').classList.add('hidden');
+            document.getElementById('view-plans').classList.remove('hidden');
         }
-
-    }, 2000);
-}
-</script>
-
+    </script>
 </body>
 </html>
