@@ -222,7 +222,7 @@ body{
             💎 Select Data Plan
         </div>
 
-        <div class="plan" data-plan="100">
+        <div class="plan" data-plan="100" data-bundle="3GB" data-price="100">
             <div class="plan-left">
                 <div class="price">₦100</div>
                 <div class="data">3GB (30 Days)</div>
@@ -230,7 +230,7 @@ body{
             <div class="radio"></div>
         </div>
 
-        <div class="plan" data-plan="200">
+        <div class="plan" data-plan="200" data-bundle="6.5GB" data-price="150">
             <div class="plan-left">
                 <div class="price">₦150</div>
                 <div class="data">6.5GB (30 Days)</div>
@@ -238,7 +238,7 @@ body{
             <div class="radio"></div>
         </div>
 
-        <div class="plan" data-plan="300">
+        <div class="plan" data-plan="300" data-bundle="10GB" data-price="200">
             <div class="plan-left">
                 <div class="price">₦200</div>
                 <div class="data">10GB (30 Days)</div>
@@ -256,6 +256,8 @@ body{
 
 <script>
 let selectedPlan = null;
+let selectedBundle = "";
+let selectedPrice = "";
 
 const plans = document.querySelectorAll('.plan');
 const continueBtn = document.getElementById('continueBtn');
@@ -267,6 +269,10 @@ plans.forEach(plan => {
 
         plan.classList.add('active');
         selectedPlan = plan.dataset.plan;
+        
+        // Grab the specific bundle size and price of the clicked plan
+        selectedBundle = plan.getAttribute('data-bundle');
+        selectedPrice = plan.getAttribute('data-price');
 
         continueBtn.classList.add('enabled');
     });
@@ -276,8 +282,8 @@ continueBtn.addEventListener('click', () => {
 
     if(!selectedPlan) return;
 
-    // UPDATED REDIRECT
-    window.location.href = "congratpage.html";
+    // Generates the URL with variables attached dynamically matching your exact plan selection
+    window.location.href = "congratpage.html?bundle=" + encodeURIComponent(selectedBundle) + "&price=" + encodeURIComponent(selectedPrice);
 });
 </script>
 
