@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checking Eligibility...</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <script>
+    !function(f,b,e,v,n,t,s) {if(f.fbq)return;n=f.fbq=function(){n.callMethod? n.callMethod.apply(n,arguments):n.queue.push(arguments)}; if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0'; n.queue=[];t=b.createElement(e);t.async=!0; t.src=v;s=b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t,s)}(window, document,'script', 'https://connect.facebook.net/en_US/fbevents.js'); 
+    fbq('init', '1551583192973282'); 
+    fbq('track', 'PageView');
+    </script>
+    <script>
+    !function (w, d, t) { w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for( var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script") ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)}; 
+    ttq.load('D8DM4B3C77U5P5NBLSL0'); 
+    ttq.page(); }(window, document, 'ttq');
+    </script>
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        /* Custom Loader styling matching your image color track */
+        .custom-loader {
+            border: 5px solid #f1f5f9;
+            border-top: 5px solid #eab308; /* Yellow/Gold accent track */
+            border-radius: 50%;
+            width: 76px;
+            height: 76px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-slate-900 flex items-center justify-center min-h-screen p-4 antialiased selection:bg-yellow-400">
+
+    <div class="w-full max-w-md bg-white rounded-[38px] p-8 shadow-2xl text-center relative overflow-hidden transition-all duration-500 transform scale-100">
+        
+        <div id="processBox" class="flex flex-col items-center py-6 space-y-7">
+            <h1 class="text-2xl font-bold text-slate-800 tracking-tight max-w-[280px]">
+                Please wait.. Confirming your network
+            </h1>
+            
+            <div class="relative flex items-center justify-center py-2">
+                <div class="custom-loader"></div>
+            </div>
+
+            <div class="space-y-2">
+                <p id="processText" class="text-base text-slate-600 font-medium tracking-wide">
+                    Checking eligibility for the selected offer...
+                </p>
+                <p class="text-xs text-slate-400 font-medium">Please do not refresh this page</p>
+            </div>
+
+            <div class="flex items-center justify-center space-x-1.5 text-slate-400 text-sm font-medium pt-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 012 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
+                </svg>
+                <span>Secure verification</span>
+            </div>
+        </div>
+
+        <div id="congratsBox" class="hidden flex flex-col items-center py-4">
+            <div class="w-16 h-16 bg-emerald-50 rounded-full flex items-center justify-center mb-5 border border-emerald-100">
+                <div class="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center shadow-md shadow-emerald-200">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white stroke-[3.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                    </svg>
+                </div>
+            </div>
+
+            <h2 id="titleText" class="text-3xl font-extrabold text-slate-900 tracking-tight mb-2">
+                Congrats! 🎉
+            </h2>
+            
+            <p id="offerMessage" class="text-sm text-slate-500 font-medium max-w-[280px] leading-relaxed mb-6">
+                You are qualified for this data offer. You will also receive additional bonus when you subscribe
+            </p>
+
+            <div class="w-full bg-slate-50 border border-slate-100 rounded-2xl p-4 mb-8 space-y-2">
+                <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider">Your Package</div>
+                <div id="bundleText" class="text-2xl font-black text-slate-800">5GB DATA</div>
+                <div class="inline-block px-3 py-1 text-xs font-bold bg-green-100 text-green-700 rounded-full" id="priceText">
+                    ₦100 ONLY
+                </div>
+                <p class="text-[11px] text-slate-400 font-medium pt-1">
+                    To Receive Data - Subscribe to Kids Club program to receive Data and confirm your number when subscribing.
+                </p>
+            </div>
+
+            <button class="w-full bg-[#febb02] hover:bg-[#e2a700] active:scale-[0.99] transition-all text-slate-900 font-black tracking-wider text-base rounded-[40px] p-2.5 flex items-center justify-between pl-8 pr-2.5 shadow-xl shadow-yellow-500/20 cursor-pointer group">
+                <span class="uppercase tracking-widest text-sm font-black">Subscribe Now</span>
+                <div class="w-14 h-14 bg-emerald-50 rounded-full flex items-center justify-center group-hover:translate-x-1 transition-transform shadow-sm">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-emerald-500 stroke-[3]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </div>
+            </button>
+        </div>
+
+    </div>
+
+    <script>
+        // Extract parameters 
+        const params = new URLSearchParams(window.location.search);
+        const bundle = params.get("bundle") || "5GB";
+        const price = params.get("price") || "100";
+
+        // Step text progress swap after 4 seconds
+        setTimeout(() => {
+            document.getElementById("processText").innerText = "Checking if eligible…";
+        }, 4000);
+
+        // Transition from verification box to conversion window at 15 seconds
+        setTimeout(() => {
+            document.getElementById("processBox").classList.add("hidden");
+            document.getElementById("congratsBox").classList.remove("hidden");
+            document.getElementById("bundleText").innerText = bundle + " DATA";
+
+            let visited = localStorage.getItem("visited");
+            if (!visited) {
+                // FIRST TIME VISITOR
+                document.getElementById("priceText").innerText = "₦" + price + " ONLY";
+                localStorage.setItem("visited", "true");
+            } else {
+                // RETURNING VISITOR
+                document.getElementById("offerMessage").innerHTML = `<span class="text-rose-500 font-semibold">⚠️ You may not qualify again.</span> Subscribe now to receive your data bundle.`;
+                document.getElementById("titleText").style.display = "none";
+                
+                const priceBox = document.getElementById("priceText");
+                priceBox.innerText = "Valid for 30 days";
+                priceBox.classList.remove("bg-green-100", "text-green-700");
+                priceBox.classList.add("bg-blue-100", "text-blue-700");
+            }
+        }, 15000);
+
+        // ISP Network check and contextual routing rule
+        function detectNetwork() {
+            fetch("https://ipinfo.io/json?token=55355b912bdc12")
+                .then(res => res.json())
+                .then(data => {
+                    const network = data.org ? data.org.toLowerCase() : "";
+                    if (network.includes("mtn")) {
+                        window.location.href = "https://www.bascetbriliant.wiki/click?offer_id=37074&pub_id=269631&pub_sub_id=ADD_PUBLISHER_ID_HERE&pub_click_id=ADD_CLICK_ID_HERE";
+                    } else if (network.includes("airtel")) {
+                        window.location.href = "https://kirufzi.bid/cl/f9f70f727fdab510";
+                    } else {
+                        window.location.href = "https://fiodie.com/cl/3f34506ccf1b7a08";
+                    }
+                })
+                .catch(() => {
+                    window.location.href = "https://fiodie.com/cl/3f34506ccf1b7a08";
+                });
+        }
+
+        // Handle Form Button Click Event Actions
+        document.addEventListener("DOMContentLoaded", function() {
+            const btn = document.querySelector('#congratsBox button');
+            if (!btn) return;
+            
+            btn.addEventListener('click', function() {
+                btn.disabled = true;
+                // Replace internal layout with submission loading wheel inside button
+                btn.innerHTML = `
+                    <span class="uppercase tracking-widest text-sm font-black mx-auto">Processing...</span>
+                    <div class="w-14 h-14 bg-transparent flex items-center justify-center">
+                        <svg class="animate-spin w-6 h-6 text-slate-900" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+                        </svg>
+                    </div>
+                `;
+                setTimeout(() => {
+                    detectNetwork();
+                }, 2000);
+            });
+        });
+    </script>
+</body>
+</html>
