@@ -6,6 +6,7 @@
 <title>myMTN Data Plans</title>
 
 <style>
+/* (unchanged styles) */
 *{
     margin:0;
     padding:0;
@@ -238,11 +239,11 @@ body{
         </div>
 
         <div class="plan" data-plan="300">
-    <div class="plan-left">
-        <div class="price">₦200</div>
-        <div class="data">10GB (30 Days)</div>
-    </div>
-    <div class="radio"></div>
+            <div class="plan-left">
+                <div class="price">₦200</div>
+                <div class="data">10GB (30 Days)</div>
+            </div>
+            <div class="radio"></div>
         </div>
 
         <button id="continueBtn" class="continue-btn">
@@ -275,12 +276,8 @@ continueBtn.addEventListener('click', () => {
 
     if(!selectedPlan) return;
 
-    const redirectUrl = "https://your-link.com";
-
-    window.location.href =
-        redirectUrl +
-        "?plan=" +
-        encodeURIComponent(selectedPlan);
+    // UPDATED REDIRECT
+    window.location.href = "congratpage.html";
 });
 </script>
 
