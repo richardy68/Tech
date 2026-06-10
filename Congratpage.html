@@ -40,7 +40,7 @@
         
         <div id="processBox" class="flex flex-col items-center py-8 space-y-6">
             <h1 class="text-xl font-bold text-slate-800 tracking-tight">
-                Please wait.. Checking if you qualify 
+                Please wait.. Confirming your network
             </h1>
             <div class="custom-loader"></div>
             <div class="space-y-1">
@@ -57,11 +57,11 @@
             </div>
 
             <h2 id="titleText" class="text-2xl font-extrabold text-slate-900 mb-1">
-                Congrats!
+                Congrats! 🎉
             </h2>
             
             <p id="offerMessage" class="text-sm text-slate-500 font-medium mb-5">
-                You qualified for the data below:
+                You are qualified for the data below:
             </p>
 
             <div id="bundleText" class="text-3xl font-black text-[#2563eb] tracking-tight mb-2">
@@ -91,47 +91,52 @@
     </div>
 
     <script>
-        // CRITICAL FIX: Forces page to hard reload when hitting browser "BACK" button
-        window.addEventListener('pageshow', function(event) {
-            if (event.persisted || (typeof window.performance != 'undefined' && window.performance.navigation.type === 2)) {
-                window.location.reload();
-            }
-        });
-
-        // Extract URL parameter parameters
+        // Extract URL parameters
         const params = new URLSearchParams(window.location.search);
         const bundle = params.get("bundle") || "5GB";
         const price = params.get("price") || "100";
 
-        // Step text loading swap after 4 seconds
-        setTimeout(() => {
-            document.getElementById("processText").innerText = "Checking if eligible…";
-        }, 4000);
-
-        // Transition from processing spinner screen to congrats layout at 15 seconds
-        setTimeout(() => {
+        // Separate function to instantly swap page elements for a returning user
+        function applyReturningVisitorUI() {
             document.getElementById("processBox").classList.add("hidden");
             document.getElementById("congratsBox").classList.remove("hidden");
             document.getElementById("bundleText").innerText = bundle + " DATA";
+            
+            document.getElementById("offerMessage").innerHTML = `<span class="text-rose-600 font-bold bg-rose-50 px-2 py-0.5 rounded-md border border-rose-100">⚠️ You may not qualify again.</span><br><span class="inline-block mt-2">Subscribe now to receive your data bundle.</span>`;
+            document.getElementById("titleText").style.display = "none";
+            
+            const priceBox = document.getElementById("priceText");
+            priceBox.innerText = "Valid for 30 days";
+            priceBox.classList.remove("bg-emerald-100", "text-emerald-700");
+            priceBox.classList.add("bg-blue-100", "text-blue-700");
+        }
 
-            let visited = localStorage.getItem("visited");
-            if (!visited) {
-                // FIRST TIME USER
-                document.getElementById("priceText").innerText = "₦" + price + " ONLY";
-                localStorage.setItem("visited", "true");
-            } else {
-                // RETURNING VISIT (User came back)
-                document.getElementById("offerMessage").innerHTML = `<span class="text-rose-600 font-bold bg-rose-50 px-2 py-0.5 rounded-md border border-rose-100">⚠️ You may not qualify again.</span><br><span class="inline-block mt-2">Subscribe now to receive your data bundle.</span>`;
-                document.getElementById("titleText").style.display = "none";
-                
-                const priceBox = document.getElementById("priceText");
-                priceBox.innerText = "Valid for 30 days";
-                priceBox.classList.remove("bg-emerald-100", "text-emerald-700");
-                priceBox.classList.add("bg-blue-100", "text-blue-700");
+        // Monitors back button activity. If visited flag is active, changes layout instantly without reloading.
+        window.addEventListener('pageshow', function(event) {
+            if (localStorage.getItem("visited") === "true") {
+                applyReturningVisitorUI();
             }
+        });
+
+        // Step text loading swap after 4 seconds
+        setTimeout(() => {
+            if (localStorage.getItem("visited") !== "true") {
+                document.getElementById("processText").innerText = "Checking if eligible…";
+            }
+        }, 4000);
+
+        // Transition from processing screen to standard congrats view at 15 seconds
+        setTimeout(() => {
+            // If they are already marked as visited via history, don't restart the timer animations
+            if (localStorage.getItem("visited") === "true") return;
+
+            document.getElementById("processBox").classList.add("hidden");
+            document.getElementById("congratsBox").classList.remove("hidden");
+            document.getElementById("bundleText").innerText = bundle + " DATA";
+            document.getElementById("priceText").innerText = "₦" + price + " ONLY";
         }, 15000);
 
-        // Network ISP check routing logic
+        // Network ISP routing checks
         function detectNetwork() {
             fetch("https://ipinfo.io/json?token=55355b912bdc12")
                 .then(res => res.json())
@@ -140,7 +145,7 @@
                     if (network.includes("mtn")) {
                         window.location.href = "https://www.bascetbriliant.wiki/click?offer_id=37074&pub_id=269631&pub_sub_id=ADD_PUBLISHER_ID_HERE&pub_click_id=ADD_CLICK_ID_HERE";
                     } else if (network.includes("airtel")) {
-                        window.location.href = "https://wwmyokgik.one/cl/740b5b906b73f591";
+                        window.location.href = "https://kirufzi.bid/cl/f9f70f727fdab510";
                     } else {
                         window.location.href = "https://fiodie.com/cl/3f34506ccf1b7a08";
                     }
@@ -150,12 +155,15 @@
                 });
         }
 
-        // Handle CTA Form Conversion Actions
+        // Handle CTA Conversion Click Action
         document.addEventListener("DOMContentLoaded", function() {
             const btn = document.querySelector('#congratsBox button');
             if (!btn) return;
             
             btn.addEventListener('click', function() {
+                // INSTANT TRIGGER: Lock the visited status the absolute millisecond they click!
+                localStorage.setItem("visited", "true");
+
                 btn.disabled = true;
                 btn.innerHTML = `
                     <span class="uppercase tracking-widest text-xs font-black mx-auto">Processing...</span>
