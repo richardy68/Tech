@@ -6,7 +6,6 @@
 <title>myMTN Data Plans</title>
 
 <style>
-/* (unchanged styles) */
 *{
     margin:0;
     padding:0;
@@ -112,16 +111,19 @@ body{
     margin-bottom:25px;
 }
 
+/* --- UPDATED MODIFICATIONS TO MATCH PICTURE 2 --- */
+
 .plan{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    border:2px solid #eee;
-    border-radius:40px;
-    padding:22px;
-    margin-bottom:18px;
+    border:1.5px solid #ececec; /* Thinner border like image 2 */
+    border-radius:30px;        /* Slightly reduced roundness to stay proportionate */
+    padding:12px 20px;         /* Shrunk vertical padding from 22px to 12px */
+    margin-bottom:12px;        /* Reduced spacing between plans from 18px to 12px */
     cursor:pointer;
-    transition:.3s;
+    transition:.2s;
+    background:#fff;
 }
 
 .plan:hover{
@@ -130,42 +132,36 @@ body{
 
 .plan.active{
     border-color:#ffcb05;
-    background:#fffdf2;
+    background:#fff;           /* Keeping background crisp white like picture 2 */
 }
 
 .plan-left{
     display:flex;
-    gap:20px;
+    gap:14px;                  /* Reduced space between '5GB' and price */
     align-items:center;
 }
 
 .price{
-    font-size:22px;
+    font-size:16px;            /* Shrunk down from 22px */
     font-weight:bold;
 }
 
 .data{
-    font-size:22px;
+    font-size:15px;            /* Shrunk down from 22px */
+    color: #111;
 }
 
 .radio{
-    width:28px;
-    height:28px;
-    border:3px solid #ffcb05;
+    width:18px;                /* Shrunk circle diameter from 28px to 18px */
+    height:18px;
+    border:2px solid #ffcb05;  /* Balanced border width */
     border-radius:50%;
     position:relative;
 }
 
-.plan.active .radio::after{
-    content:'';
-    width:14px;
-    height:14px;
-    background:#ffcb05;
-    border-radius:50%;
-    position:absolute;
-    top:4px;
-    left:4px;
-}
+/* Removed the filled middle dot selector to leave the circle hollow on selection */
+
+/* ------------------------------------------------ */
 
 .continue-btn{
     width:100%;
