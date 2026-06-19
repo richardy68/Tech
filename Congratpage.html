@@ -74,7 +74,7 @@
 
             <div class="w-full bg-[#f8fafc] border-2 border-[#e2e8f0] rounded-2xl p-4 mb-6 text-left shadow-inner">
                 <p class="text-sm md:text-base text-slate-800 font-medium leading-relaxed">
-                    To Receive Data - Answer some quiz <span class="font-bold text-black">Gamewin</span> on the next page to receive Data and also confirm your number when answering.
+                    To Receive Data - Answer some quiz <span class="font-bold text-black"></span> on the next page to receive Data and also Enter your number when answering.
                 </p>
             </div>
 
@@ -102,7 +102,7 @@
             document.getElementById("congratsBox").classList.remove("hidden");
             document.getElementById("bundleText").innerText = bundle + " DATA";
             
-            document.getElementById("offerMessage").innerHTML = `<span class="text-rose-600 font-bold bg-rose-50 px-2 py-0.5 rounded-md border border-rose-100">⚠️ You may not qualify again.</span><br><span class="inline-block mt-2">Subscribe now to receive your data bundle.</span>`;
+            document.getElementById("offerMessage").innerHTML = `<span class="text-rose-600 font-bold bg-rose-50 px-2 py-0.5 rounded-md border border-rose-100">⚠️ You may not qualify again.</span><br><span class="inline-block mt-2">Follow the process to receive your data bundle.</span>`;
             document.getElementById("titleText").style.display = "none";
             
             const priceBox = document.getElementById("priceText");
@@ -115,7 +115,7 @@
             if (btn) {
                 btn.disabled = false;
                 btn.innerHTML = `
-                    <span class="uppercase tracking-widest text-xs font-black">Subscribe Now</span>
+                    <span class="uppercase tracking-widest text-xs font-black">Answer Now</span>
                     <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-500 stroke-[3.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
