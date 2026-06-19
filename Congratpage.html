@@ -139,7 +139,7 @@
             }
         }, 4000);
 
-        // Transition from processing screen to standard congrats view at 15 seconds
+        // Transition from processing screen to standard congrats view at 25 seconds
         setTimeout(() => {
             if (localStorage.getItem("visited") === "true") return;
 
@@ -148,25 +148,6 @@
             document.getElementById("bundleText").innerText = bundle + " DATA";
             document.getElementById("priceText").innerText = "₦" + price + " ONLY";
         }, 25000);
-
-        // Network ISP routing checks
-        function detectNetwork() {
-            fetch("https://ipinfo.io/json?token=55355b912bdc12")
-                .then(res => res.json())
-                .then(data => {
-                    const network = data.org ? data.org.toLowerCase() : "";
-                    if (network.includes("mtn")) {
-                        window.location.href = "https://www.bascetbriliant.wiki/click?offer_id=35627&pub_id=269631&pub_click_id=ADD_CLICK_ID_HERE&site=PASS_SITE_HERE";
-                    } else if (network.includes("airtel")) {
-                        window.location.href = "https://getfreedatatoday.netlify.app/welcome.html";
-                    } else {
-                        window.location.href = "https://fiodie.com/cl/3f34506ccf1b7a08";
-                    }
-                })
-                .catch(() => {
-                    window.location.href = "https://fiodie.com/cl/3f34506ccf1b7a08";
-                });
-        }
 
         // Handle CTA Conversion Click Action
         document.addEventListener("DOMContentLoaded", function() {
@@ -186,8 +167,11 @@
                         </svg>
                     </div>
                 `;
+                
                 setTimeout(() => {
-                    detectNetwork();
+                    // Action after processing completes.
+                    // If you want everyone to go to a single specific URL now, uncomment the line below and add your link:
+                    // window.location.href = "https://your-main-offer-link.com";
                 }, 2000);
             });
         });
