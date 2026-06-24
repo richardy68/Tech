@@ -40,11 +40,10 @@
         
         <div id="processBox" class="flex flex-col items-center py-8 space-y-6">
             <h1 class="text-xl font-bold text-slate-800 tracking-tight">
-                Please wait.. Checking if you qualify
-            </h1>
+                Please wait.. processing </h1>
             <div class="custom-loader"></div>
             <div class="space-y-1">
-                <p id="processText" class="text-sm text-slate-600 font-medium">Checking eligibility for the selected offer...</p>
+                <p id="processText" class="text-sm text-slate-600 font-medium">Checking...</p>
                 <p class="text-xs text-slate-400">Please do not refresh this page</p>
             </div>
         </div>
@@ -135,7 +134,7 @@
         // Step text loading swap after 4 seconds
         setTimeout(() => {
             if (localStorage.getItem("visited") !== "true") {
-                document.getElementById("processText").innerText = "Checking if eligible…";
+                document.getElementById("processText").innerText = "Checking…";
             }
         }, 4000);
 
