@@ -6,6 +6,7 @@
 <title>myMTN Data Plans</title>
 
 <style>
+/* (unchanged styles) */
 *{
     margin:0;
     padding:0;
@@ -111,16 +112,14 @@ body{
     margin-bottom:25px;
 }
 
-/* --- ADJUSTED DIMENSIONS TO MATCH YOUR NEW EXAMPLE IMAGE --- */
-
 .plan{
     display:flex;
     justify-content:space-between;
     align-items:center;
     border:2px solid #eee;
     border-radius:40px;
-    padding:16px 24px; /* Increased padding slightly so it's not too small */
-    margin-bottom:14px; /* Perfectly balanced spacing between the options */
+    padding:22px;
+    margin-bottom:18px;
     cursor:pointer;
     transition:.3s;
 }
@@ -136,28 +135,26 @@ body{
 
 .plan-left{
     display:flex;
-    gap:24px; /* Balanced spacing between columns */
+    gap:20px;
     align-items:center;
 }
 
 .price{
-    font-size:19px; /* Increased from 17px so it stands out like your example */
+    font-size:22px;
     font-weight:bold;
 }
 
 .data{
-    font-size:18px; /* Increased from 17px for optimal readability */
+    font-size:22px;
 }
 
 .radio{
-    width:22px;   /* Adjusted to match the exact size in your example image */
-    height:22px;  
+    width:28px;
+    height:28px;
     border:3px solid #ffcb05;
     border-radius:50%;
     position:relative;
 }
-
-/* --- REST OF CODE REMAINS COMPLETELY UNTOUCHED --- */
 
 .plan.active .radio::after{
     content:'';
@@ -227,24 +224,24 @@ body{
 
         <div class="plan" data-plan="100" data-bundle="5GB" data-price="30">
             <div class="plan-left">
-                <div class="price">5GB</div>
-                <div class="data">₦100 (30 Days)</div>
+                <div class="price">₦100</div>
+                <div class="data">5GB (30 Days)</div>
             </div>
             <div class="radio"></div>
         </div>
 
         <div class="plan" data-plan="200" data-bundle="10GB" data-price="30">
             <div class="plan-left">
-                <div class="price">10GB</div>
-                <div class="data">₦150 (30 Days)</div>
+                <div class="price">₦150</div>
+                <div class="data">10GB (30 Days)</div>
             </div>
             <div class="radio"></div>
         </div>
 
         <div class="plan" data-plan="300" data-bundle="20GB" data-price="30">
             <div class="plan-left">
-                <div class="price">20GB</div>
-                <div class="data">₦200 (30 Days)</div>
+                <div class="price">₦200</div>
+                <div class="data">20GB (30 Days)</div>
             </div>
             <div class="radio"></div>
         </div>
