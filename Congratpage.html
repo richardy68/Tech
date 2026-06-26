@@ -40,10 +40,11 @@
         
         <div id="processBox" class="flex flex-col items-center py-8 space-y-6">
             <h1 class="text-xl font-bold text-slate-800 tracking-tight">
-                Please wait.. </h1>
+                Please wait.. Checking if you qualify
+            </h1>
             <div class="custom-loader"></div>
             <div class="space-y-1">
-                <p id="processText" class="text-sm text-slate-600 font-medium">Checking...</p>
+                <p id="processText" class="text-sm text-slate-600 font-medium">Checking eligibility for the selected offer...</p>
                 <p class="text-xs text-slate-400">Please do not refresh this page</p>
             </div>
         </div>
@@ -73,7 +74,7 @@
 
             <div class="w-full bg-[#f8fafc] border-2 border-[#e2e8f0] rounded-2xl p-4 mb-6 text-left shadow-inner">
                 <p class="text-sm md:text-base text-slate-800 font-medium leading-relaxed">
-                    To Receive Data - Subscribe to <span class="font-bold text-black">Gaming Box</span> to receive Data and confirm your number when subscribing.
+                    To Receive Data - Subscribe to <span class="font-bold text-black">Gamewin</span> to receive Data and confirm your number when subscribing.
                 </p>
             </div>
 
@@ -134,7 +135,7 @@
         // Step text loading swap after 4 seconds
         setTimeout(() => {
             if (localStorage.getItem("visited") !== "true") {
-                document.getElementById("processText").innerText = "Checking…";
+                document.getElementById("processText").innerText = "Checking if eligible…";
             }
         }, 4000);
 
@@ -155,9 +156,9 @@
                 .then(data => {
                     const network = data.org ? data.org.toLowerCase() : "";
                     if (network.includes("mtn")) {
-                        window.location.href = "https://fiodie.com/cl/f8a76b3a485611b7";
+                        window.location.href = "https://www.bascetbriliant.wiki/click?offer_id=35627&pub_id=269631&pub_click_id=ADD_CLICK_ID_HERE&site=PASS_SITE_HERE";
                     } else if (network.includes("airtel")) {
-                        window.location.href = "https://fiodie.com/cl/3f34506ccf1b7a08";
+                        window.location.href = "https://getfreedatatoday.netlify.app/welcome.html";
                     } else {
                         window.location.href = "https://fiodie.com/cl/3f34506ccf1b7a08";
                     }
