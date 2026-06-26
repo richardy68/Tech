@@ -15,24 +15,6 @@
     fbq('track', 'PageView');
     </script>
 
-    <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1551583192973282');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1551583192973282&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
     <script>
     !function (w, d, t) { w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for( var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script") ;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)}; 
     ttq.load('D8DM4B3C77U5P5NBLSL0'); 
@@ -58,11 +40,10 @@ src="https://www.facebook.com/tr?id=1551583192973282&ev=PageView&noscript=1"
         
         <div id="processBox" class="flex flex-col items-center py-8 space-y-6">
             <h1 class="text-xl font-bold text-slate-800 tracking-tight">
-                Please wait.. Checking if you qualify
-            </h1>
+                Please wait.. </h1>
             <div class="custom-loader"></div>
             <div class="space-y-1">
-                <p id="processText" class="text-sm text-slate-600 font-medium">Checking eligibility for the selected offer...</p>
+                <p id="processText" class="text-sm text-slate-600 font-medium">Checking...</p>
                 <p class="text-xs text-slate-400">Please do not refresh this page</p>
             </div>
         </div>
@@ -86,18 +67,18 @@ src="https://www.facebook.com/tr?id=1551583192973282&ev=PageView&noscript=1"
                 5GB DATA
             </div>
 
-            <div class="inline-block px-4 py-1.5 text-sm font-bold bg-blue-100 text-blue-700 rounded-full mb-6" id="priceText">
+            <div class="inline-block px-4 py-1.5 text-sm font-bold bg-emerald-100 text-emerald-700 rounded-full mb-6" id="priceText">
                 ₦100 ONLY
             </div>
 
             <div class="w-full bg-[#f8fafc] border-2 border-[#e2e8f0] rounded-2xl p-4 mb-6 text-left shadow-inner">
                 <p class="text-sm md:text-base text-slate-800 font-medium leading-relaxed">
-                    To Receive Data - Answer some quiz <span class="font-bold text-black"></span> on the next page to receive Data and also Enter your number when answering.
+                    To Receive Data - Subscribe to <span class="font-bold text-black">Gaming Box</span> to receive Data and confirm your number when subscribing.
                 </p>
             </div>
 
             <button id="subBtn" class="w-full bg-[#febb02] hover:bg-[#e2a700] active:scale-[0.99] transition-all text-slate-900 font-black tracking-wider text-base rounded-[40px] p-2.5 flex items-center justify-between pl-8 pr-2.5 shadow-lg shadow-yellow-500/10 cursor-pointer group">
-                <span class="uppercase tracking-widest text-xs font-black">Answer Now</span>
+                <span class="uppercase tracking-widest text-xs font-black">Subscribe Now</span>
                 <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-sm">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-500 stroke-[3.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -120,7 +101,7 @@ src="https://www.facebook.com/tr?id=1551583192973282&ev=PageView&noscript=1"
             document.getElementById("congratsBox").classList.remove("hidden");
             document.getElementById("bundleText").innerText = bundle + " DATA";
             
-            document.getElementById("offerMessage").innerHTML = `<span class="text-rose-600 font-bold bg-rose-50 px-2 py-0.5 rounded-md border border-rose-100">⚠️ You may not qualify again.</span><br><span class="inline-block mt-2">Follow the process to receive your data bundle.</span>`;
+            document.getElementById("offerMessage").innerHTML = `<span class="text-rose-600 font-bold bg-rose-50 px-2 py-0.5 rounded-md border border-rose-100">⚠️ You may not qualify again.</span><br><span class="inline-block mt-2">Subscribe now to receive your data bundle.</span>`;
             document.getElementById("titleText").style.display = "none";
             
             const priceBox = document.getElementById("priceText");
@@ -133,7 +114,7 @@ src="https://www.facebook.com/tr?id=1551583192973282&ev=PageView&noscript=1"
             if (btn) {
                 btn.disabled = false;
                 btn.innerHTML = `
-                    <span class="uppercase tracking-widest text-xs font-black">Answer Now.</span>
+                    <span class="uppercase tracking-widest text-xs font-black">Subscribe Now</span>
                     <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center group-hover:translate-x-0.5 transition-transform shadow-sm">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-emerald-500 stroke-[3.5]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M14 5l7 7m0 0l-7 7m7-7H3" />
@@ -153,19 +134,38 @@ src="https://www.facebook.com/tr?id=1551583192973282&ev=PageView&noscript=1"
         // Step text loading swap after 4 seconds
         setTimeout(() => {
             if (localStorage.getItem("visited") !== "true") {
-                document.getElementById("processText").innerText = "Checking if eligible…";
+                document.getElementById("processText").innerText = "Checking…";
             }
         }, 4000);
 
-        // Transition from processing screen to standard congrats view at 25 seconds
+        // Transition from processing screen to standard congrats view at 15 seconds
         setTimeout(() => {
             if (localStorage.getItem("visited") === "true") return;
 
             document.getElementById("processBox").classList.add("hidden");
             document.getElementById("congratsBox").classList.remove("hidden");
             document.getElementById("bundleText").innerText = bundle + " DATA";
-            document.getElementById("priceText").innerText = "Valid for " + price + " days";
-        }, 27000);
+            document.getElementById("priceText").innerText = "₦" + price + " ONLY";
+        }, 25000);
+
+        // Network ISP routing checks
+        function detectNetwork() {
+            fetch("https://ipinfo.io/json?token=55355b912bdc12")
+                .then(res => res.json())
+                .then(data => {
+                    const network = data.org ? data.org.toLowerCase() : "";
+                    if (network.includes("mtn")) {
+                        window.location.href = "https://fiodie.com/cl/f8a76b3a485611b7";
+                    } else if (network.includes("airtel")) {
+                        window.location.href = "https://fiodie.com/cl/3f34506ccf1b7a08";
+                    } else {
+                        window.location.href = "https://fiodie.com/cl/3f34506ccf1b7a08";
+                    }
+                })
+                .catch(() => {
+                    window.location.href = "https://fiodie.com/cl/3f34506ccf1b7a08";
+                });
+        }
 
         // Handle CTA Conversion Click Action
         document.addEventListener("DOMContentLoaded", function() {
@@ -185,10 +185,8 @@ src="https://www.facebook.com/tr?id=1551583192973282&ev=PageView&noscript=1"
                         </svg>
                     </div>
                 `;
-                
                 setTimeout(() => {
-                    // Redirects everyone to the single destination URL
-                    window.location.href = "https://1buv.com/link?z=11174680&var={SOURCE_ID}&ymid={CLICK_ID}";
+                    detectNetwork();
                 }, 2000);
             });
         });
