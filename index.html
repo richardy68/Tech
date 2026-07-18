@@ -6,41 +6,28 @@
   <title>For All Network</title>
 
   <!-- Meta Pixel Code -->
-<script>
-!function(f,b,e,v,n,t,s)
-{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];
-s.parentNode.insertBefore(t,s)}(window, document,'script',
-'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '1551583192973282');
-fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-src="https://www.facebook.com/tr?id=1551583192973282&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
-  <!-- TikTok Pixel Code Start -->
-<script>
-!function (w, d, t) {
-  w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(
-var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};n=document.createElement("script")
-;n.type="text/javascript",n.async=!0,n.src=r+"?sdkid="+e+"&lib="+t;e=document.getElementsByTagName("script")[0];e.parentNode.insertBefore(n,e)};
-
-  ttq.load('D8DM4B3C77U5P5NBLSL0');
-  ttq.page();
-}(window, document, 'ttq');
-</script>
-<!-- TikTok Pixel Code End -->
+  <script>
+  !function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window, document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '1622898892221727');
+  fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+  src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel Code -->
   
   <meta name="robots" content="noindex,nofollow" />
   <style>
     *{box-sizing:border-box}
     html,body{height:100%;margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial;
-      background: linear-gradient(135deg, #0a58ca, #1e90ff); 
+      background: linear-gradient(135deg, #007bff, #00c6ff); 
     }
 
     .page-container {
@@ -115,6 +102,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     .network-button.glo { border: 2px solid #008000; }
     .network-button.ninemobile { border: 2px solid #000000; }
 
+    /* --- LOADING OVERLAY STYLES --- */
     #loading-bridge {
       position: fixed;
       top: 0;
@@ -122,7 +110,7 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       width: 100%;
       height: 100%;
       background: rgba(0, 0, 0, 0.5);
-      backdrop-filter: blur(12px);
+      backdrop-filter: blur(12px); /* The Blur Effect */
       -webkit-backdrop-filter: blur(12px);
       display: none; 
       justify-content: center;
@@ -158,27 +146,19 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
     function redirectToPage3(networkName) {
         const bridge = document.getElementById('loading-bridge');
 
-        // Show loading screen
+        // Show the blurred overlay
         bridge.style.display = 'flex';
 
-        // Open new tab immediately (prevents popup blocking)
-        const newTab = window.open('', '_blank');
-
+        // 1.5 second delay before moving to page1.html
         setTimeout(() => {
-            if (newTab) {
-                newTab.location.href = 'page1.html';
-            } else {
-                // fallback if popup blocked
-                window.location.href = 'page1.html';
-            }
+            window.location.href = 'page1.html';
         }, 3000);
     }
   </script>
 </head>
-
 <body>
 
-  <!-- Loading Overlay -->
+  <!-- The Bridge Overlay -->
   <div id="loading-bridge">
     <div class="spinner"></div>
     <div class="loading-text">Processing...</div>
@@ -194,21 +174,18 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
           </div>
           <span>MTN</span>
         </a>
-
         <a href="javascript:void(0);" class="network-button airtel" onclick="redirectToPage3('AIRTEL');">
           <div class="logo-container">
             <img src="https://i.postimg.cc/76xWpnJd/images-2.png" alt="Airtel Logo" />
           </div>
           <span>AIRTEL</span>
         </a>
-
         <a href="javascript:void(0);" class="network-button glo" onclick="redirectToPage3('GLO');">
           <div class="logo-container">
             <img src="https://i.postimg.cc/ZqDwMzZh/images-2-17.jpg" alt="GLO Logo" />
           </div>
           <span>GLO</span>
         </a>
-
         <a href="javascript:void(0);" class="network-button ninemobile" onclick="redirectToPage3('9MOBILE');">
           <div class="logo-container">
             <img src="https://i.postimg.cc/FHTpYXfX/images-2-20.jpg" alt="9Mobile Logo" />
@@ -218,6 +195,6 @@ var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n
       </div>
     </div>
   </div>
-
+  
 </body>
 </html>
