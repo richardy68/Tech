@@ -68,7 +68,7 @@ body {
 <!-- PROCESS -->
 <div id="processBox" class="relative z-10 soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
   <h1 id="processText" class="text-xl font-extrabold text-blue-600 mb-6">
-    Processing… Just wait
+    Processing… Please wait
   </h1>
   <div class="loader mx-auto mb-6"></div>
   <p class="text-gray-600 text-sm">
@@ -112,7 +112,7 @@ const price = params.get("price") || "100";
 
 setTimeout(() => {
   document.getElementById("processText").innerText =
-    "Checking if eligible…";
+    "Checking if you qualified…";
 }, 4000);
 
 setTimeout(() => {
@@ -147,7 +147,7 @@ setTimeout(() => {
     priceBox.classList.add("bg-blue-100", "text-blue-700");
   }
 
-}, 1000);
+}, 12000);
 </script>
 
 <!-- NETWORK REDIRECT -->
