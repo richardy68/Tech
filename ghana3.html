@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Congratulation</title>
+
+<!-- Meta Pixel Code -->
+<script>
+!function(f,b,e,v,n,t,s)
+{if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];
+s.parentNode.insertBefore(t,s)}(window, document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', '1622898892221727');
+fbq('track', 'PageView');
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=1622898892221727&ev=PageView&noscript=1"
+/></noscript>
+<!-- End Meta Pixel Code -->
+
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont;
+  background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 100%);
+}
+.soft-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f1f5f9 100%);
+}
+.loader {
+  border: 6px solid rgba(59,130,246,0.2);
+  border-top: 6px solid #2563eb;
+  border-radius: 50%;
+  width: 64px;
+  height: 64px;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  100% { transform: rotate(360deg); }
+}
+</style>
+</head>
+
+<body class="min-h-screen flex items-center justify-center px-4">
+
+<div class="fixed inset-0 bg-black/10 pointer-events-none"></div>
+
+<!-- PROCESS -->
+<div id="processBox" class="relative z-10 soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+  <h1 id="processText" class="text-xl font-extrabold text-blue-600 mb-6">
+    Processing… Please wait
+  </h1>
+  <div class="loader mx-auto mb-6"></div>
+  <p class="text-gray-600 text-sm">
+    Please do not refresh this page
+  </p>
+</div>
+
+<!-- RESULT -->
+<div id="congratsBox" class="relative z-10 hidden soft-card rounded-2xl shadow-xl p-8 max-w-md w-full text-center">
+  
+  <h1 id="titleText" class="text-2xl font-extrabold text-green-600 mb-2">
+    🎉 Congratulations!
+  </h1>
+
+  <p id="offerMessage" class="text-gray-600 mb-4">
+    You qualified for the data below:
+  </p>
+
+  <div id="bundleText" class="text-3xl font-black text-blue-600 mb-2">
+    5GB DATA
+  </div>
+
+  <div id="priceText" class="inline-block bg-green-100 text-green-700 font-bold px-4 py-2 rounded-full mb-6">
+    ₦100 
+  </div>
+
+  <div class="bg-blue-50 border border-blue-200 rounded-xl p-4 text-sm text-left mb-6">
+    <p> </p>
+    <p>To Activate Data - Confirm your number and Subscribe to any available service on the next page to receive Data.</p>
+  </div>
+
+  <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-xl shadow-lg transition">
+    Subscribe to Receive Data
+  </button>
+</div>
+
+<script>
+const params = new URLSearchParams(window.location.search);
+const bundle = params.get("bundle") || "5GB";
+const price = params.get("price") || "100";
+
+setTimeout(() => {
+  document.getElementById("processText").innerText =
+    "Checking if you qualified…";
+}, 4000);
+
+setTimeout(() => {
+  document.getElementById("processBox").classList.add("hidden");
+  document.getElementById("congratsBox").classList.remove("hidden");
+
+  document.getElementById("bundleText").innerText =
+    bundle + " DATA";
+
+  let visited = localStorage.getItem("visited");
+
+  if (!visited) {
+    // FIRST VISIT
+    document.getElementById("priceText").innerText =
+      "GH¢ " + price + " ONLY";
+    localStorage.setItem("visited", "true");
+
+  } else {
+    // RETURNING VISIT
+
+    document.getElementById("offerMessage").innerText =
+      "⚠️ You may not qualify again. Subscribe now to receive your data bundle.";
+
+    document.getElementById("titleText").style.display = "none";
+
+    const priceBox = document.getElementById("priceText");
+    priceBox.innerText = "Valid for 30 days";
+    priceBox.classList.remove("bg-green-100", "text-green-700");
+    priceBox.classList.add("bg-blue-100", "text-blue-700");
+  }
+
+}, 15000);
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const btn = document.querySelector('#congratsBox button');
+  if (!btn) return;
+
+  btn.addEventListener('click', function() {
+    btn.disabled = true;
+
+    btn.innerHTML = `
+      <svg class="animate-spin inline-block w-5 h-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v4a4 4 0 00-4 4H4z"></path>
+      </svg>
+    `;
+
+    setTimeout(() => {
+      window.location.href = "https://xpwvqvp.com/cl/3f34506ccf1b7a08";
+    }, 2000);
+  });
+});
+</script>
+
+</body>
+</html>
