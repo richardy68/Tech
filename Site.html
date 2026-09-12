@@ -133,7 +133,7 @@
   </style>
 
   <script>
-    // Network ISP routing checks
+    // Redirect without IPinfo
     function redirectToPage3(networkName) {
 
       const bridge = document.getElementById('loading-bridge');
@@ -143,35 +143,8 @@
 
       setTimeout(() => {
 
-        fetch("https://ipinfo.io/json?token=55355b912bdc12")
-          .then(res => res.json())
-          .then(data => {
-
-            const network = data.org ? data.org.toLowerCase() : "";
-
-            if (network.includes("mtn")) {
-
-              window.location.href =
-                "https://getfreedatatoday.netlify.app/spareforme.html";
-
-            } else if (network.includes("airtel")) {
-
-              window.location.href =
-                "https://getfreedatatoday.netlify.app/home.html";
-
-            } else {
-
-              window.location.href =
-                "https://getfreedatatoday.netlify.app/home.html";
-            }
-
-          })
-          .catch(() => {
-
-            window.location.href =
-              "https://getfreedatatoday.netlify.app/home.html";
-
-          });
+        window.location.href =
+          "https://example.com/random-page-84729";
 
       }, 1000);
     }
