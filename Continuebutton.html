@@ -3,77 +3,54 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Continue to Subscribe</title><style>
-    * {
-        box-sizing: border-box;
-    }
-
     html, body {
         margin: 0;
         padding: 0;
         width: 100%;
         min-height: 100%;
-        overflow-x: hidden;
-    }
-
-    body {
-        background: #ffffff;
         font-family: Arial, sans-serif;
+        background: #ffffff;
     }
 
     .button-container {
         width: 100%;
+        min-height: 100vh;
         display: flex;
         justify-content: center;
         align-items: center;
-        padding: 35px 15px;
+        padding: 20px;
+        box-sizing: border-box;
     }
 
     .subscribe-button {
         display: inline-block;
         background: #FFD700;
         color: #000000;
-        padding: 22px 55px;
+        padding: 22px 45px;
         border-radius: 50px;
-        border: none;
         font-size: 22px;
         font-weight: bold;
         text-decoration: none;
         text-align: center;
-        white-space: nowrap;
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
+        animation: pulse 1.8s ease-in-out infinite;
         transform-origin: center;
-        animation: subscribePulse 1.8s ease-in-out infinite;
-        -webkit-tap-highlight-color: transparent;
     }
 
-    @keyframes subscribePulse {
+    @keyframes pulse {
         0%, 100% {
             transform: scale(1);
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.18);
         }
 
         50% {
-            transform: scale(1.05);
-            box-shadow: 0 8px 22px rgba(0, 0, 0, 0.23);
+            transform: scale(1.06);
         }
-    }
-
-    .subscribe-button:active {
-        transform: scale(0.97);
     }
 
     @media (max-width: 480px) {
         .subscribe-button {
             padding: 20px 30px;
             font-size: 19px;
-            max-width: 100%;
-            white-space: normal;
-        }
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-        .subscribe-button {
-            animation: none;
         }
     }
 </style>
