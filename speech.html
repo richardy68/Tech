@@ -2,127 +2,119 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AI Voice Test LP</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Autoplay Voice Test</title>
 <style>
 body {
-  margin: 0;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: #f2f4f8;
-  font-family: Arial, sans-serif;
-  padding: 20px;
-  box-sizing: border-box;
+  margin:0;
+  min-height:100vh;
+  display:grid;
+  place-items:center;
+  background:#101827;
+  font-family:Arial,sans-serif;
+  color:white;
 }
-
 .card {
-  background: white;
-  padding: 30px 22px;
-  border-radius: 18px;
-  text-align: center;
-  max-width: 380px;
-  width: 100%;
-  box-shadow: 0 8px 30px #00000012;
+  width:85%;
+  max-width:380px;
+  padding:30px 20px;
+  text-align:center;
+  background:#1d293b;
+  border-radius:18px;
 }
-
-.icon {
-  font-size: 55px;
-}
-
-h2 {
-  color: #202534;
-}
-
-p {
-  color: #687080;
-  line-height: 1.6;
-}
-
 button {
-  width: 100%;
-  padding: 15px;
-  margin-top: 12px;
-  border: 0;
-  border-radius: 10px;
-  background: #1769ff;
-  color: white;
-  font-size: 16px;
-  font-weight: bold;
+  padding:14px;
+  width:100%;
+  border:0;
+  border-radius:9px;
+  margin-top:12px;
+  background:#16a36a;
+  color:white;
+  font-weight:bold;
 }
-
-#status {
-  font-size: 13px;
-  margin-top: 18px;
-}
+#status {color:#aebbd0;font-size:13px;margin-top:18px}
 </style>
 </head>
-
 <body>
 
 <div class="card">
-
-  <div class="icon">🔊</div>
-
+  <div style="font-size:50px">🔊</div>
   <h2>Welcome!</h2>
+  <p>Testing automatic AI voice playback.</p>
 
-  <p>
-    Listen to our AI-generated voice message.
-  </p>
+  <button onclick="startVoice()">Play Voice</button>
+  <button onclick="stopVoice()" style="background:#444">Stop</button>
 
-  <button onclick="speakMessage()">
-    🔊 Play Voice
-  </button>
-
-  <button onclick="stopVoice()" style="background:#222">
-    Stop Voice
-  </button>
-
-  <div id="status">Voice system ready</div>
-
+  <div id="status">Attempting automatic playback...</div>
 </div>
 
 <script>
 const message =
 "Hello! Welcome to our page. Thanks for visiting. We're happy to have you here!";
 
-function speakMessage() {
+let played = false;
+let voicesReady = false;
 
-  if (!("speechSynthesis" in window)) {
-    document.getElementById("status").innerText =
-      "Your browser does not support voice generation.";
+function startVoice() {
+  if (!window.speechSynthesis) {
+    statusText("Speech is not supported.");
     return;
   }
+
+  if (played) return;
 
   speechSynthesis.cancel();
 
   const speech = new SpeechSynthesisUtterance(message);
-
   speech.lang = "en-US";
   speech.rate = 0.95;
   speech.pitch = 1;
   speech.volume = 1;
 
-  speech.onstart = function() {
-    document.getElementById("status").innerText =
-      "AI voice is speaking...";
+  speech.onstart = () => {
+    played = true;
+    statusText("Voice is playing!");
   };
 
-  speech.onend = function() {
-    document.getElementById("status").innerText =
-      "Voice message completed.";
+  speech.onend = () => {
+    statusText("Voice completed.");
+  };
+
+  speech.onerror = () => {
+    statusText("Autoplay blocked. Tap Play Voice.");
   };
 
   speechSynthesis.speak(speech);
 }
 
+function statusText(text) {
+  document.getElementById("status").textContent = text;
+}
+
 function stopVoice() {
   speechSynthesis.cancel();
-  document.getElementById("status").innerText =
-    "Voice stopped.";
+  played = false;
+  statusText("Voice stopped.");
 }
+
+function attemptAutoplay() {
+  if (!played) startVoice();
+}
+
+if (window.speechSynthesis) {
+  speechSynthesis.getVoices();
+  speechSynthesis.onvoiceschanged = () => {
+    voicesReady = true;
+  };
+}
+
+attemptAutoplay();
+
+window.addEventListener("load", attemptAutoplay);
+
+document.addEventListener("visibilitychange", () => {
+  if (!document.hidden && !played) attemptAutoplay();
+});
 </script>
 
 </body>
