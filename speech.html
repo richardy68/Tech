@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Voice Test LP</title>
+
+<style>
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f2f4f8;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.card {
+  background: white;
+  padding: 30px 22px;
+  border-radius: 18px;
+  text-align: center;
+  max-width: 380px;
+  width: 100%;
+  box-shadow: 0 8px 30px #00000012;
+}
+
+.icon {
+  font-size: 55px;
+}
+
+h2 {
+  color: #202534;
+}
+
+p {
+  color: #687080;
+  line-height: 1.6;
+}
+
+button {
+  width: 100%;
+  padding: 15px;
+  margin-top: 12px;
+  border: 0;
+  border-radius: 10px;
+  background: #1769ff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+#status {
+  font-size: 13px;
+  margin-top: 18px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+  <div class="icon">🔊</div>
+
+  <h2>Welcome!</h2>
+
+  <p>
+    Listen to our AI-generated voice message.
+  </p>
+
+  <button onclick="speakMessage()">
+    🔊 Play Voice
+  </button>
+
+  <button onclick="stopVoice()" style="background:#222">
+    Stop Voice
+  </button>
+
+  <div id="status">Voice system ready</div>
+
+</div>
+
+<script>
+const message =
+"Hello! Welcome to our page. Thanks for visiting. We're happy to have you here!";
+
+function speakMessage() {
+
+  if (!("speechSynthesis" in window)) {
+    document.getElementById("status").innerText =
+      "Your browser does not support voice generation.";
+    return;
+  }
+
+  speechSynthesis.cancel();
+
+  const speech = new SpeechSynthesisUtterance(message);
+
+  speech.lang = "en-US";
+  speech.rate = 0.95;
+  speech.pitch = 1;
+  speech.volume = 1;
+
+  speech.onstart = function() {
+    document.getElementById("status").innerText =
+      "AI voice is speaking...";
+  };
+
+  speech.onend = function() {
+    document.getElementById("status").innerText =
+      "Voice message completed.";
+  };
+
+  speechSynthesis.speak(speech);
+}
+
+function stopVoice() {
+  speechSynthesis.cancel();
+  document.getElementById("status").innerText =
+    "Voice stopped.";
+}
+</script>
+
+</body>
+</html>
