@@ -5,7 +5,6 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>For All Network</title>
 
-
 <style>
 *{
     margin:0;
@@ -112,16 +111,14 @@ body{
     margin-bottom:25px;
 }
 
-/* --- ADJUSTED DIMENSIONS TO MATCH YOUR NEW EXAMPLE IMAGE --- */
-
 .plan{
     display:flex;
     justify-content:space-between;
     align-items:center;
     border:2px solid #eee;
     border-radius:40px;
-    padding:16px 24px; /* Increased padding slightly so it's not too small */
-    margin-bottom:14px; /* Perfectly balanced spacing between the options */
+    padding:16px 24px;
+    margin-bottom:14px;
     cursor:pointer;
     transition:.3s;
 }
@@ -137,28 +134,26 @@ body{
 
 .plan-left{
     display:flex;
-    gap:24px; /* Balanced spacing between columns */
+    gap:24px;
     align-items:center;
 }
 
 .price{
-    font-size:19px; /* Increased from 17px so it stands out like your example */
+    font-size:19px;
     font-weight:bold;
 }
 
 .data{
-    font-size:18px; /* Increased from 17px for optimal readability */
+    font-size:18px;
 }
 
 .radio{
-    width:22px;   /* Adjusted to match the exact size in your example image */
-    height:22px;  
+    width:22px;
+    height:22px;
     border:3px solid #ffcb05;
     border-radius:50%;
     position:relative;
 }
-
-/* --- REST OF CODE REMAINS COMPLETELY UNTOUCHED --- */
 
 .plan.active .radio::after{
     content:'';
@@ -167,9 +162,11 @@ body{
     background:#ffcb05;
     border-radius:50%;
     position:absolute;
-    top:4px;
-    left:4px;
+    top:1px;
+    left:1px;
 }
+
+/* ACTIVATE BUTTON */
 
 .continue-btn{
     width:100%;
@@ -182,20 +179,60 @@ body{
     font-weight:bold;
     cursor:not-allowed;
     opacity:.5;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    gap:12px;
 }
 
 .continue-btn.enabled{
     opacity:1;
     cursor:pointer;
 }
+
+.continue-btn:disabled{
+    cursor:wait;
+}
+
+.continue-btn.processing{
+    opacity:1;
+    cursor:wait;
+}
+
+/* LOADING SPINNER */
+
+.loader{
+    width:22px;
+    height:22px;
+    border:3px solid rgba(0,0,0,.2);
+    border-top:3px solid #000;
+    border-radius:50%;
+    animation:spin .7s linear infinite;
+    display:none;
+    flex-shrink:0;
+}
+
+.continue-btn.processing .loader{
+    display:inline-block;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
 </style>
 </head>
+
 <body>
 
 <div class="header">
     <div class="logo-row">
-        <img src="https://i.postimg.cc/tCcFnrSm/images-(4).jpg" alt="MTN Logo" style="width:52px; height:52px; object-fit:contain;">
-      <div class="brand">
+        <img src="https://i.postimg.cc/tCcFnrSm/images-(4).jpg"
+        alt="MTN Logo"
+        style="width:52px;height:52px;object-fit:contain;">
+
+        <div class="brand">
             <h2>For All Network</h2>
             <p>Y'ello! Better & Faster</p>
         </div>
@@ -229,7 +266,7 @@ body{
         <div class="plan" data-plan="100" data-bundle="3GB" data-price="100">
             <div class="plan-left">
                 <div class="price">₦100</div>
-                <div class="data"> 3GB (30 Days)</div>
+                <div class="data">3GB (30 Days)</div>
             </div>
             <div class="radio"></div>
         </div>
@@ -237,7 +274,7 @@ body{
         <div class="plan" data-plan="200" data-bundle="6.5GB" data-price="200">
             <div class="plan-left">
                 <div class="price">₦200</div>
-                <div class="data"> 6.5GB (30 Days)</div>
+                <div class="data">6.5GB (30 Days)</div>
             </div>
             <div class="radio"></div>
         </div>
@@ -250,8 +287,9 @@ body{
             <div class="radio"></div>
         </div>
 
-        <button id="continueBtn" class="continue-btn">
-            Activate Data →
+        <button id="continueBtn" class="continue-btn" type="button">
+            <span id="btnText">Activate Data →</span>
+            <span class="loader"></span>
         </button>
 
     </div>
@@ -262,33 +300,165 @@ body{
 let selectedPlan = null;
 let selectedBundle = "";
 let selectedPrice = "";
+let isProcessing = false;
 
 const plans = document.querySelectorAll('.plan');
 const continueBtn = document.getElementById('continueBtn');
+const btnText = document.getElementById('btnText');
 
+const redirectURL = "https://wrrit.bemobtrcks.com/click";
+
+// SELECTION SOUND
+let audioContext;
+
+function playSelectionSound(){
+
+    try{
+
+        const AudioContext =
+            window.AudioContext || window.webkitAudioContext;
+
+        if(!AudioContext) return;
+
+        if(!audioContext){
+            audioContext = new AudioContext();
+        }
+
+        if(audioContext.state === "suspended"){
+            audioContext.resume();
+        }
+
+        const oscillator = audioContext.createOscillator();
+        const gain = audioContext.createGain();
+
+        oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(
+            750,
+            audioContext.currentTime
+        );
+
+        oscillator.frequency.exponentialRampToValueAtTime(
+            1100,
+            audioContext.currentTime + 0.07
+        );
+
+        gain.gain.setValueAtTime(
+            0.0001,
+            audioContext.currentTime
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.12,
+            audioContext.currentTime + 0.01
+        );
+
+        gain.gain.exponentialRampToValueAtTime(
+            0.0001,
+            audioContext.currentTime + 0.12
+        );
+
+        oscillator.connect(gain);
+        gain.connect(audioContext.destination);
+
+        oscillator.start();
+        oscillator.stop(audioContext.currentTime + 0.13);
+
+    }catch(error){
+        console.log("Audio unavailable");
+    }
+}
+
+
+// RESTORE BUTTON AND SELECTION
+function restorePage(){
+
+    isProcessing = false;
+
+    continueBtn.disabled = false;
+    continueBtn.classList.remove('processing');
+
+    btnText.textContent = "Activate Data →";
+
+    const savedPlan = sessionStorage.getItem("selectedPlan");
+
+    plans.forEach(plan => {
+        plan.classList.remove('active');
+
+        if(savedPlan && plan.dataset.plan === savedPlan){
+
+            plan.classList.add('active');
+
+            selectedPlan = plan.dataset.plan;
+            selectedBundle = plan.dataset.bundle;
+            selectedPrice = plan.dataset.price;
+        }
+    });
+
+    if(selectedPlan){
+        continueBtn.classList.add('enabled');
+    }else{
+        continueBtn.classList.remove('enabled');
+    }
+}
+
+
+// SELECT DATA PLAN
 plans.forEach(plan => {
+
     plan.addEventListener('click', () => {
+
+        if(isProcessing) return;
 
         plans.forEach(p => p.classList.remove('active'));
 
         plan.classList.add('active');
+
         selectedPlan = plan.dataset.plan;
-        
-        // Grab the specific bundle size and price of the clicked plan
-        selectedBundle = plan.getAttribute('data-bundle');
-        selectedPrice = plan.getAttribute('data-price');
+        selectedBundle = plan.dataset.bundle;
+        selectedPrice = plan.dataset.price;
+
+        sessionStorage.setItem("selectedPlan", selectedPlan);
 
         continueBtn.classList.add('enabled');
+
+        playSelectionSound();
+
     });
+
 });
 
+
+// ACTIVATE DATA
 continueBtn.addEventListener('click', () => {
 
-    if(!selectedPlan) return;
+    if(!selectedPlan || isProcessing) return;
 
-    // Generates the URL with variables attached dynamically matching your exact plan selection
-    window.location.href = "https://wrrit.bemobtrcks.com/click";
+    isProcessing = true;
+
+    // Save selection for back navigation
+    sessionStorage.setItem("selectedPlan", selectedPlan);
+
+    continueBtn.classList.add('processing');
+    continueBtn.disabled = true;
+
+    btnText.textContent = "Processing...";
+
+    // Redirect to BeMob
+    window.location.href = redirectURL;
+
 });
+
+
+// HANDLE BACK/FORWARD NAVIGATION
+window.addEventListener('pageshow', function(event){
+
+    restorePage();
+
+});
+
+// INITIAL PAGE RESTORATION
+restorePage();
+
 </script>
 
 </body>
